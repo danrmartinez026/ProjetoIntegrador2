@@ -11,6 +11,15 @@ import java.awt.Graphics;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import view.cliente.CadastroCliente;
+import view.cliente.DetalhesCliente;
+import view.cliente.PesquisaCliente;
+import view.livro.CadastroLivro;
+import view.livro.DetalhesLivro;
+import view.livro.PesquisarLivro;
+import view.venda.Relatorio;
+import view.venda.Venda;
+
 /**
  *
  * @author Dan
@@ -185,7 +194,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void menuPesquisarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPesquisarClienteActionPerformed
         if(pesquisarCliente == null || !pesquisarCliente.isDisplayable() && !pesquisarCliente.isVisible()){
-            pesquisarCliente = new PesquisaCliente();
+            pesquisarCliente = new PesquisaCliente(this);
             deskPane.add(pesquisarCliente);
             this.openFrameInCenter(pesquisarCliente);
         }

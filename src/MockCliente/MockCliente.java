@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Mock;
+package MockCliente;
 
 
 import model.Cliente;
@@ -71,7 +71,7 @@ public class MockCliente {
         if(!listaCliente.isEmpty() && nome == null ){
             for(Cliente cliente: listaCliente){
                 if(cliente != null && cliente.getNome() != null && 
-                        cliente.getSobrenome() != null){
+                        cliente.getSobrenome() == null){
                     if(cliente.getNome().toUpperCase().contains(nome.toUpperCase())){
                         listaResultado.add(cliente);
                     }

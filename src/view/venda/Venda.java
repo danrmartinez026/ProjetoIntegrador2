@@ -9,6 +9,7 @@ import view.*;
 import java.awt.Dimension;
 import javax.swing.JInternalFrame;
 import view.TelaPrincipal;
+import view.livro.DetalhesLivro;
 
 /**
  *
