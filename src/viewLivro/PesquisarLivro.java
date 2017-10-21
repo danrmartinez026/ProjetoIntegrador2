@@ -44,6 +44,7 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
         fTitulo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         fEditora = new javax.swing.JTextField();
+        fEditora.setText(" ");
         jLabel5 = new javax.swing.JLabel();
         fAutor = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -72,9 +73,29 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Título");
 
+        fTitulo.setText(" ");
+        fTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fTituloActionPerformed(evt);
+            }
+        });
+
         jLabel4.setText("Editora");
 
+        fEditora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fEditoraActionPerformed(evt);
+            }
+        });
+
         jLabel5.setText("Autor");
+
+        fAutor.setText(" ");
+        fAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fAutorActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Genero");
 
@@ -171,9 +192,16 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(tablePesquisa);
@@ -239,18 +267,21 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
         
         pesquisaLivro = MockLivro.procurarLivro(fTitulo.getText());
         
-        pesquisaLivro = MockLivro.filtrarPesquisa(MockLivro.procurarLivro(fEditora.getText()));
-        pesquisaLivro = MockLivro.filtrarPesquisa(MockLivro.procurarLivro(fAutor.getText()));
-        pesquisaLivro = MockLivro.filtrarPesquisa(MockLivro.procurarLivro(comboGenero.getSelectedItem().toString()));
+        
+        pesquisaLivro = MockLivro.filtrarPesquisa(MockLivro.procurarLivro(fEditora.getText()),pesquisaLivro);
+        pesquisaLivro = MockLivro.filtrarPesquisa(MockLivro.procurarLivro(fAutor.getText()),pesquisaLivro);
+      //  pesquisaLivro = MockLivro.filtrarPesquisa(MockLivro.procurarLivro(comboGenero.getSelectedItem().toString()),pesquisaLivro);
         
         for(int i = 0; i < pesquisaLivro.size(); i++){
             Livro liv = pesquisaLivro.get(i);
             if(liv != null){
-                Object[] row = new Object[4];
+                Object[] row = new Object[6];
                 row[0] = liv.getTitulo();
                 row[1] = liv.getEditora();
                 row[2] = liv.getAutor();
                 row[3] = liv.getGenero();
+                row[4] = null;
+                row[5] = null;
                 model.addRow(row);
             }
         }
@@ -282,6 +313,22 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
     private void comboGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboGeneroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboGeneroActionPerformed
+
+    private void fEditoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fEditoraActionPerformed
+        
+    }//GEN-LAST:event_fEditoraActionPerformed
+
+    private void fTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fTituloActionPerformed
+       
+
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fTituloActionPerformed
+
+    private void fAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fAutorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fAutorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

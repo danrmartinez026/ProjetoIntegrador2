@@ -8,6 +8,7 @@ package mockLivro;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import modelLivro.Livro;
 
 /**
@@ -19,7 +20,7 @@ public class MockLivro {
     private static int totalLivro =0;
     
     public static ArrayList<Livro> listaLivro = new ArrayList();
-    public static List<Livro> resultadoPesquisa = new ArrayList();
+    
     
 
    
@@ -40,23 +41,42 @@ public class MockLivro {
     }
     
     public static List<Livro> procurarLivro(String nome){
-        
-        if(nome != null){
-            for(Livro livro : listaLivro){
-                if(livro.getTitulo().toUpperCase().contains(nome.toUpperCase()))
-                    resultadoPesquisa.add(livro);
+        List<Livro> resultadoPesquisa = new ArrayList();
+        try{
+            if(nome != null && nome != ""){
+                for(int i = 0; i < listaLivro.size(); i++){
+                    if(listaLivro.get(i).getTitulo().toUpperCase().contains(nome.toUpperCase())){
+                        resultadoPesquisa.add(listaLivro.get(i));
+                        
+                    }
+                }   
             }
+        
+        }catch(Exception e){
+            System.out.println("Deu ruim");
         }
         return resultadoPesquisa;
     }
     
-    public static List<Livro> filtrarPesquisa(List<Livro> livro){
-        for(Livro liv : livro){
-            if(!resultadoPesquisa.contains(livro.contains(liv))){
-                resultadoPesquisa.add(liv);
+    public static List<Livro> filtrarPesquisa(List<Livro> livro , List<Livro> livro1){
+        
+        try{
+            if(livro1.isEmpty()){
+                livro1 = livro;
+            }
+            for(int i = 0; i < livro.size(); i++){
+            
+                if(!livro1.contains(livro.get(i))){
+                    livro1.add(livro.get(i));
+                
+            
             }
         }
-        return resultadoPesquisa;
+        //return resultadoPesquisa;
+        } catch (Exception e){
+            System.out.println("deu erro");
+        }
+        return livro1;
     }
     
     
