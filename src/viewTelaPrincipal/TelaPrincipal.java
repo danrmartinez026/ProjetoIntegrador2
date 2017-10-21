@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package viewTelaPrincipal;
 
 import java.awt.Dimension;
 import java.awt.Image;
@@ -11,14 +11,14 @@ import java.awt.Graphics;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
-import view.cliente.CadastroCliente;
-import view.cliente.DetalhesCliente;
-import view.cliente.PesquisaCliente;
-import view.livro.CadastroLivro;
-import view.livro.DetalhesLivro;
-import view.livro.PesquisarLivro;
-import view.venda.Relatorio;
-import view.venda.Venda;
+import viewCliente.CadastroCliente;
+import viewCliente.DetalhesCliente;
+import viewCliente.PesquisaCliente;
+import viewLivro.CadastroLivro;
+import viewLivro.DetalhesLivro;
+import viewLivro.PesquisarLivro;
+import viewVenda.Relatorio;
+import viewVenda.Venda;
 
 /**
  *
@@ -155,11 +155,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(deskPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addComponent(deskPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(deskPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(deskPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

@@ -5,10 +5,10 @@
  */
 package mockLivro;
 
-import mockCliente.*;
+
 import java.util.ArrayList;
 import java.util.List;
-import model.Livro;
+import modelLivro.Livro;
 
 /**
  *
@@ -16,16 +16,20 @@ import model.Livro;
  */
 public class MockLivro {
     
-    private int totalLivro =0;
+    private static int totalLivro =0;
     
-    ArrayList<Livro> listaLivro = new ArrayList();
+    public static ArrayList<Livro> listaLivro = new ArrayList();
+    public static List<Livro> resultadoPesquisa = new ArrayList();
     
-    public void inserirLivro(Livro livro){
+
+   
+    
+    public static void inserirLivro(Livro livro)throws Exception{
         livro.setId(totalLivro++);
         listaLivro.add(livro);
     }
     
-    public void atualizarLivro(Livro livro){
+    public static void atualizarLivro(Livro livro){
         if(livro != null && listaLivro.isEmpty()){
             for(Livro livroUp : listaLivro){
                 if(livroUp.getId() == livro.getId() && listaLivro != null){
@@ -34,5 +38,28 @@ public class MockLivro {
             }
         }
     }
+    
+    public static List<Livro> procurarLivro(String nome){
+        
+        if(nome != null){
+            for(Livro livro : listaLivro){
+                if(livro.getTitulo().toUpperCase().contains(nome.toUpperCase()))
+                    resultadoPesquisa.add(livro);
+            }
+        }
+        return resultadoPesquisa;
+    }
+    
+    public static List<Livro> filtrarPesquisa(List<Livro> livro){
+        for(Livro liv : livro){
+            if(!resultadoPesquisa.contains(livro.contains(liv))){
+                resultadoPesquisa.add(liv);
+            }
+        }
+        return resultadoPesquisa;
+    }
+    
+    
+    
     
 }

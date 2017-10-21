@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view.cliente;
+package viewCliente;
 
-import view.*;
 import java.awt.Dimension;
 import javax.swing.JInternalFrame;
-import view.TelaPrincipal;
+import viewTelaPrincipal.TelaPrincipal;
 
 /**
  *

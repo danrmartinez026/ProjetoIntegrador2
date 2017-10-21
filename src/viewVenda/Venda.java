@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view.venda;
+package viewVenda;
 
-import view.*;
 import java.awt.Dimension;
 import javax.swing.JInternalFrame;
-import view.TelaPrincipal;
-import view.livro.DetalhesLivro;
+import viewTelaPrincipal.TelaPrincipal;
+import viewLivro.DetalhesLivro;
 
 /**
  *
@@ -210,7 +209,7 @@ public class Venda extends javax.swing.JInternalFrame {
                         .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton5)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Carrinho"));

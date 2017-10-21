@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package modelVenda;
+
+import modelItemVenda.ItemVenda;
+import java.util.ArrayList;
 
 /**
  *
  * @author danilo.martinez
  */
-public class Endereco {
-    private String rua;
-    private String bairro;
-    private String Estado;
-    private String cidade;
-    private int numero;
-    private String complemento;
+public class Venda {
+    private ArrayList<ItemVenda> itemVenda;
+    private int data;
+    private double valor;
     
     
 }

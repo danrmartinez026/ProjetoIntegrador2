@@ -3,18 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package modelItemVenda;
 
-import java.util.ArrayList;
+import modelLivro.Livro;
 
 /**
  *
  * @author danilo.martinez
  */
-public class Venda {
-    private ArrayList<ItemVenda> itemVenda;
-    private int data;
-    private double valor;
+public class ItemVenda {
+    private Livro livro;
+    private int quantidade;
     
     
 }

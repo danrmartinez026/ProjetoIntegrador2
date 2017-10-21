@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package modelLivro;
 
 /**
  *
@@ -14,20 +14,13 @@ public class Livro {
     private String autor;
     private String editora;
     private String genero;
-    private int edicao;
-    private float peso;
-    private int numeroPaginas;
-    private float altura;
-    private float largura;
-    private int id;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    private Integer isbn;
+    private Integer edicao;
+    private Float peso;
+    private Integer numeroPaginas;
+    private Float altura;
+    private Float largura;
+    private Integer id;
 
     public String getTitulo() {
         return titulo;
@@ -61,45 +54,65 @@ public class Livro {
         this.genero = genero;
     }
 
-    public int getEdicao() {
+    public Integer getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(Integer isbn) {
+        this.isbn = isbn;
+    }
+
+    public Integer getEdicao() {
         return edicao;
     }
 
-    public void setEdicao(int edicao) {
+    public void setEdicao(Integer edicao) {
         this.edicao = edicao;
     }
 
-    public float getPeso() {
+    public Float getPeso() {
         return peso;
     }
 
-    public void setPeso(float peso) {
+    public void setPeso(Float peso) {
         this.peso = peso;
     }
 
-    public int getNumeroPaginas() {
+    public Integer getNumeroPaginas() {
         return numeroPaginas;
     }
 
-    public void setNumeroPaginas(int numeroPaginas) {
+    public void setNumeroPaginas(Integer numeroPaginas) {
         this.numeroPaginas = numeroPaginas;
     }
 
-    public float getAltura() {
+    public Float getAltura() {
         return altura;
     }
 
-    public void setAltura(float altura) {
+    public void setAltura(Float altura) {
         this.altura = altura;
     }
 
-    public float getLargura() {
+    public Float getLargura() {
         return largura;
     }
 
-    public void setLargura(float largura) {
+    public void setLargura(Float largura) {
         this.largura = largura;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
+    
+    
+   
    
     
 }
