@@ -265,11 +265,8 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
         
         //Livro livro = new Livro();
         
-        pesquisaLivro = MockLivro.procurarLivro(fTitulo.getText());
-        
-        
-        pesquisaLivro = MockLivro.filtrarPesquisa(MockLivro.procurarLivro(fEditora.getText()),pesquisaLivro);
-        pesquisaLivro = MockLivro.filtrarPesquisa(MockLivro.procurarLivro(fAutor.getText()),pesquisaLivro);
+        pesquisaLivro = MockLivro.procurarLivro(fTitulo.getText(), fAutor.getText(), fEditora.getText());
+        MockLivro.filtrarPesquisa(pesquisaLivro);
       //  pesquisaLivro = MockLivro.filtrarPesquisa(MockLivro.procurarLivro(comboGenero.getSelectedItem().toString()),pesquisaLivro);
         
         for(int i = 0; i < pesquisaLivro.size(); i++){

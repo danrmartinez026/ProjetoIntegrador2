@@ -68,7 +68,7 @@ public class MockCliente {
     //faz uma lista de cliente com base numa cadeida de caracteres como parâmetro
     public static List<Cliente> procurarCliente(String nome){
         List<Cliente> listaResultado = new ArrayList();
-        if(!listaCliente.isEmpty() && nome == null ){
+        if(!listaCliente.isEmpty() && nome != null ){
             for(Cliente cliente: listaCliente){
                 if(cliente != null && cliente.getNome() != null && 
                         cliente.getSobrenome() == null){

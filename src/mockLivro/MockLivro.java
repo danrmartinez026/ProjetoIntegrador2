@@ -40,12 +40,15 @@ public class MockLivro {
         }
     }
     
-    public static List<Livro> procurarLivro(String nome){
+    public static List<Livro> procurarLivro(String titulo,String autor, String editora){
         List<Livro> resultadoPesquisa = new ArrayList();
         try{
-            if(nome != null && nome != ""){
+            if(titulo != null && titulo != "" || autor != null && autor != ""
+                    || editora != null && editora != ""){
                 for(int i = 0; i < listaLivro.size(); i++){
-                    if(listaLivro.get(i).getTitulo().toUpperCase().contains(nome.toUpperCase())){
+                    if(listaLivro.get(i).getTitulo().toUpperCase().contains(titulo.toUpperCase())
+                            || listaLivro.get(i).getAutor().toUpperCase().contains(autor.toUpperCase())
+                            || listaLivro.get(i).getEditora().toUpperCase().contains(editora.toUpperCase())){
                         resultadoPesquisa.add(listaLivro.get(i));
                         
                     }
@@ -58,25 +61,23 @@ public class MockLivro {
         return resultadoPesquisa;
     }
     
-    public static List<Livro> filtrarPesquisa(List<Livro> livro , List<Livro> livro1){
-        
-        try{
-            if(livro1.isEmpty()){
-                livro1 = livro;
-            }
-            for(int i = 0; i < livro.size(); i++){
-            
-                if(!livro1.contains(livro.get(i))){
-                    livro1.add(livro.get(i));
-                
-            
-            }
-        }
-        //return resultadoPesquisa;
-        } catch (Exception e){
-            System.out.println("deu erro");
-        }
-        return livro1;
+    public static void filtrarPesquisa(List<Livro> pesquisa ){
+        List<Livro> resultado = new ArrayList();
+       try{
+           if(pesquisa == null || pesquisa.isEmpty()){
+               return;
+           } else if(resultado == null || resultado.isEmpty()){
+               for(Livro livro : pesquisa){
+                   if(!resultado.contains(livro)){
+                       resultado.add(livro);
+                   }
+                }
+            pesquisa = resultado;
+           } 
+       } catch(Exception e){
+           
+       }
+       
     }
     
     
