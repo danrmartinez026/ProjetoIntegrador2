@@ -215,10 +215,11 @@
         <Component class="javax.swing.JComboBox" name="comboGenero">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
+              <StringArray count="4">
                 <StringItem index="0" value="Drama"/>
                 <StringItem index="1" value="Romance"/>
                 <StringItem index="2" value="Aventura"/>
+                <StringItem index="3" value="Sci-Fi"/>
               </StringArray>
             </Property>
           </Properties>
@@ -241,8 +242,9 @@
         <Component class="javax.swing.JComboBox" name="comboIdioma">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
+              <StringArray count="2">
                 <StringItem index="0" value="Portugu&#xea;s"/>
+                <StringItem index="1" value="Ingles"/>
               </StringArray>
             </Property>
           </Properties>

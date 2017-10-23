@@ -7,9 +7,13 @@ package viewLivro;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import mockLivro.MockLivro;
 import modelLivro.Livro;
+import viewCliente.CadastroCliente;
+import viewLivro.DetalhesLivro;
+import viewTelaPrincipal.TelaPrincipal;
 
 
 /**
@@ -17,11 +21,13 @@ import modelLivro.Livro;
  * @author danilo.martinez
  */
 public class PesquisarLivro extends javax.swing.JInternalFrame {
+    private TelaPrincipal parent;
 
     /**
      * Creates new form PesquisarLivro
      */
-    public PesquisarLivro() {
+    public PesquisarLivro(TelaPrincipal parent) {
+        this.parent = parent;
         initComponents();
     }
 
@@ -57,7 +63,7 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablePesquisa = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        pesquisaDetalhada = new javax.swing.JButton();
 
         jLabel3.setText("ID");
 
@@ -102,6 +108,10 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
         jLabel7.setText("Edição");
 
         jLabel8.setText("ISBN");
+
+        fEdicao.setText("0");
+
+        fIsbn.setText("0");
 
         buttonPesquisar.setText("Pesquisar");
         buttonPesquisar.setName(""); // NOI18N
@@ -190,7 +200,7 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
@@ -204,20 +214,24 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tablePesquisa.setToolTipText("");
         jScrollPane1.setViewportView(tablePesquisa);
 
-        jButton2.setText("Pesquisa Detalhada");
+        pesquisaDetalhada.setText("Pesquisa Detalhada");
+        pesquisaDetalhada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesquisaDetalhadaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(pesquisaDetalhada)
                 .addGap(150, 150, 150))
         );
         jPanel2Layout.setVerticalGroup(
@@ -226,7 +240,7 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(pesquisaDetalhada)
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -256,55 +270,36 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public List<Livro> pesquisaLivro = new ArrayList();
     private void buttonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPesquisarActionPerformed
-        List<Livro> pesquisaLivro = new ArrayList();
+        pesquisaLivro = null;
         
         DefaultTableModel model = (DefaultTableModel) tablePesquisa.getModel();
-        
         model.setRowCount(0);
         
-        //Livro livro = new Livro();
-        
-        pesquisaLivro = MockLivro.procurarLivro(fTitulo.getText(), fAutor.getText(), fEditora.getText());
+        try{
+        pesquisaLivro = MockLivro.procurarLivro(fTitulo.getText(), fAutor.getText()
+                , fEditora.getText(),comboGenero.getSelectedItem().toString()
+                ,Integer.parseInt(fIsbn.getText()),Integer.parseInt(fEdicao.getText()));
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Digite apenas numeros nos campos Edicao e ISBN");
+        }
         MockLivro.filtrarPesquisa(pesquisaLivro);
-      //  pesquisaLivro = MockLivro.filtrarPesquisa(MockLivro.procurarLivro(comboGenero.getSelectedItem().toString()),pesquisaLivro);
-        
+     
         for(int i = 0; i < pesquisaLivro.size(); i++){
             Livro liv = pesquisaLivro.get(i);
             if(liv != null){
-                Object[] row = new Object[6];
+                Object[] row = new Object[7];
                 row[0] = liv.getTitulo();
                 row[1] = liv.getEditora();
                 row[2] = liv.getAutor();
                 row[3] = liv.getGenero();
-                row[4] = null;
-                row[5] = null;
+                row[4] = liv.getEdicao();
+                row[5] = liv.getIsbn();
+                row[6] = liv.getId();
                 model.addRow(row);
             }
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-//        for (int i = 0; i < resultado.size(); i++) {
-//            Quarto cli = resultado.get(i);
-//            if (cli != null) {
-//                Object[] row = new Object[5];
-//                row[0] = cli.getId();
-//                row[1] = cli.getNumero();
-//                row[2] = cli.getAndar();
-//                row[3] = cli.getTipo();
-//                model.addRow(row);
-//            }
-//        }
-
-
     }//GEN-LAST:event_buttonPesquisarActionPerformed
 
     private void comboGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboGeneroActionPerformed
@@ -327,6 +322,19 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_fAutorActionPerformed
 
+    private void pesquisaDetalhadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisaDetalhadaActionPerformed
+        try{
+            int id = pesquisaLivro.get(tablePesquisa.getSelectedRow()).getId();
+            for(Livro livro : MockLivro.listaLivro){
+                if(id == livro.getId()){
+                    parent.abrirTelaDetalhesLivro(id);
+                }
+            }
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Selecione 1 item para pesquisa detalhada");
+        }
+    }//GEN-LAST:event_pesquisaDetalhadaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonPesquisar;
@@ -336,7 +344,6 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
     private javax.swing.JTextField fEditora;
     private javax.swing.JTextField fIsbn;
     private javax.swing.JTextField fTitulo;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -351,6 +358,7 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JButton pesquisaDetalhada;
     private javax.swing.JTable tablePesquisa;
     // End of variables declaration//GEN-END:variables
 }

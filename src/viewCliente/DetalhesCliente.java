@@ -460,13 +460,13 @@ public class DetalhesCliente extends javax.swing.JInternalFrame {
        
 
 
-//        if(cadastroCliente == null || !cadastroCliente.isDisplayable() && !cadastroCliente.isVisible()){
-//            cadastroCliente = new CadastroCliente();
-//            TelaPrincipal.deskPane.add(cadastroCliente);
-//            this.openFrameInCenter(cadastroCliente);
-//        }
-//        cadastroCliente.getDesktopPane().getDesktopManager().deiconifyFrame(cadastroCliente);
-//        cadastroCliente.toFront();
+        if(cadastroCliente == null || !cadastroCliente.isDisplayable() && !cadastroCliente.isVisible()){
+            cadastroCliente = new CadastroCliente();
+            TelaPrincipal.deskPane.add(cadastroCliente);
+            this.openFrameInCenter(cadastroCliente);
+        }
+        cadastroCliente.getDesktopPane().getDesktopManager().deiconifyFrame(cadastroCliente);
+        cadastroCliente.toFront();
     }//GEN-LAST:event_buttonCadastrarClienteActionPerformed
 
     

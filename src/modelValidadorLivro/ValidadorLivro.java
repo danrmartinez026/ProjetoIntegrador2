@@ -22,7 +22,7 @@ public class ValidadorLivro {
             throw new LivroException ("Informe um titulo");
         }
         
-        if(livro.getEdicao() == null || livro.getEdicao().equals("")){
+        if(livro.getEdicao() == null ){
             throw new LivroException ("Informe a edicao");
         }
         
@@ -30,12 +30,24 @@ public class ValidadorLivro {
             throw new LivroException ("Informe uma editora");
         }
         
-        if(livro.getIsbn() == null || livro.getIsbn().equals("")){
+        if(livro.getIsbn() == null){
             throw new LivroException ("Informe um codigo ISBN");
         }
         
         if(livro.getGenero() == null || livro.getGenero().equals("")){
             throw new LivroException ("Informe um genero");
+        }
+        if(livro.getPeso() == null){
+            throw new LivroException ("Informe um Peso");
+        }
+        if(livro.getAltura() == null){
+            throw new LivroException ("Informe uma altura");
+        }
+        if(livro.getLargura() == null){
+            throw new LivroException ("Informe uma largura");
+        }
+        if(livro.getNumeroPaginas() == null){
+            throw new LivroException ("Informe uma quantidade de paginas");
         }
         return true;
     }

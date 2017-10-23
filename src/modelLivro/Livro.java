@@ -10,6 +10,7 @@ package modelLivro;
  * @author danilo.martinez
  */
 public class Livro {
+    private String idioma;
     private String titulo;
     private String autor;
     private String editora;
@@ -21,6 +22,15 @@ public class Livro {
     private Float altura;
     private Float largura;
     private Integer id;
+    
+    
+    public String getIdioma() {
+        return idioma;
+    }
+
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
+    }
 
     public String getTitulo() {
         return titulo;

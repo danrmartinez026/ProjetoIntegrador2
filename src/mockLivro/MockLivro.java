@@ -40,17 +40,20 @@ public class MockLivro {
         }
     }
     
-    public static List<Livro> procurarLivro(String titulo,String autor, String editora){
+    public static List<Livro> procurarLivro(String titulo,String autor, String editora,String genero, Integer isbn, Integer edicao){
         List<Livro> resultadoPesquisa = new ArrayList();
         try{
-            if(titulo != null && titulo != "" || autor != null && autor != ""
-                    || editora != null && editora != ""){
+            if(titulo != null && titulo != ("") || autor != null && autor != ("")
+                    || editora != null && editora != "" || genero != null && genero != ""
+                    || edicao > 0 || isbn > 0){
                 for(int i = 0; i < listaLivro.size(); i++){
                     if(listaLivro.get(i).getTitulo().toUpperCase().contains(titulo.toUpperCase())
                             || listaLivro.get(i).getAutor().toUpperCase().contains(autor.toUpperCase())
-                            || listaLivro.get(i).getEditora().toUpperCase().contains(editora.toUpperCase())){
+                            || listaLivro.get(i).getEditora().toUpperCase().contains(editora.toUpperCase())
+                            || listaLivro.get(i).getGenero().toUpperCase().contains(genero.toUpperCase())
+                            || listaLivro.get(i).getIsbn() == isbn
+                            || listaLivro.get(i).getEdicao() == edicao){
                         resultadoPesquisa.add(listaLivro.get(i));
-                        
                     }
                 }   
             }

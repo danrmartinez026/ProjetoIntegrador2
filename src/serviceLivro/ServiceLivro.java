@@ -25,4 +25,8 @@ public class ServiceLivro {
             throw new DataSourceException("Erro na fonte de dados", e);
         }
     }
+    
+    public static void validaEntrada(Livro livro)throws LivroException{
+        
+    }
 }

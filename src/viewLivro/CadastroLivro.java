@@ -85,13 +85,13 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
 
         jLabel27.setText("Gênero");
 
-        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Drama", "Romance", "Aventura" }));
+        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Drama", "Romance", "Aventura", "Sci-Fi" }));
 
         jLabel32.setText("Idioma");
 
         jLabel33.setText("Edição");
 
-        comboIdioma.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Português" }));
+        comboIdioma.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Português", "Ingles" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -291,11 +291,19 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
         livro.setTitulo(fTitulo.getText());
         livro.setEditora(fEditora.getText());
         livro.setAutor(fAutor.getText());
-        livro.setGenero(comboGenero.getSelectedItem().toString());
-        livro.setEdicao(Integer.parseInt(fEdicao.getText()));
-        livro.setIsbn(Integer.parseInt(fIsbn.getText()));
-        //livro.setAltura(Float.parseFloat(fAltura.getText()));
+        livro.setGenero(comboGenero.getSelectedItem().toString());  
+        livro.setIdioma(comboIdioma.getSelectedItem().toString());
         
+        try{
+            livro.setLargura(Float.parseFloat(fLargura.getText()) + 0.0f);
+            livro.setPeso(Float.parseFloat(fPeso.getText())+ 0.0f);
+            livro.setEdicao(Integer.parseInt(fEdicao.getText()));
+            livro.setIsbn(Integer.parseInt(fIsbn.getText()));
+            livro.setAltura(Float.parseFloat(fAltura.getText()) + 0.0f);
+            livro.setNumeroPaginas(Integer.parseInt(fNumeroPaginas.getText()));
+        } catch(Exception e){
+            
+        }      
         
         try{
             ServiceLivro.cadastrarLivro(livro);
@@ -309,16 +317,17 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
         
         JOptionPane.showMessageDialog(this, "Livro Cadastrado");
         
+        
         fTitulo.setText("");
         fEditora.setText("");
         fAutor.setText("");
         fEdicao.setText("");
         fIsbn.setText("");
         comboGenero.setSelectedIndex(0);
-
-
-
-
+        fPeso.setText("");
+        fAltura.setText("");
+        fNumeroPaginas.setText("");
+        fLargura.setText("");
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonSalvarActionPerformed
 
