@@ -228,11 +228,12 @@
         <Component class="javax.swing.JComboBox" name="comboGenero">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Drama"/>
-                <StringItem index="1" value="Romance"/>
-                <StringItem index="2" value="Aventura"/>
-                <StringItem index="3" value="Sci-fi"/>
+              <StringArray count="5">
+                <StringItem index="0" value="SELECIONAR"/>
+                <StringItem index="1" value="Drama"/>
+                <StringItem index="2" value="Romance"/>
+                <StringItem index="3" value="Aventura"/>
+                <StringItem index="4" value="Sci-fi"/>
               </StringArray>
             </Property>
           </Properties>

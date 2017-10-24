@@ -121,7 +121,7 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
             }
         });
 
-        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Drama", "Romance", "Aventura", "Sci-fi" }));
+        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONAR", "Drama", "Romance", "Aventura", "Sci-fi" }));
         comboGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboGeneroActionPerformed(evt);
@@ -271,7 +271,9 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public List<Livro> pesquisaLivro = new ArrayList();
+    
     private void buttonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPesquisarActionPerformed
+        
         pesquisaLivro = null;
         
         DefaultTableModel model = (DefaultTableModel) tablePesquisa.getModel();
@@ -284,7 +286,6 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
         } catch(Exception e){
             JOptionPane.showMessageDialog(this, "Digite apenas numeros nos campos Edicao e ISBN");
         }
-        MockLivro.filtrarPesquisa(pesquisaLivro);
      
         for(int i = 0; i < pesquisaLivro.size(); i++){
             Livro liv = pesquisaLivro.get(i);
