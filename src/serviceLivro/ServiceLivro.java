@@ -19,6 +19,7 @@ public class ServiceLivro {
     public static void cadastrarLivro(Livro livro)throws LivroException, DataSourceException{
         ValidadorLivro.validarLivro(livro);
         try{
+            
             MockLivro.inserirLivro(livro);
         } catch(Exception e){
             e.printStackTrace();

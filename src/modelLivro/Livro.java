@@ -10,19 +10,68 @@ package modelLivro;
  * @author danilo.martinez
  */
 public class Livro {
+    
     private String idioma;
     private String titulo;
     private String autor;
     private String editora;
     private String genero;
-    private Integer isbn;
-    private Integer edicao;
-    private Float peso;
+    private String isbn;
+    private String edicao;
+    private String peso;
     private Integer numeroPaginas;
-    private Float altura;
-    private Float largura;
+    private String altura;
+    private String largura;
     private Integer id;
+    private Float valor;
     
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public String getEdicao() {
+        return edicao;
+    }
+
+    public void setEdicao(String edicao) {
+        this.edicao = edicao;
+    }
+
+    public String getPeso() {
+        return peso;
+    }
+
+    public void setPeso(String peso) {
+        this.peso = peso;
+    }
+
+    public String getAltura() {
+        return altura;
+    }
+
+    public void setAltura(String altura) {
+        this.altura = altura;
+    }
+
+    public String getLargura() {
+        return largura;
+    }
+
+    public void setLargura(String largura) {
+        this.largura = largura;
+    }
+    
+    public Float getValor() {
+        return valor;
+    }
+
+    public void setValor(Float valor) {
+        this.valor = valor;
+    }
     
     public String getIdioma() {
         return idioma;
@@ -64,30 +113,6 @@ public class Livro {
         this.genero = genero;
     }
 
-    public Integer getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(Integer isbn) {
-        this.isbn = isbn;
-    }
-
-    public Integer getEdicao() {
-        return edicao;
-    }
-
-    public void setEdicao(Integer edicao) {
-        this.edicao = edicao;
-    }
-
-    public Float getPeso() {
-        return peso;
-    }
-
-    public void setPeso(Float peso) {
-        this.peso = peso;
-    }
-
     public Integer getNumeroPaginas() {
         return numeroPaginas;
     }
@@ -96,21 +121,7 @@ public class Livro {
         this.numeroPaginas = numeroPaginas;
     }
 
-    public Float getAltura() {
-        return altura;
-    }
 
-    public void setAltura(Float altura) {
-        this.altura = altura;
-    }
-
-    public Float getLargura() {
-        return largura;
-    }
-
-    public void setLargura(Float largura) {
-        this.largura = largura;
-    }
 
     public Integer getId() {
         return id;

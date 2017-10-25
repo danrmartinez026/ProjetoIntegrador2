@@ -185,14 +185,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
             detalhesLivro.fTitulo.setText(MockLivro.listaLivro.get(id).getTitulo());
             detalhesLivro.fAutor.setText(MockLivro.listaLivro.get(id).getAutor());
             detalhesLivro.fEditora.setText(MockLivro.listaLivro.get(id).getEditora());
+            try{
             detalhesLivro.fEdicao.setText(MockLivro.listaLivro.get(id).getEdicao().toString());
-            detalhesLivro.fIsbn.setText(MockLivro.listaLivro.get(id).getIsbn().toString());
-            detalhesLivro.fAltura.setText(MockLivro.listaLivro.get(id).getAltura().toString());
-            detalhesLivro.fPeso.setText(MockLivro.listaLivro.get(id).getPeso().toString());
-            detalhesLivro.fLargura.setText(MockLivro.listaLivro.get(id).getLargura().toString());
-            detalhesLivro.fNumeroPaginas.setText(MockLivro.listaLivro.get(id).getNumeroPaginas().toString());
-            detalhesLivro.comboIdioma.setSelectedItem(MockLivro.listaLivro.get(id).getIdioma().toString());
-            detalhesLivro.comboGenero.setSelectedItem(MockLivro.listaLivro.get(id).getGenero().toString());
+            } catch(Exception e){
+                    
+            }
+            detalhesLivro.fIsbn.setText(MockLivro.listaLivro.get(id).getIsbn().toString() + "");
+            detalhesLivro.fAltura.setText(MockLivro.listaLivro.get(id).getAltura().toString()+ "");
+            detalhesLivro.fPeso.setText(MockLivro.listaLivro.get(id).getPeso().toString() + "");
+            detalhesLivro.fLargura.setText(MockLivro.listaLivro.get(id).getLargura().toString() + "");
+            detalhesLivro.fNumeroPaginas.setText(MockLivro.listaLivro.get(id).getNumeroPaginas().toString()+ "");
+            detalhesLivro.comboIdioma.setSelectedItem(MockLivro.listaLivro.get(id).getIdioma() + "");
+            detalhesLivro.comboGenero.setSelectedItem(MockLivro.listaLivro.get(id).getGenero() + "");
         }
         detalhesLivro.getDesktopPane().getDesktopManager().deiconifyFrame(detalhesLivro);
         detalhesLivro.toFront();

@@ -11,8 +11,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import mockLivro.MockLivro;
 import modelLivro.Livro;
-import viewCliente.CadastroCliente;
-import viewLivro.DetalhesLivro;
 import viewTelaPrincipal.TelaPrincipal;
 
 
@@ -44,20 +42,19 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
+        fIsbn = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        fEdicao = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         fTitulo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         fEditora = new javax.swing.JTextField();
-        fEditora.setText(" ");
         jLabel5 = new javax.swing.JLabel();
         fAutor = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        fEdicao = new javax.swing.JTextField();
-        fIsbn = new javax.swing.JTextField();
         buttonPesquisar = new javax.swing.JButton();
         comboGenero = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
@@ -69,6 +66,14 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
 
         jLabel9.setText("jLabel9");
 
+        fIsbn.setText("0");
+
+        jLabel8.setText("ISBN");
+
+        fEdicao.setText("0");
+
+        jLabel7.setText("Edição");
+
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
@@ -79,7 +84,6 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Título");
 
-        fTitulo.setText(" ");
         fTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fTituloActionPerformed(evt);
@@ -96,7 +100,6 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Autor");
 
-        fAutor.setText(" ");
         fAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fAutorActionPerformed(evt);
@@ -104,14 +107,6 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
         });
 
         jLabel6.setText("Genero");
-
-        jLabel7.setText("Edição");
-
-        jLabel8.setText("ISBN");
-
-        fEdicao.setText("0");
-
-        fIsbn.setText("0");
 
         buttonPesquisar.setText("Pesquisar");
         buttonPesquisar.setName(""); // NOI18N
@@ -133,31 +128,22 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel5)))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(fAutor, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                    .addComponent(fEditora)
+                    .addComponent(fEditora, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
                     .addComponent(fTitulo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel8)
-                        .addComponent(jLabel7)))
+                    .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(comboGenero, 0, 118, Short.MAX_VALUE)
-                    .addComponent(fEdicao, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fIsbn, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(fAutor)
+                    .addComponent(comboGenero, 0, 118, Short.MAX_VALUE))
                 .addGap(26, 26, 26))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(181, 181, 181)
@@ -172,35 +158,26 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
                     .addComponent(fTitulo)
                     .addComponent(jLabel2)
                     .addComponent(comboGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(fEdicao)
+                    .addComponent(fAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
                     .addComponent(fEditora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(fIsbn)
-                    .addComponent(fAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(21, 21, 21)
+                .addGap(35, 35, 35)
                 .addComponent(buttonPesquisar))
         );
 
         tablePesquisa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
-                "Titulo", "Editora", "Autor", "Genero", "Edição", "ISBN"
+                "Titulo", "Editora", "Autor", "Genero", "Edição", "Valor"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
@@ -215,9 +192,19 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
             }
         });
         tablePesquisa.setToolTipText("");
+        tablePesquisa.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tablePesquisa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablePesquisaMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tablePesquisaMouseReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablePesquisa);
 
-        pesquisaDetalhada.setText("Pesquisa Detalhada");
+        pesquisaDetalhada.setText("Mais Detalhes");
+        pesquisaDetalhada.setEnabled(false);
         pesquisaDetalhada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pesquisaDetalhadaActionPerformed(evt);
@@ -232,7 +219,7 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pesquisaDetalhada)
-                .addGap(150, 150, 150))
+                .addGap(163, 163, 163))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,9 +248,9 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(8, 8, 8)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -273,34 +260,32 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
     public List<Livro> pesquisaLivro = new ArrayList();
     
     private void buttonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPesquisarActionPerformed
-        
         pesquisaLivro = null;
         
         DefaultTableModel model = (DefaultTableModel) tablePesquisa.getModel();
         model.setRowCount(0);
         
-        try{
         pesquisaLivro = MockLivro.procurarLivro(fTitulo.getText(), fAutor.getText()
-                , fEditora.getText(),comboGenero.getSelectedItem().toString()
-                ,Integer.parseInt(fIsbn.getText()),Integer.parseInt(fEdicao.getText()));
-        } catch(Exception e){
-            JOptionPane.showMessageDialog(this, "Digite apenas numeros nos campos Edicao e ISBN");
-        }
-     
-        for(int i = 0; i < pesquisaLivro.size(); i++){
-            Livro liv = pesquisaLivro.get(i);
-            if(liv != null){
-                Object[] row = new Object[7];
-                row[0] = liv.getTitulo();
-                row[1] = liv.getEditora();
-                row[2] = liv.getAutor();
-                row[3] = liv.getGenero();
-                row[4] = liv.getEdicao();
-                row[5] = liv.getIsbn();
-                row[6] = liv.getId();
-                model.addRow(row);
+                , fEditora.getText(),comboGenero.getSelectedItem().toString());
+        
+        if(pesquisaLivro == null){
+            JOptionPane.showMessageDialog(this, "Preencha ao menos um campo de pesquisa");
+        } else {
+            for(int i = 0; i < pesquisaLivro.size(); i++){
+                Livro liv = pesquisaLivro.get(i);
+                if(liv != null){
+                    Object[] row = new Object[7];
+                    row[0] = liv.getTitulo();
+                    row[1] = liv.getEditora();
+                    row[2] = liv.getAutor();
+                    row[3] = liv.getGenero();
+                    row[4] = liv.getEdicao();
+                    row[5] = liv.getValor();
+                    model.addRow(row);
+                }
             }
         }
+        pesquisaDetalhada.setEnabled(false);
     }//GEN-LAST:event_buttonPesquisarActionPerformed
 
     private void comboGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboGeneroActionPerformed
@@ -310,31 +295,41 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
     private void fEditoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fEditoraActionPerformed
         
     }//GEN-LAST:event_fEditoraActionPerformed
-
+        public void tablePesquisa(java.awt.event.ActionEvent evt) {
+        JOptionPane.showMessageDialog(rootPane, "ok");
+      }
     private void fTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fTituloActionPerformed
-       
-
-
-
         // TODO add your handling code here:
     }//GEN-LAST:event_fTituloActionPerformed
 
     private void fAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fAutorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fAutorActionPerformed
-
+    
     private void pesquisaDetalhadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisaDetalhadaActionPerformed
         try{
             int id = pesquisaLivro.get(tablePesquisa.getSelectedRow()).getId();
-            for(Livro livro : MockLivro.listaLivro){
-                if(id == livro.getId()){
-                    parent.abrirTelaDetalhesLivro(id);
+            if(id >= 0){
+                for(Livro livro : MockLivro.listaLivro){
+                    if(id == livro.getId()){
+                        parent.abrirTelaDetalhesLivro(id);
+                    }
                 }
-            }
+            } else {
+                JOptionPane.showMessageDialog(this, "Selecione 1 item para exibir detalhes");
+            }  
         } catch (Exception e){
-            JOptionPane.showMessageDialog(this, "Selecione 1 item para pesquisa detalhada");
+            //JOptionPane.showMessageDialog(this, "Selecione 1 item para exibir detalhes");
         }
     }//GEN-LAST:event_pesquisaDetalhadaActionPerformed
+
+    private void tablePesquisaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePesquisaMouseClicked
+        pesquisaDetalhada.setEnabled(true);
+    }//GEN-LAST:event_tablePesquisaMouseClicked
+
+    private void tablePesquisaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePesquisaMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tablePesquisaMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
