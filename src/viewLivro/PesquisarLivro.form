@@ -258,7 +258,7 @@
                     <Column editable="false" title="Editora" type="java.lang.String"/>
                     <Column editable="false" title="Autor" type="java.lang.String"/>
                     <Column editable="false" title="Genero" type="java.lang.String"/>
-                    <Column editable="false" title="Edi&#xe7;&#xe3;o" type="java.lang.Integer"/>
+                    <Column editable="false" title="Edi&#xe7;&#xe3;o" type="java.lang.String"/>
                     <Column editable="false" title="Valor" type="java.lang.Float"/>
                   </Table>
                 </Property>

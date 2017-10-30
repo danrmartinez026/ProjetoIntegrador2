@@ -27,7 +27,15 @@ public class ServiceLivro {
         }
     }
     
-    public static void validaEntrada(Livro livro)throws LivroException{
-        
+    public static void atualizarCadastro(Livro livro)throws LivroException, DataSourceException{
+        ValidadorLivro.validarLivro(livro);
+        try{
+            
+            MockLivro.atualizarLivro(livro);
+        } catch(Exception e){
+            e.printStackTrace();
+            throw new DataSourceException("Erro na fonte de dados", e);
+        }
     }
+    
 }

@@ -20,43 +20,43 @@ public class ValidadorLivro {
             }
             
             if(livro.getAutor().equals("")){
-                throw new LivroException ("Informe um autor");
+                throw new LivroException ("Preencha todos os campos marcados com: ( * )");
             }
 
-//            if(livro.getEdicao() == null  ){
-//                throw new LivroException ("Informe a edicao");
-//            }
+            if(livro.getEdicao().equals("")){
+                throw new LivroException ("Preencha todos os campos marcados com: ( * )");
+            }
             
             if(livro.getIdioma() == null && livro.getIdioma().equals("")){
-                throw new LivroException ("Informe um titulo");
+                throw new LivroException ("Preencha todos os campos marcados com: ( * )");
             }
 
-            if(livro.getEditora().equals("") && livro.getEditora() == null){
-                throw new LivroException ("Informe uma editora");
+            if(livro.getEditora().equals("")){
+                throw new LivroException ("Preencha todos os campos marcados com: ( * )");
             }
 
             if(livro.getIsbn() == null){
-                throw new LivroException ("Informe um codigo ISBN");
+                throw new LivroException ("Preencha todos os campos marcados com: ( * )");
             }
 
             if(livro.getGenero().equals("")){
-                throw new LivroException ("Informe um genero");
+                throw new LivroException ("Preencha todos os campos marcados com: ( * )");
             }
             
-//            if(livro.getPeso() == null){
-//                throw new LivroException ("Informe um Peso");
-//            }
+           if(livro.getPeso() == null){
+               throw new LivroException ("Informe um Peso");
+           }
             
-//            if(livro.getAltura() == null){
-//                throw new LivroException ("Informe uma altura");
-//            }
+            if(livro.getAltura() == null){
+                throw new LivroException ("Informe uma altura");
+            }
             
-//            if(livro.getLargura() == null){
-//                throw new LivroException ("Informe uma largura");
-//            }
+            if(livro.getLargura() == null){
+                throw new LivroException ("Informe uma largura");
+            }
             
             if(livro.getValor() == null){
-                throw new LivroException ("Informe o valor do produto");
+                throw new LivroException ("Preencha todos os campos marcados com: ( * )");
             }
             
         } else {

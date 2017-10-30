@@ -177,7 +177,7 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
@@ -295,9 +295,6 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
     private void fEditoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fEditoraActionPerformed
         
     }//GEN-LAST:event_fEditoraActionPerformed
-        public void tablePesquisa(java.awt.event.ActionEvent evt) {
-        JOptionPane.showMessageDialog(rootPane, "ok");
-      }
     private void fTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fTituloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fTituloActionPerformed
@@ -313,6 +310,9 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
                 for(Livro livro : MockLivro.listaLivro){
                     if(id == livro.getId()){
                         parent.abrirTelaDetalhesLivro(id);
+                        DefaultTableModel model = (DefaultTableModel) tablePesquisa.getModel();
+                        model.setRowCount(0);
+                        pesquisaDetalhada.setEnabled(false);
                     }
                 }
             } else {

@@ -182,21 +182,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
             detalhesLivro = new DetalhesLivro();
             deskPane.add(detalhesLivro);
             this.openFrameInCenter(detalhesLivro);
+            detalhesLivro.fEstoque.setText(MockLivro.listaLivro.get(id).getEstoque().toString());
+            detalhesLivro.fieldValor.setText(MockLivro.listaLivro.get(id).getValor().toString());
             detalhesLivro.fTitulo.setText(MockLivro.listaLivro.get(id).getTitulo());
             detalhesLivro.fAutor.setText(MockLivro.listaLivro.get(id).getAutor());
             detalhesLivro.fEditora.setText(MockLivro.listaLivro.get(id).getEditora());
-            try{
-            detalhesLivro.fEdicao.setText(MockLivro.listaLivro.get(id).getEdicao().toString());
-            } catch(Exception e){
-                    
-            }
-            detalhesLivro.fIsbn.setText(MockLivro.listaLivro.get(id).getIsbn().toString() + "");
-            detalhesLivro.fAltura.setText(MockLivro.listaLivro.get(id).getAltura().toString()+ "");
-            detalhesLivro.fPeso.setText(MockLivro.listaLivro.get(id).getPeso().toString() + "");
-            detalhesLivro.fLargura.setText(MockLivro.listaLivro.get(id).getLargura().toString() + "");
-            detalhesLivro.fNumeroPaginas.setText(MockLivro.listaLivro.get(id).getNumeroPaginas().toString()+ "");
-            detalhesLivro.comboIdioma.setSelectedItem(MockLivro.listaLivro.get(id).getIdioma() + "");
-            detalhesLivro.comboGenero.setSelectedItem(MockLivro.listaLivro.get(id).getGenero() + "");
+            detalhesLivro.fEdicao.setText(MockLivro.listaLivro.get(id).getEdicao());
+            detalhesLivro.fIsbn.setText(MockLivro.listaLivro.get(id).getIsbn());
+            detalhesLivro.fAltura.setText(MockLivro.listaLivro.get(id).getAltura());
+            detalhesLivro.fPeso.setText(MockLivro.listaLivro.get(id).getPeso());
+            detalhesLivro.fLargura.setText(MockLivro.listaLivro.get(id).getLargura());
+            detalhesLivro.fNumeroPaginas.setText(MockLivro.listaLivro.get(id).getNumeroPaginas().toString());
+            detalhesLivro.comboIdioma.setSelectedItem(MockLivro.listaLivro.get(id).getIdioma());
+            detalhesLivro.comboGenero.setSelectedItem(MockLivro.listaLivro.get(id).getGenero());
+            detalhesLivro.fNumeroPaginas.setText(MockLivro.listaLivro.get(id).getNumeroPaginas().toString() + (""));
+            detalhesLivro.setId(id);
         }
         detalhesLivro.getDesktopPane().getDesktopManager().deiconifyFrame(detalhesLivro);
         detalhesLivro.toFront();
@@ -233,7 +233,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             cadLivro = new CadastroLivro();
             deskPane.add(cadLivro);
             this.openFrameInCenter(cadLivro);
-           
         }
         cadLivro.getDesktopPane().getDesktopManager().deiconifyFrame(cadLivro);
         cadLivro.toFront();
@@ -244,7 +243,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             pesquisarLivro = new PesquisarLivro(this);
             deskPane.add(pesquisarLivro);
             this.openFrameInCenter(pesquisarLivro);
-           
         }
         pesquisarLivro.getDesktopPane().getDesktopManager().deiconifyFrame(pesquisarLivro);
         pesquisarLivro.toFront();

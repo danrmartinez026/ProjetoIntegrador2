@@ -24,6 +24,15 @@ public class Livro {
     private String largura;
     private Integer id;
     private Float valor;
+    private Integer estoque;
+
+    public Integer getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(Integer estoque) {
+        this.estoque = estoque;
+    }
     
     public String getIsbn() {
         return isbn;

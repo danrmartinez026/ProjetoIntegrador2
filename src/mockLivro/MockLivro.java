@@ -30,7 +30,17 @@ public class MockLivro {
         if(livro != null && !listaLivro.isEmpty()){
             for(Livro livroUp : listaLivro){
                 if(livroUp.getId() == livro.getId() && listaLivro != null){
-                    
+                    livroUp.setTitulo(livro.getTitulo());
+                    livroUp.setAutor(livro.getAutor());
+                    livroUp.setEditora(livro.getEditora());
+                    livroUp.setGenero(livro.getGenero());
+                    livroUp.setIdioma(livro.getIdioma());
+                    livroUp.setIsbn(livro.getIsbn());
+                    livroUp.setEdicao(livro.getEdicao());
+                    livroUp.setNumeroPaginas(livro.getNumeroPaginas());
+                    livroUp.setAltura(livro.getAltura());
+                    livroUp.setLargura(livro.getLargura());
+                    livroUp.setPeso(livro.getPeso());
                 }
             }
         }
@@ -51,7 +61,7 @@ public class MockLivro {
                     resultadoPesquisa.add(livro);     
                 }
             }
-            if(livro.getEditora().toUpperCase().contains(editora.toUpperCase())){
+            if(livro.getAutor().toUpperCase().contains(editora.toUpperCase())){
                 if (!resultadoPesquisa.contains(livro)){
                     resultadoPesquisa.add(livro);     
                 }
