@@ -5,7 +5,6 @@
  */
 package viewLivro;
 
-import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import modelLivro.Livro;
 import serviceLivro.ServiceLivro;
@@ -355,6 +354,11 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
         });
 
         buttonCancelar.setText("Cancelar");
+        buttonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -492,7 +496,7 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
             evt.consume();
         }
         
-        if(fEdicao.getText().length() >= 2){
+        if(fEdicao.getText().length() == 2){
             evt.consume();
             JOptionPane.showMessageDialog(rootPane, "Maximo 2 Numeros");
         }
@@ -510,7 +514,7 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
         String permitidos = "0123456789.,";
         if(!permitidos.contains(ch.toString())){
             evt.consume();
-        } else if(fieldValor.getText().length() >= 10){
+        } else if(fieldValor.getText().length() == 10){
             evt.consume();
             JOptionPane.showMessageDialog(rootPane, "Excede o valor Maximo permitido");
         }
@@ -587,6 +591,12 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Maximo 4 Numeros");
         }
     }//GEN-LAST:event_fEstoqueKeyTyped
+
+    private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
+        this.dispose();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

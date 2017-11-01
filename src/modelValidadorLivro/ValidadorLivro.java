@@ -42,19 +42,19 @@ public class ValidadorLivro {
             if(livro.getGenero().equals("")){
                 throw new LivroException ("Preencha todos os campos marcados com: ( * )");
             }
-            
-           if(livro.getPeso() == null){
-               throw new LivroException ("Informe um Peso");
-           }
-            
-            if(livro.getAltura() == null){
-                throw new LivroException ("Informe uma altura");
-            }
-            
-            if(livro.getLargura() == null){
-                throw new LivroException ("Informe uma largura");
-            }
-            
+//            
+//           if(livro.getPeso() == null){
+//               throw new LivroException ("Informe um Peso");
+//           }
+//            
+//            if(livro.getAltura() == null){
+//                throw new LivroException ("Informe uma altura");
+//            }
+//            
+//            if(livro.getLargura() == null){
+//                throw new LivroException ("Informe uma largura");
+//            }
+//            
             if(livro.getValor() == null){
                 throw new LivroException ("Preencha todos os campos marcados com: ( * )");
             }

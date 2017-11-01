@@ -46,6 +46,14 @@ public class MockLivro {
         }
     }
     
+    public static void excluirLivro(Integer id)throws Exception{
+        for(Livro livro: listaLivro){
+            if(id == livro.getId()&& !listaLivro.isEmpty()){
+                listaLivro.remove(livro);
+            }
+        }
+    }
+    
     public static List<Livro> procurarLivro(String titulo,String autor, String editora,String genero){
         
         List<Livro> resultadoPesquisa = new ArrayList();
@@ -56,17 +64,17 @@ public class MockLivro {
         }
         
         for(Livro livro: listaLivro){
-            if(livro.getTitulo().toUpperCase().contains(titulo.toUpperCase())){
+            if(livro.getTitulo().toUpperCase().contains(titulo.toUpperCase()) && !titulo.equals("")){
                 if (!resultadoPesquisa.contains(livro)){
                     resultadoPesquisa.add(livro);     
                 }
             }
-            if(livro.getAutor().toUpperCase().contains(editora.toUpperCase())){
+            if(livro.getAutor().toUpperCase().contains(autor.toUpperCase()) && !autor.equals("")){
                 if (!resultadoPesquisa.contains(livro)){
                     resultadoPesquisa.add(livro);     
                 }
             }
-            if(livro.getEditora().toUpperCase().contains(editora.toUpperCase())){
+            if(livro.getEditora().toUpperCase().contains(editora.toUpperCase()) && !editora.equals("")){
                 if (!resultadoPesquisa.contains(livro)){
                     resultadoPesquisa.add(livro);     
                 }

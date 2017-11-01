@@ -8,7 +8,6 @@ package viewLivro;
 import javax.swing.JOptionPane;
 import modelLivro.Livro;
 import serviceLivro.ServiceLivro;
-import viewTelaPrincipal.TelaPrincipal;
 
 /**
  *
@@ -471,7 +470,7 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fPesoKeyTyped
 
     private void fNumeroPaginasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fNumeroPaginasKeyTyped
-Character ch = evt.getKeyChar();
+        Character ch = evt.getKeyChar();
         String permitidos = "0123456789";
         if(!permitidos.contains(ch.toString())){
             evt.consume();

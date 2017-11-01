@@ -110,10 +110,8 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="comboIdioma" pref="139" max="32767" attributes="0"/>
                               <Component id="comboGenero" max="32767" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="fEstoque" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="fEdicao" alignment="0" pref="30" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="fEstoque" alignment="0" max="32767" attributes="0"/>
+                              <Component id="fEdicao" alignment="0" pref="30" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="fieldValor" min="-2" pref="47" max="-2" attributes="0"/>

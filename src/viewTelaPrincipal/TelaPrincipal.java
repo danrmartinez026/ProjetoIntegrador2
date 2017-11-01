@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import mockLivro.MockLivro;
+import mockCliente.MockCliente;
 import viewCliente.CadastroCliente;
 import viewCliente.DetalhesCliente;
 import viewCliente.PesquisaCliente;
@@ -177,7 +178,32 @@ public class TelaPrincipal extends javax.swing.JFrame {
         cadCliente.toFront();
     }
     
-     public void abrirTelaDetalhesLivro(int id){
+    public void abrirTelaDetalhesCliente(int id){
+        if(detalhesCliente == null || !detalhesCliente.isDisplayable() && 
+                !detalhesCliente.isVisible()){
+            detalhesCliente = new DetalhesCliente();
+            deskPane.add(detalhesCliente);
+            this.openFrameInCenter(detalhesCliente);
+            detalhesCliente.fNome.setText(MockCliente.listaCliente.get(id).getNome());
+            detalhesCliente.fSobrenome.setText(MockCliente.listaCliente.get(id).getSobrenome());
+            detalhesCliente.fCpf.setText(MockCliente.listaCliente.get(id).getCpf());
+            detalhesCliente.fRg.setText(MockCliente.listaCliente.get(id).getRg());
+            detalhesCliente.comboSexo.setSelectedItem(MockCliente.listaCliente.get(id).getSexo());
+            detalhesCliente.fRua.setText(MockCliente.listaCliente.get(id).getRua());
+            detalhesCliente.fBairro.setText(MockCliente.listaCliente.get(id).getBairro());
+            detalhesCliente.fNumero.setText(MockCliente.listaCliente.get(id).getNumeroCasa());
+            detalhesCliente.fComplemento.setText(MockCliente.listaCliente.get(id).getComplemento());
+            detalhesCliente.fCidade.setText(MockCliente.listaCliente.get(id).getCidade());
+            detalhesCliente.comboEstado.setSelectedItem(MockCliente.listaCliente.get(id).getEstado());
+            detalhesCliente.fEmail.setText(MockCliente.listaCliente.get(id).getEmail());
+            detalhesCliente.fCelular.setText(MockCliente.listaCliente.get(id).getCelular());
+            detalhesCliente.fTelefone.setText(MockCliente.listaCliente.get(id).getTelefone());
+            detalhesCliente.fCep.setText(MockCliente.listaCliente.get(id).getCep());
+            detalhesCliente.setId(id);
+        }
+    }
+    
+    public void abrirTelaDetalhesLivro(int id){
         if(detalhesLivro == null || !detalhesLivro.isDisplayable()&& !detalhesLivro.isVisible()){
             detalhesLivro = new DetalhesLivro();
             deskPane.add(detalhesLivro);

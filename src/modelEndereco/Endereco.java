@@ -9,7 +9,7 @@ package modelEndereco;
  *
  * @author danilo.martinez
  */
-public class Endereco2 {
+public class Endereco {
     private String rua;
     private String bairro;
     private String Estado;

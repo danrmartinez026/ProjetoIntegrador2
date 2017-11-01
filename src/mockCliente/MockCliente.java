@@ -20,16 +20,16 @@ public class MockCliente {
     private static int totalCliente = 0;
     
     //lista de clientes 
-    private static ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
+    public static ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
     
     //insere um cliente mock(falso)
-    public static void inserir(Cliente cliente) throws Exception{
+    public static void inserirCliente(Cliente cliente) throws Exception{
         cliente.setId(totalCliente++);
         listaCliente.add(cliente);
     }
     
     
-    //procura um cliente na lista e atualiza o mesmo
+    //recebe um cliente e o atualiza
     public static void atualizarCliente(Cliente cliente) throws Exception {
         if(cliente != null && cliente.getId() != null && !listaCliente.isEmpty()){
             for(Cliente clienteLista: listaCliente){
@@ -42,18 +42,22 @@ public class MockCliente {
                     clienteLista.setCelular(cliente.getCelular());
                     clienteLista.setEmail(cliente.getEmail());
                     clienteLista.setTelefone(cliente.getTelefone());
-                    break;
+                    clienteLista.setCidade(cliente.getCidade());
+                    clienteLista.setRua(cliente.getRua());
+                    clienteLista.setBairro(cliente.getBairro());
+                    clienteLista.setEstado(cliente.getEstado());
+                    clienteLista.setTelefone(cliente.getTelefone());
+                    clienteLista.setComplemento(cliente.getComplemento());
+                    clienteLista.setNumeroCasa(cliente.getNumeroCasa());
                 }
             }
         }
-        
-        
     }
     
     //recebe um id e procura na lista um cliente de mesmo id para exclui-lo
     public static void excluirCliente(Integer id)throws Exception{
         for(Cliente cliente: listaCliente){
-            if(id == cliente.getId()&& !listaCliente.isEmpty()){
+            if(id == cliente.getId() && !listaCliente.isEmpty()){
                 listaCliente.remove(cliente);
             }
         }
@@ -66,18 +70,34 @@ public class MockCliente {
     }
     
     //faz uma lista de cliente com base numa cadeida de caracteres como parâmetro
-    public static List<Cliente> procurarCliente(String nome){
+    public static List<Cliente> procurarCliente(String nome, String sobrenome, String cpf){
         List<Cliente> listaResultado = new ArrayList();
-        if(!listaCliente.isEmpty() && nome != null ){
-            for(Cliente cliente: listaCliente){
-                if(cliente != null && cliente.getNome() != null && 
-                        cliente.getSobrenome() == null){
-                    if(cliente.getNome().toUpperCase().contains(nome.toUpperCase())){
-                        listaResultado.add(cliente);
-                    }
+        
+        if(nome.equals("") && sobrenome.equals("") && cpf.equals("")){
+            return null;
+        }
+        
+        for(Cliente cliente: listaCliente){
+            if(cliente.getNome().toUpperCase().contains(nome.toUpperCase()) && !nome.equals("")){
+                if(!listaResultado.contains(cliente)){
+                    listaResultado.add(cliente);
+                }
+            }
+            
+            if(cliente.getSobrenome().toUpperCase().contains(sobrenome.toUpperCase()) && !sobrenome.equals("")){
+                if(!listaResultado.contains(cliente)){
+                    listaResultado.add(cliente);
+                }
+            }
+            
+            if(cliente.getCpf().equals(cpf) && !cpf.equals("")){
+                if(!listaResultado.contains(cliente)){
+                    listaResultado.add(cliente);
                 }
             }
         }
+        
         return listaResultado;
     }
+            
 }
