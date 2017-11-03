@@ -276,7 +276,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void menuVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVendaActionPerformed
         if(venda == null || !venda.isDisplayable() && !venda.isVisible()){
-            venda = new Venda();
+            venda = new Venda(this);
             deskPane.add(venda);
             this.openFrameInCenter(venda);
            
@@ -331,8 +331,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
+        MockCliente.falsoCliente();
+        MockLivro.falsoLivro();
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaPrincipal().setVisible(true);

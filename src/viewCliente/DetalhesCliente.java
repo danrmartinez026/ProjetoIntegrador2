@@ -159,7 +159,7 @@ public class DetalhesCliente extends javax.swing.JInternalFrame {
 
         jLabel4.setText("RG");
 
-        comboSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino" }));
+        comboSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino" }));
 
         jLabel6.setText("Sexo");
 

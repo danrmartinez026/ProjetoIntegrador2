@@ -27,6 +27,10 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
     public PesquisarLivro(TelaPrincipal parent) {
         this.parent = parent;
         initComponents();
+        
+    tablePesquisa.getColumnModel().getColumn(0).setMinWidth(0);
+    tablePesquisa.getColumnModel().getColumn(0).setMaxWidth(0);
+    tablePesquisa.getColumnModel().getColumn(0).setWidth(0);
     }
 
     /**
@@ -38,14 +42,6 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField2 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        fIsbn = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        fEdicao = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -61,18 +57,6 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablePesquisa = new javax.swing.JTable();
         pesquisaDetalhada = new javax.swing.JButton();
-
-        jLabel3.setText("ID");
-
-        jLabel9.setText("jLabel9");
-
-        fIsbn.setText("0");
-
-        jLabel8.setText("ISBN");
-
-        fEdicao.setText("0");
-
-        jLabel7.setText("Edição");
 
         setClosable(true);
         setIconifiable(true);
@@ -173,14 +157,14 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Titulo", "Editora", "Autor", "Genero", "Edição", "Valor"
+                "Id", "Titulo", "Editora", "Autor", "Genero", "Edição", "Valor"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                true, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -275,12 +259,13 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
                 Livro liv = pesquisaLivro.get(i);
                 if(liv != null){
                     Object[] row = new Object[7];
-                    row[0] = liv.getTitulo();
-                    row[1] = liv.getEditora();
-                    row[2] = liv.getAutor();
-                    row[3] = liv.getGenero();
-                    row[4] = liv.getEdicao();
-                    row[5] = liv.getValor();
+                    row[0] = liv.getId();
+                    row[1] = liv.getTitulo();
+                    row[2] = liv.getEditora();
+                    row[3] = liv.getAutor();
+                    row[4] = liv.getGenero();
+                    row[5] = liv.getEdicao();
+                    row[6] = liv.getValor();
                     model.addRow(row);
                 }
             }
@@ -336,24 +321,16 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
     private javax.swing.JButton buttonPesquisar;
     private javax.swing.JComboBox<String> comboGenero;
     private javax.swing.JTextField fAutor;
-    private javax.swing.JTextField fEdicao;
     private javax.swing.JTextField fEditora;
-    private javax.swing.JTextField fIsbn;
     private javax.swing.JTextField fTitulo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JButton pesquisaDetalhada;
     private javax.swing.JTable tablePesquisa;
     // End of variables declaration//GEN-END:variables

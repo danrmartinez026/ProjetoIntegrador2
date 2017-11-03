@@ -20,6 +20,65 @@ public class MockLivro {
     
     public static ArrayList<Livro> listaLivro = new ArrayList();
     
+    public static void falsoLivro(){
+        Livro livroUp = new Livro();
+        
+        livroUp.setTitulo("Harry Potter");
+        livroUp.setValor(200.00f);
+        livroUp.setEstoque(20);
+        livroUp.setAutor("J.K. Rowlling");
+        livroUp.setEditora("Abril");
+        livroUp.setGenero("Drama");
+        livroUp.setIdioma("Portugues");
+        livroUp.setIsbn("100000");
+        livroUp.setEdicao("10");
+        livroUp.setNumeroPaginas(200);
+        
+        try{
+        inserirLivro(livroUp);
+        } catch(Exception e){
+            
+        }
+       
+        Livro livroUp1 = new Livro();
+        
+        livroUp1.setTitulo("senhor dos Aneis");
+        livroUp1.setValor(250.00f);
+        livroUp1.setEstoque(20);
+        livroUp1.setAutor("Lord");
+        livroUp1.setEditora("veja");
+        livroUp1.setGenero("Aventura");
+        livroUp1.setIdioma("Portugues");
+        livroUp1.setIsbn("1004250");
+        livroUp1.setEdicao("2");
+        livroUp1.setNumeroPaginas(400);
+        
+        try{
+        inserirLivro(livroUp1);
+        } catch(Exception e){
+            
+        }
+        
+        Livro livroUp12 = new Livro();
+        
+        livroUp12.setTitulo("Game Of Thrones");
+        livroUp12.setValor(850.00f);
+        livroUp12.setEstoque(20);
+        livroUp12.setAutor("George");
+        livroUp12.setEditora("got");
+        livroUp12.setGenero("Aventura");
+        livroUp12.setIdioma("Portugues");
+        livroUp12.setIsbn("2550");
+        livroUp12.setEdicao("8");
+        livroUp12.setNumeroPaginas(800);
+        
+        try{
+        inserirLivro(livroUp12);
+        } catch(Exception e){
+            
+        }
+    }
+    
     
     public static void inserirLivro(Livro livro)throws Exception{
         livro.setId(totalLivro++);
@@ -31,6 +90,8 @@ public class MockLivro {
             for(Livro livroUp : listaLivro){
                 if(livroUp.getId() == livro.getId() && listaLivro != null){
                     livroUp.setTitulo(livro.getTitulo());
+                    livroUp.setValor(livro.getValor());
+                    livroUp.setEstoque(livro.getEstoque());
                     livroUp.setAutor(livro.getAutor());
                     livroUp.setEditora(livro.getEditora());
                     livroUp.setGenero(livro.getGenero());
