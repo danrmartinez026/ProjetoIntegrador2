@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelValidadorLivro;
+package modelvalidador;
 
-import modelLivro.Livro;
+import models.Livro;
 import exceptions.LivroException;
 
 /**

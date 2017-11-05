@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package viewLivro;
+package view;
 
 import javax.swing.JOptionPane;
-import modelLivro.Livro;
-import serviceLivro.ServiceLivro;
+import models.Livro;
+import service.ServiceLivro;
 
 /**
  *
@@ -189,9 +189,8 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(comboIdioma, 0, 139, Short.MAX_VALUE)
                             .addComponent(comboGenero, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(fEstoque, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(fEdicao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))))
+                            .addComponent(fEstoque)
+                            .addComponent(fEdicao, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)))
                     .addComponent(fieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

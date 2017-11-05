@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package viewTelaPrincipal;
+package view;
 
 import java.awt.Dimension;
 import java.awt.Image;
@@ -11,16 +11,14 @@ import java.awt.Graphics;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
-import mockLivro.MockLivro;
-import mockCliente.MockCliente;
-import viewCliente.CadastroCliente;
-import viewCliente.DetalhesCliente;
-import viewCliente.PesquisaCliente;
-import viewLivro.CadastroLivro;
-import viewLivro.DetalhesLivro;
-import viewLivro.PesquisarLivro;
-import viewVenda.Relatorio;
-import viewVenda.Venda;
+import mocks.MockLivro;
+import mocks.MockCliente;
+import view.CadastroCliente;
+import view.DetalhesCliente;
+import view.PesquisaCliente;
+import view.CadastroLivro;
+import view.DetalhesLivro;
+import view.PesquisarLivro;
 
 /**
  *

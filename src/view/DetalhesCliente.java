@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package viewCliente;
+package view;
 
 import javax.swing.JOptionPane;
-import mockCliente.MockCliente;
-import modelCliente.Cliente;
-import serviceCliente.ServiceCliente;
+import mocks.MockCliente;
+import models.Cliente;
+import service.ServiceCliente;
 
 /**
  *

@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package viewLivro;
+package view;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import mockLivro.MockLivro;
-import modelLivro.Livro;
-import viewTelaPrincipal.TelaPrincipal;
+import mocks.MockLivro;
+import models.Livro;
 
 
 /**

@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package viewCliente;
+package view;
 
 import javax.swing.JOptionPane;
-import modelCliente.Cliente;
-import serviceCliente.ServiceCliente;
+import models.Cliente;
+import service.ServiceCliente;
 
 /**
  *

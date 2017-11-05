@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package viewCliente;
+package view;
 
-import viewTelaPrincipal.TelaPrincipal;
 import java.util.List;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import mockCliente.MockCliente;
-import modelCliente.Cliente;
+import mocks.MockCliente;
+import models.Cliente;
 /**
  *
  * @author danilo.martinez

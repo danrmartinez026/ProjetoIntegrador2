@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package viewLivro;
+package view;
 
 import javax.swing.JOptionPane;
-import modelLivro.Livro;
-import serviceLivro.ServiceLivro;
+import models.Livro;
+import service.ServiceLivro;
 
 
 /**

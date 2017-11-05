@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mockCliente;
+package mocks;
 
 
-import modelCliente.Cliente;
+import models.Cliente;
 import java.util.ArrayList;
 import java.util.List;
 

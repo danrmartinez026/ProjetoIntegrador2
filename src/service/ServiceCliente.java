@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package serviceCliente;
+package service;
 
 import exceptions.ClienteException;
 import exceptions.DataSourceException;
-import mockCliente.MockCliente;
-import modelCliente.Cliente;
-import modelValidadorCliente.ValidadorCliente;
+import mocks.MockCliente;
+import models.Cliente;
+import modelvalidador.ValidadorCliente;
 
 /**
  *

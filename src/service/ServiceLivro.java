@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package serviceLivro;
+package service;
 
 import exceptions.DataSourceException;
 import exceptions.LivroException;
-import mockLivro.MockLivro;
-import modelLivro.Livro;
-import modelValidadorLivro.ValidadorLivro;
+import mocks.MockLivro;
+import models.Livro;
+import modelvalidador.ValidadorLivro;
 
 /**
  *

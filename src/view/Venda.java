@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package viewVenda;
+package view;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import modelCliente.Cliente;
-import viewLivro.DetalhesLivro;
+import models.Cliente;
+import view.DetalhesLivro;
 import javax.swing.table.DefaultTableModel;
-import mockCliente.MockCliente;
-import mockLivro.MockLivro;
-import modelLivro.Livro;
-import viewTelaPrincipal.TelaPrincipal;
+import mocks.MockCliente;
+import mocks.MockLivro;
+import models.Livro;
+import view.TelaPrincipal;
 
 /**
  *
