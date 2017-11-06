@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package serviceVenda;
+package service;
 
 import exceptions.DataSourceException;
 import exceptions.VendaException;
 import models.Venda;
 import models.ValidadorVenda;
-import mockVenda.MockVenda;
+import mocks.MockVenda;
 /**
  *
  * @author Danilo

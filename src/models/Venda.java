@@ -5,10 +5,8 @@
  */
 package models;
 
-import modelItemVenda.ItemVenda;
 import java.util.ArrayList;
 import java.util.Date;
-import models.Cliente;
 
 /**
  *
@@ -20,6 +18,7 @@ public class Venda {
     private Date data;
     private double valor;
     private int idVenda;
+    boolean faturada = true;
 
     public Cliente getCliente() {
         return cliente;
@@ -36,8 +35,6 @@ public class Venda {
     public void setListaItemVenda(ArrayList<ItemVenda> listaItemVenda) {
         this.listaItemVenda = listaItemVenda;
     }
-    
-    boolean faturada = true;
 
     public boolean isFaturada() {
         return faturada;

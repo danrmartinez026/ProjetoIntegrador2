@@ -16,7 +16,7 @@ import mocks.MockLivro;
 import models.Venda;
 import static mocks.MockLivro.listaLivro;
 import models.Livro;
-import modelItemVenda.ItemVenda;
+import models.ItemVenda;
 
 /**
  *
@@ -81,7 +81,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
         buttonPesquisarLivro = new javax.swing.JButton();
         pesquisaDetalhada = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jTextField5 = new javax.swing.JTextField();
+        fValorTotal = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -243,7 +243,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
                 true, false, false, false, false, false, false, false
@@ -404,7 +404,8 @@ public class ViewVenda extends javax.swing.JInternalFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Carrinho"));
 
-        jTextField5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        fValorTotal.setEditable(false);
+        fValorTotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Valor Total");
@@ -446,7 +447,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                 .addGap(188, 188, 188)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(24, 24, 24))
@@ -461,7 +462,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(jButton3)))
         );
@@ -577,7 +578,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                     row[4] = liv.getGenero();
                     row[5] = liv.getEdicao();
                     row[6] = liv.getEstoque();
-                    row[7] = liv.getValor();
+                    row[7] = liv.getValor() + 0.00;
                     model.addRow(row);
                 }
             }
@@ -687,7 +688,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                         row[3] = liv.getAutor();
                         row[4] = liv.getIsbn();
                         row[5] = venda.getListaItemVenda().get(i).getQuantidade();
-                        row[6] = liv.getValor() * venda.getListaItemVenda().get(i).getQuantidade();
+                        row[6] = liv.getValor() * venda.getListaItemVenda().get(i).getQuantidade()+ 0.00;
                         model.addRow(row);
                     }
                 }
@@ -721,6 +722,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
     private javax.swing.JTextField fNome;
     private javax.swing.JTextField fQuantidade;
     private javax.swing.JTextField fTitulo;
+    private javax.swing.JTextField fValorTotal;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -739,7 +741,6 @@ public class ViewVenda extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JLabel lCliente;
     private javax.swing.JButton pesquisaDetalhada;
     private javax.swing.JTable tableCarrinho;
