@@ -20,7 +20,7 @@ import viewLivro.CadastroLivro;
 import viewLivro.DetalhesLivro;
 import viewLivro.PesquisarLivro;
 import viewVenda.Relatorio;
-import viewVenda.Venda;
+import viewVenda.ViewVenda;
 
 /**
  *
@@ -35,7 +35,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     DetalhesLivro detalhesLivro = null;
     PesquisarLivro pesquisarLivro = null;
     Relatorio relatorio = null;
-    Venda venda = null;
+    ViewVenda venda = null;
 
     /**
      * Creates new form TelaPrincipal
@@ -276,7 +276,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void menuVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVendaActionPerformed
         if(venda == null || !venda.isDisplayable() && !venda.isVisible()){
-            venda = new Venda(this);
+            venda = new ViewVenda(this);
             deskPane.add(venda);
             this.openFrameInCenter(venda);
            

@@ -7,7 +7,6 @@ package viewCliente;
 
 import viewTelaPrincipal.TelaPrincipal;
 import java.util.List;
-import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import mockCliente.MockCliente;
@@ -329,10 +328,6 @@ public class PesquisaCliente extends javax.swing.JInternalFrame {
         pesquisaDetalhada.setEnabled(true);
     }//GEN-LAST:event_tablePesquisaClienteMouseClicked
     
-    public void openFrameInCenter(JInternalFrame jif) {
-        
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonPesquisar;
     private javax.swing.JFormattedTextField fCpf;
