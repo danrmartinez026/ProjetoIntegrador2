@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelItemVenda;
+package models;
 
 import models.Livro;
 
@@ -14,22 +14,6 @@ import models.Livro;
 public class ItemVenda {
     private Livro livro;
     private int quantidade;
-
-    public Livro getLivro() {
-        return livro;
-    }
-
-    public void setLivro(Livro livro) {
-        this.livro = livro;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
     
     
 }
