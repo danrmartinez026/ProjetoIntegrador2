@@ -9,16 +9,12 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.table.DefaultTableModel;
 import mocks.MockLivro;
 import mocks.MockCliente;
-import view.CadastroCliente;
-import view.DetalhesCliente;
-import view.PesquisaCliente;
-import view.CadastroLivro;
-import view.DetalhesLivro;
-import view.PesquisarLivro;
+import mocks.MockVenda;
+import models.ItemVenda;
 
 /**
  *
@@ -34,6 +30,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     PesquisarLivro pesquisarLivro = null;
     Relatorio relatorio = null;
     ViewVenda venda = null;
+    DetalhesRelatorio detalhesRelatorio = null;
 
     /**
      * Creates new form TelaPrincipal
@@ -176,6 +173,29 @@ public class TelaPrincipal extends javax.swing.JFrame {
         cadCliente.toFront();
     }
     
+    public void abrirTelaDetalhesRelatorio(int id){
+        detalhesRelatorio = new DetalhesRelatorio();
+        deskPane.add(detalhesRelatorio);
+        this.openFrameInCenter(detalhesRelatorio);
+        detalhesRelatorio.fNome.setText(MockVenda.listaVenda.get(id).getCliente().getNome() +
+                 " " + MockVenda.listaVenda.get(id).getCliente().getSobrenome());
+        detalhesRelatorio.fCpf.setText(MockVenda.listaVenda.get(id).getCliente().getCpf());
+        
+        DefaultTableModel model = (DefaultTableModel) detalhesRelatorio.tableRelatorio.getModel();
+         model.setRowCount(0);
+         
+         for(ItemVenda item :MockVenda.listaVenda.get(id).getListaItemVenda() ){
+             Object[] row = new Object[6];
+             row[0] = item.getLivro().getTitulo();
+             row[1] = item.getLivro().getAutor();
+             row[2] = item.getLivro().getEditora();
+             row[3] = item.getLivro().getIsbn();
+             row[4] = item.getQuantidade();
+             row[5] = item.getLivro().getValor();
+             model.addRow(row);
+         }
+    }
+    
     public void abrirTelaDetalhesCliente(int id){
         if(detalhesCliente == null || !detalhesCliente.isDisplayable() && 
                 !detalhesCliente.isVisible()){
@@ -285,7 +305,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void menuRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelatorioActionPerformed
         if(relatorio == null || !relatorio.isDisplayable() && !relatorio.isVisible()){
-            relatorio = new Relatorio();
+            relatorio = new Relatorio(this);
             deskPane.add(relatorio);
             this.openFrameInCenter(relatorio);
            

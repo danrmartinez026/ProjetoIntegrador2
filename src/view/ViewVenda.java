@@ -6,6 +6,7 @@
 package view;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import models.Cliente;
@@ -17,6 +18,8 @@ import models.Venda;
 import static mocks.MockLivro.listaLivro;
 import models.Livro;
 import models.ItemVenda;
+import service.ServiceItemVenda;
+import service.ServiceVenda;
 
 /**
  *
@@ -83,9 +86,10 @@ public class ViewVenda extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         fValorTotal = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        buttonConcluirVenda = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableCarrinho = new javax.swing.JTable();
+        buttonCancelarVenda = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -388,7 +392,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(pesquisaDetalhada)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(fQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -410,7 +414,13 @@ public class ViewVenda extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Valor Total");
 
-        jButton3.setText("Concluir Venda");
+        buttonConcluirVenda.setText("Concluir Venda");
+        buttonConcluirVenda.setEnabled(false);
+        buttonConcluirVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonConcluirVendaActionPerformed(evt);
+            }
+        });
 
         tableCarrinho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -439,17 +449,27 @@ public class ViewVenda extends javax.swing.JInternalFrame {
         tableCarrinho.getColumnModel().getColumn(0).setMinWidth(0);         tableCarrinho.getColumnModel().getColumn(0).setMaxWidth(0);         tableCarrinho.getColumnModel().getColumn(0).setWidth(0);
         jScrollPane3.setViewportView(tableCarrinho);
 
+        buttonCancelarVenda.setText("Cancelar Venda");
+        buttonCancelarVenda.setEnabled(false);
+        buttonCancelarVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelarVendaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(188, 188, 188)
+                .addGap(21, 21, 21)
+                .addComponent(buttonCancelarVenda)
+                .addGap(88, 88, 88)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(fValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(buttonConcluirVenda)
                 .addGap(24, 24, 24))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
@@ -464,7 +484,8 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(jButton3)))
+                    .addComponent(buttonConcluirVenda)
+                    .addComponent(buttonCancelarVenda)))
         );
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -598,7 +619,6 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                 model.removeRow(i);
             }
         }
-        buttonPesquisar.setEnabled(false);
         buttonPesquisarLivro.setEnabled(true);
         
     }//GEN-LAST:event_tablePesquisaClienteMouseClicked
@@ -619,7 +639,8 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Selecione 1 item para exibir detalhes");
             }
         } catch (Exception e){
-            //JOptionPane.showMessageDialog(this, "Selecione 1 item para exibir detalhes");
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(),"Erro", 
+            JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_pesquisaDetalhadaActionPerformed
 
@@ -657,22 +678,13 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                 }
             }
             
-            if(!venda.getListaItemVenda().isEmpty()){
-                boolean temp = false;
-                for(ItemVenda itemVenda : venda.getListaItemVenda()){
-                    if(itemVenda.getLivro() == item.getLivro()){
-                        JOptionPane.showMessageDialog(rootPane, "Livro ja Incluso");
-                        temp = false;
-                        break;
-                    } 
-                    temp =  true;
-                }
-                
-                if(temp){
-                    venda.getListaItemVenda().add(item);
-                }
-            } else{
-                venda.getListaItemVenda().add(item);
+            
+            try{
+                ServiceItemVenda.inserirItemVenda(item , venda);
+            } catch (Exception e){
+                JOptionPane.showMessageDialog(rootPane, e.getMessage(),"Erro", 
+                JOptionPane.ERROR_MESSAGE);
+                return;
             }
             
             if(item.getLivro() != null){
@@ -693,6 +705,14 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                     }
                 }
             }
+            
+            Double valorTotal = 0.00;
+            for(ItemVenda itemVenda : venda.getListaItemVenda()){
+                valorTotal = valorTotal + itemVenda.getLivro().getValor() * itemVenda.getQuantidade() + 0.00;
+            }
+            fValorTotal.setText(valorTotal.toString());
+            buttonConcluirVenda.setEnabled(true);
+            buttonCancelarVenda.setEnabled(true);
         }
     }//GEN-LAST:event_buttonAddActionPerformed
 
@@ -708,11 +728,35 @@ public class ViewVenda extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Maximo 3 Digitos");
         }
     }//GEN-LAST:event_fQuantidadeKeyTyped
+
+    private void buttonConcluirVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConcluirVendaActionPerformed
+        venda.setValor(Double.parseDouble(fValorTotal.getText()));
+        venda.setData(new Date());
+        
+        try{
+            if(JOptionPane.showConfirmDialog(parent, "Dedeja concluir a venda") == 0);
+                ServiceVenda.inserirVenda(venda);
+                this.dispose();
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(),"Erro", 
+            JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_buttonConcluirVendaActionPerformed
+
+    private void buttonCancelarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarVendaActionPerformed
+        if(JOptionPane.showConfirmDialog(parent, "Deseja cancelar a venda") == 0){
+            this.dispose();
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonCancelarVendaActionPerformed
         
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdd;
+    private javax.swing.JButton buttonCancelarVenda;
+    private javax.swing.JButton buttonConcluirVenda;
     private javax.swing.JButton buttonPesquisar;
     private javax.swing.JButton buttonPesquisarLivro;
     private javax.swing.JComboBox<String> comboGenero;
@@ -724,7 +768,6 @@ public class ViewVenda extends javax.swing.JInternalFrame {
     private javax.swing.JTextField fTitulo;
     private javax.swing.JTextField fValorTotal;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

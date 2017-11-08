@@ -148,14 +148,14 @@ public class PesquisaCliente extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Nome", "Sobrenome", "CPF"
+                "Id", "Nome", "Sobrenome", "CPF"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -166,6 +166,7 @@ public class PesquisaCliente extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tablePesquisaCliente.getColumnModel().getColumn(0).setMinWidth(0);         tablePesquisaCliente.getColumnModel().getColumn(0).setMaxWidth(0);         tablePesquisaCliente.getColumnModel().getColumn(0).setWidth(0);
         tablePesquisaCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablePesquisaClienteMouseClicked(evt);
@@ -235,8 +236,8 @@ public class PesquisaCliente extends javax.swing.JInternalFrame {
             int id = pesquisaCliente.get(tablePesquisaCliente.getSelectedRow()).getId();
             if(id >= 0){
                 for(Cliente cliente : MockCliente.listaCliente){
-                    if(id == cliente.getId()){
-                        parent.abrirTelaDetalhesCliente(id);
+                    if(tablePesquisaCliente.getValueAt(tablePesquisaCliente.getSelectedRow() , 0) == cliente.getId()){
+                        parent.abrirTelaDetalhesCliente((int)tablePesquisaCliente.getValueAt(tablePesquisaCliente.getSelectedRow() , 0));
                         DefaultTableModel model = (DefaultTableModel) tablePesquisaCliente.getModel();
                         model.setRowCount(0);
                         pesquisaDetalhada.setEnabled(false);
@@ -273,10 +274,11 @@ public class PesquisaCliente extends javax.swing.JInternalFrame {
             for(int i = 0; i < pesquisaCliente.size(); i++){
                 Cliente cliente = pesquisaCliente.get(i);
                 if(cliente != null){
-                    Object[] row = new Object[3];
-                    row[0] = cliente.getNome();
-                    row[1] = cliente.getSobrenome();
-                    row[2] = cliente.getCpf();
+                    Object[] row = new Object[4];
+                    row[0] = cliente.getId();
+                    row[1] = cliente.getNome();
+                    row[2] = cliente.getSobrenome();
+                    row[3] = cliente.getCpf();
                     
                     model.addRow(row);
                 }

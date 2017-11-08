@@ -92,6 +92,7 @@ public class MockCliente {
                     clienteLista.setTelefone(cliente.getTelefone());
                     clienteLista.setComplemento(cliente.getComplemento());
                     clienteLista.setNumeroCasa(cliente.getNumeroCasa());
+                    System.out.println("o");
                 }
             }
         }

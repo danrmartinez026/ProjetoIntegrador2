@@ -27,9 +27,9 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
         this.parent = parent;
         initComponents();
         
-    tablePesquisa.getColumnModel().getColumn(0).setMinWidth(0);
-    tablePesquisa.getColumnModel().getColumn(0).setMaxWidth(0);
-    tablePesquisa.getColumnModel().getColumn(0).setWidth(0);
+//    tablePesquisa.getColumnModel().getColumn(0).setMinWidth(0);
+//    tablePesquisa.getColumnModel().getColumn(0).setMaxWidth(0);
+//    tablePesquisa.getColumnModel().getColumn(0).setWidth(0);
     }
 
     /**
@@ -240,7 +240,7 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public List<Livro> pesquisaLivro = new ArrayList();
+    public List<Livro> pesquisaLivro;
     
     private void buttonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPesquisarActionPerformed
         pesquisaLivro = null;
@@ -292,8 +292,8 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
             int id = pesquisaLivro.get(tablePesquisa.getSelectedRow()).getId();
             if(id >= 0){
                 for(Livro livro : MockLivro.listaLivro){
-                    if(id == livro.getId()){
-                        parent.abrirTelaDetalhesLivro(id);
+                    if(tablePesquisa.getValueAt(tablePesquisa.getSelectedRow() , 0) == livro.getId()){
+                        parent.abrirTelaDetalhesLivro((int)tablePesquisa.getValueAt(tablePesquisa.getSelectedRow() , 0));
                         DefaultTableModel model = (DefaultTableModel) tablePesquisa.getModel();
                         model.setRowCount(0);
                         pesquisaDetalhada.setEnabled(false);

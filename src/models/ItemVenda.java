@@ -5,7 +5,6 @@
  */
 package models;
 
-import models.Livro;
 
 /**
  *
@@ -13,7 +12,7 @@ import models.Livro;
  */
 public class ItemVenda {
     private Livro livro;
-    private int quantidade;
+    private Integer quantidade;
 
     public Livro getLivro() {
         return livro;
@@ -23,11 +22,11 @@ public class ItemVenda {
         this.livro = livro;
     }
 
-    public int getQuantidade() {
+    public Integer getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
     }
     

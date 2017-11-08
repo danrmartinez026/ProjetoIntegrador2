@@ -18,13 +18,13 @@ public class MockLivro {
     
     private static int totalLivro =0;
     
-    public static ArrayList<Livro> listaLivro = new ArrayList();
+    public static ArrayList<Livro> listaLivro = new ArrayList<Livro>();
     
     public static void falsoLivro(){
         Livro livroUp = new Livro();
         
         livroUp.setTitulo("Harry Potter");
-        livroUp.setValor(200.00f);
+        livroUp.setValor(200.75f);
         livroUp.setEstoque(20);
         livroUp.setAutor("J.K. Rowlling");
         livroUp.setEditora("Abril");
@@ -43,7 +43,7 @@ public class MockLivro {
         Livro livroUp1 = new Livro();
         
         livroUp1.setTitulo("senhor dos Aneis");
-        livroUp1.setValor(250.00f);
+        livroUp1.setValor(250.50f);
         livroUp1.setEstoque(20);
         livroUp1.setAutor("Lord");
         livroUp1.setEditora("veja");
@@ -62,7 +62,7 @@ public class MockLivro {
         Livro livroUp12 = new Livro();
         
         livroUp12.setTitulo("Game Of Thrones");
-        livroUp12.setValor(850.00f);
+        livroUp12.setValor(850.25f);
         livroUp12.setEstoque(20);
         livroUp12.setAutor("George");
         livroUp12.setEditora("got");
@@ -85,10 +85,10 @@ public class MockLivro {
         listaLivro.add(livro);
     }
     
-    public static void atualizarLivro(Livro livro){
+    public static void atualizarLivro(Livro livro)throws Exception{
         if(livro != null && !listaLivro.isEmpty()){
             for(Livro livroUp : listaLivro){
-                if(livroUp.getId() == livro.getId() && listaLivro != null){
+                if(livroUp.getId() == livro.getId() ){
                     livroUp.setTitulo(livro.getTitulo());
                     livroUp.setValor(livro.getValor());
                     livroUp.setEstoque(livro.getEstoque());

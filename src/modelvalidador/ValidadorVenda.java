@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package models;
+package modelvalidador;
 
 import exceptions.VendaException;
+import models.Venda;
 
 /**
  *
@@ -19,10 +20,6 @@ public class ValidadorVenda {
         
         if(venda.getListaItemVenda() == null){
             throw new VendaException("Nao foi informado um produto");
-        }
-        
-        if(venda.getData() == null){
-            throw new VendaException("Data da Venda invalida");
         }
         
         

@@ -14,11 +14,18 @@ import java.util.Date;
  */
 public class Venda {
     private Cliente cliente;
-    public ArrayList<ItemVenda> listaItemVenda = new ArrayList();
-    private Date data;
+    private ArrayList<ItemVenda> listaItemVenda = new ArrayList();
     private double valor;
     private int idVenda;
-    boolean faturada = true;
+    private Date data;
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
 
     public Cliente getCliente() {
         return cliente;
@@ -32,25 +39,8 @@ public class Venda {
         return listaItemVenda;
     }
 
-    public void setListaItemVenda(ArrayList<ItemVenda> listaItemVenda) {
-        this.listaItemVenda = listaItemVenda;
-    }
 
-    public boolean isFaturada() {
-        return faturada;
-    }
 
-    public void setFaturada(boolean faturada) {
-        this.faturada = faturada;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
-    }
 
     public double getValor() {
         return valor;

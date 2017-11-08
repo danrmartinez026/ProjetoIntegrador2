@@ -6,20 +6,22 @@
 package service;
 
 import exceptions.DataSourceException;
-import exceptions.VendaException;
+import exceptions.ItemVendaException;
+import mocks.MockItemVenda;
+import models.ItemVenda;
 import models.Venda;
-import modelvalidador.ValidadorVenda;
-import mocks.MockVenda;
+import modelvalidador.ValidadorItemVenda;
+
 /**
  *
  * @author Danilo
  */
-public class ServiceVenda {
-    public static void inserirVenda(Venda venda) throws VendaException,DataSourceException{
+public class ServiceItemVenda {
+    public static void inserirItemVenda(ItemVenda item, Venda venda)throws ItemVendaException,DataSourceException{
+        ValidadorItemVenda.validarItemVenda(item , venda);
         
         try{
-            ValidadorVenda.validaVenda(venda);
-            MockVenda.inserirVenda(venda);
+            MockItemVenda.inserirItemVenda(item, venda);
         } catch(Exception e){
             e.printStackTrace();
             throw new DataSourceException("Erro na fonte de dados", e);
