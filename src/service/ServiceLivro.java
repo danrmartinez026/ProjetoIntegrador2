@@ -29,6 +29,7 @@ public class ServiceLivro {
     
     public static void atualizarCadastro(Livro livro)throws LivroException, DataSourceException{
         ValidadorLivro.validarLivro(livro);
+        
         try{
             
             MockLivro.atualizarLivro(livro);

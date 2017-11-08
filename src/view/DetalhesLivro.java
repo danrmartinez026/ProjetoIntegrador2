@@ -499,14 +499,15 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
         livro.setIsbn(fIsbn.getText());
         try{
             livro.setValor(Float.parseFloat(fieldValor.getText()) + 0.00f);
+            livro.setEstoque(Integer.parseInt(fEstoque.getText()));
         }catch(Exception e){
-            
+            JOptionPane.showMessageDialog(rootPane, "Erro");
         }
         
         try{
             livro.setNumeroPaginas(Integer.parseInt(fNumeroPaginas.getText())); 
         }catch(Exception e){
-            
+             JOptionPane.showMessageDialog(rootPane, "Erro");
         }      
         
         try{

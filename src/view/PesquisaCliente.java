@@ -17,6 +17,7 @@ import models.Cliente;
  */
 public class PesquisaCliente extends javax.swing.JInternalFrame {
     private TelaPrincipal parent;
+    public List<Cliente> pesquisaCliente;
     
     
 
@@ -258,7 +259,7 @@ public class PesquisaCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     
-    public List<Cliente> pesquisaCliente;
+    
     private void buttonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPesquisarActionPerformed
         pesquisaCliente = null;
         
@@ -279,7 +280,6 @@ public class PesquisaCliente extends javax.swing.JInternalFrame {
                     row[1] = cliente.getNome();
                     row[2] = cliente.getSobrenome();
                     row[3] = cliente.getCpf();
-                    
                     model.addRow(row);
                 }
             }

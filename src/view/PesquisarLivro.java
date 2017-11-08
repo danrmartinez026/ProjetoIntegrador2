@@ -5,7 +5,6 @@
  */
 package view;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -19,6 +18,7 @@ import models.Livro;
  */
 public class PesquisarLivro extends javax.swing.JInternalFrame {
     private TelaPrincipal parent;
+    public List<Livro> pesquisaLivro;
 
     /**
      * Creates new form PesquisarLivro
@@ -240,7 +240,7 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public List<Livro> pesquisaLivro;
+    
     
     private void buttonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPesquisarActionPerformed
         pesquisaLivro = null;

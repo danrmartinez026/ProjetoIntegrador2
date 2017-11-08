@@ -674,6 +674,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                 if(Integer.parseInt(tablePesquisa.getValueAt(tablePesquisa.getSelectedRow(),0).toString()) == livro.getId()){
                     item.setLivro(livro);
                     item.setQuantidade(Integer.parseInt(fQuantidade.getText()));
+                    item.setValorUnitario(Float.parseFloat(tablePesquisa.getValueAt(tablePesquisa.getSelectedRow(),7).toString()));
                     break;
                 }
             }

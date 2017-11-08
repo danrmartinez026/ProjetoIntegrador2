@@ -13,6 +13,15 @@ package models;
 public class ItemVenda {
     private Livro livro;
     private Integer quantidade;
+    private float valorUnitario;
+
+    public float getValorUnitario() {
+        return valorUnitario;
+    }
+
+    public void setValorUnitario(float valorUnitario) {
+        this.valorUnitario = valorUnitario;
+    }
 
     public Livro getLivro() {
         return livro;

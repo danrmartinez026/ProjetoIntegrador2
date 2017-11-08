@@ -16,7 +16,7 @@ import models.Livro;
  */
 public class MockLivro {
     
-    private static int totalLivro =0;
+    private static int totalLivro = 0;
     
     public static ArrayList<Livro> listaLivro = new ArrayList<Livro>();
     
@@ -86,9 +86,11 @@ public class MockLivro {
     }
     
     public static void atualizarLivro(Livro livro)throws Exception{
-        if(livro != null && !listaLivro.isEmpty()){
+        if(livro != null && livro.getId() != null && !listaLivro.isEmpty()){
             for(Livro livroUp : listaLivro){
-                if(livroUp.getId() == livro.getId() ){
+                if(livroUp.getId() == livro.getId()){
+                    System.out.println("2");
+                    livroUp.setId(livro.getId());
                     livroUp.setTitulo(livro.getTitulo());
                     livroUp.setValor(livro.getValor());
                     livroUp.setEstoque(livro.getEstoque());

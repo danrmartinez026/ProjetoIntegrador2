@@ -180,6 +180,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         detalhesRelatorio.fNome.setText(MockVenda.listaVenda.get(id).getCliente().getNome() +
                  " " + MockVenda.listaVenda.get(id).getCliente().getSobrenome());
         detalhesRelatorio.fCpf.setText(MockVenda.listaVenda.get(id).getCliente().getCpf());
+        detalhesRelatorio.fValorTotal.setText(String.valueOf(MockVenda.listaVenda.get(id).getValor()));
         
         DefaultTableModel model = (DefaultTableModel) detalhesRelatorio.tableRelatorio.getModel();
          model.setRowCount(0);
@@ -191,9 +192,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
              row[2] = item.getLivro().getEditora();
              row[3] = item.getLivro().getIsbn();
              row[4] = item.getQuantidade();
-             row[5] = item.getLivro().getValor();
+             row[5] = item.getValorUnitario();
              model.addRow(row);
          }
+         
     }
     
     public void abrirTelaDetalhesCliente(int id){
