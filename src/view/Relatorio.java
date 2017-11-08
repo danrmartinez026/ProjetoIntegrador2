@@ -140,6 +140,10 @@ public class Relatorio extends javax.swing.JInternalFrame {
                     .addComponent(buttonDetalhes, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
 
+        fCliente.setTransferHandler(null);
+        fTitulo.setTransferHandler(null);
+        fMes.setTransferHandler(null);
+
         tableRelatorio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

@@ -276,6 +276,11 @@ public class DetalhesCliente extends javax.swing.JInternalFrame {
                 .addGap(117, 117, 117))
         );
 
+        fNome.setTransferHandler(null);
+        fSobrenome.setTransferHandler(null);
+        fRg.setTransferHandler(null);
+        fCpf.setTransferHandler(null);
+
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Contatos"));
 
         fEmail.setMaximumSize(null);
@@ -346,6 +351,10 @@ public class DetalhesCliente extends javax.swing.JInternalFrame {
                     .addComponent(fEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
+
+        fEmail.setTransferHandler(null);
+        fTelefone.setTransferHandler(null);
+        fCelular.setTransferHandler(null);
 
         buttonAtualizarCliente.setText("Atualizar Cadastro");
         buttonAtualizarCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -527,6 +536,13 @@ public class DetalhesCliente extends javax.swing.JInternalFrame {
                             .addComponent(fCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
+
+        fCidade.setTransferHandler(null);
+        fRua.setTransferHandler(null);
+        fBairro.setTransferHandler(null);
+        fNumero.setTransferHandler(null);
+        fComplemento.setTransferHandler(null);
+        fCep.setTransferHandler(null);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

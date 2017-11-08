@@ -150,6 +150,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="fCliente">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fCliente.setTransferHandler(null);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
@@ -157,6 +160,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="fTitulo">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fTitulo.setTransferHandler(null);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
@@ -177,6 +183,9 @@
               <Format format="MM" subtype="-1" type="1"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fMes.setTransferHandler(null);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="buttonDetalhes">
           <Properties>

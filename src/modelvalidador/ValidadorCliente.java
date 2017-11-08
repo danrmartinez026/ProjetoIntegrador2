@@ -34,50 +34,38 @@ public class ValidadorCliente {
             if(cliente.getSexo().equals("")){
                 throw new ClienteException ("Preencha todos os campos marcados com: ( * )");
             }
-//            
-//            if(cliente.getRua().equals("")){
-//                throw new ClienteException ("Preencha todos os campos marcados com: ( * )");
-//            }
-//            
-//            if(cliente.getBairro().equals("")){
-//                throw new ClienteException ("Preencha todos os campos marcados com: ( * )");
-//            }
-//            
-//            if(cliente.getCidade().equals("")){
-//                throw new ClienteException ("Preencha todos os campos marcados com: ( * )");
-//            }
-//            
-//            if(cliente.getNumeroCasa().equals("")){
-//                throw new ClienteException ("Preencha todos os campos marcados com: ( * )");
-//            }
-//            
-//            if(cliente.getComplemento().equals("")){
-//                throw new ClienteException ("Preencha todos os campos marcados com: ( * )");
-//            }
-//            
-//            if(cliente.getEstado().equals("")){
-//                throw new ClienteException ("Preencha todos os campos marcados com: ( * )");
-//            }
-//            
-//            if(cliente.getCep().equals("")){
-//                throw new ClienteException ("Preencha todos os campos marcados com: ( * )");
-//            }
-//            
-//            if(cliente.getCelular().equals("")){
-//                throw new ClienteException ("Preencha todos os campos marcados com: ( * )");
-//            }
-//            
-//            if(cliente.getTelefone().equals("")){
-//                throw new ClienteException ("Preencha todos os campos marcados com: ( * )");
-//            }
-//            
+            
+            if(!cliente.getRua().equals("")){
+            }
+            
+            if(!cliente.getBairro().equals("")){
+            }
+            
+            if(!cliente.getCidade().equals("")){
+            }
+            
+            if(!cliente.getNumeroCasa().equals("")){
+            }
+            
+            if(!cliente.getComplemento().equals("")){
+            }
+            
+            if(!cliente.getEstado().equals("")){
+            }
+            
+            if(!cliente.getCep().equals("")){
+            }
+            
+            if(!cliente.getCelular().equals("")){
+            }
+            
+            if(!cliente.getTelefone().equals("")){
+            }
+            
             if(!cliente.getEmail().equals("")){
                 if(cliente.getEmail().lastIndexOf(".com") == -1 && !cliente.getEmail().contains("@")){
                     throw new ClienteException ("Preencha o campo email corretamente");
                 }
-            
-                
-                
             }
         } else {
             throw new ClienteException ("Nao foi informado um cliente");

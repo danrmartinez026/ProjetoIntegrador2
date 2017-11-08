@@ -124,6 +124,12 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Nome *");
 
+        fNome.setTransferHandler(null);
+        fNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fNomeActionPerformed(evt);
+            }
+        });
         fNome.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 fNomeKeyTyped(evt);
@@ -225,6 +231,10 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
                 .addGap(117, 117, 117))
         );
 
+        fSobrenome.setTransferHandler(null);
+        fCpf.setTransferHandler(null);
+        fRg.setTransferHandler(null);
+
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Contatos"));
 
         fEmail.setMaximumSize(null);
@@ -295,6 +305,10 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
                     .addComponent(fEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
+
+        fEmail.setTransferHandler(null);
+        fCelular.setTransferHandler(null);
+        fTelefone.setTransferHandler(null);
 
         buttonSalvar.setText("Salvar");
         buttonSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -463,6 +477,13 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
                             .addComponent(fCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
+
+        fCidade.setTransferHandler(null);
+        fRua.setTransferHandler(null);
+        fBairro.setTransferHandler(null);
+        fNumero.setTransferHandler(null);
+        fComplemento.setTransferHandler(null);
+        fCep.setTransferHandler(null);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -638,15 +659,16 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fSobrenomeKeyTyped
 
     private void fNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fNomeKeyTyped
-        String permitidos = "abcdefghijklmnopqrstuwyvxz".toUpperCase();
+        System.out.println("oi");
+        String permitidos = "abcdefghijklmnopqrstuwyvxz ".toUpperCase();
         Character ch = evt.getKeyChar();
         if(!permitidos.contains(ch.toString().toUpperCase())){
             evt.consume();
         }
         
-        if(fNome.getText().length() == 20){
+        if(fNome.getText().length() >= 30){
             evt.consume();
-            JOptionPane.showMessageDialog(rootPane, "Maximo 20 Caracteres");
+            JOptionPane.showMessageDialog(rootPane, "Maximo 30 Caracteres");
         }
     }//GEN-LAST:event_fNomeKeyTyped
 
@@ -714,6 +736,10 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Maximo 50 Caracteres");
         }
     }//GEN-LAST:event_fRuaKeyTyped
+
+    private void fNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fNomeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

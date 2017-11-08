@@ -151,6 +151,10 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
                 .addComponent(buttonPesquisar))
         );
 
+        fTitulo.setTransferHandler(null);
+        fEditora.setTransferHandler(null);
+        fAutor.setTransferHandler(null);
+
         tablePesquisa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

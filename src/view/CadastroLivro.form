@@ -215,6 +215,9 @@
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fTituloKeyReleased"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fTituloKeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fTitulo.setTransferHandler(null);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
@@ -225,6 +228,9 @@
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fAutorKeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fAutor.setTransferHandler(null);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel14">
           <Properties>
@@ -232,6 +238,12 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="fEditora">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fEditoraKeyTyped"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fEditora.setTransferHandler(null);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
@@ -244,6 +256,9 @@
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fIsbnKeyReleased"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fIsbnKeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fIsbn.setTransferHandler(null);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel27">
           <Properties>
@@ -279,6 +294,9 @@
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fEdicaoKeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fEdicao.setTransferHandler(null);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JComboBox" name="comboIdioma">
           <Properties>
@@ -308,6 +326,9 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldValorActionPerformed"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldValorKeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fValor.setTransferHandler(null);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -318,6 +339,9 @@
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fEstoqueKeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fEstoque.setTransferHandler(null);"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
@@ -408,6 +432,9 @@
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fAlturaKeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fAltura.setTransferHandler(null);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel29">
           <Properties>
@@ -418,6 +445,9 @@
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fLarguraKeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fLargura.setTransferHandler(null);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel31">
           <Properties>
@@ -428,6 +458,9 @@
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fPesoKeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fPeso.setTransferHandler(null);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
@@ -438,6 +471,9 @@
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fNumeroPaginasKeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fNumeroPaginas.setTransferHandler(null);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel30">
           <Properties>

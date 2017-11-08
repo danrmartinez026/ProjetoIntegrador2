@@ -144,6 +144,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="fNome">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fNome.setTransferHandler(null);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
@@ -211,6 +214,9 @@
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fCpfKeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fCpf.setTransferHandler(null);"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
@@ -364,6 +370,9 @@
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fQuantidadeKeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fQuantidade.setTransferHandler(null);"/>
+          </AuxValues>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane5">
           <AuxValues>
@@ -405,11 +414,17 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fTituloActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fTitulo.setTransferHandler(null);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="fEditora">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fEditoraActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fEditora.setTransferHandler(null);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JComboBox" name="comboGenero">
           <Properties>
@@ -434,6 +449,9 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fAutorActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fAutor.setTransferHandler(null);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>

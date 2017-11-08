@@ -217,6 +217,9 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        fNome.setTransferHandler(null);
+        fCpf.setTransferHandler(null);
+
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Produto"));
 
         jLabel4.setText("Titulo");
@@ -405,6 +408,11 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5))
         );
+
+        fQuantidade.setTransferHandler(null);
+        fTitulo.setTransferHandler(null);
+        fEditora.setTransferHandler(null);
+        fAutor.setTransferHandler(null);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Carrinho"));
 

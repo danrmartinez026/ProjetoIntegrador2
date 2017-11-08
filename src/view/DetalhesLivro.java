@@ -228,6 +228,14 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        fTitulo.setTransferHandler(null);
+        fAutor.setTransferHandler(null);
+        fEditora.setTransferHandler(null);
+        fIsbn.setTransferHandler(null);
+        fEdicao.setTransferHandler(null);
+        fValor.setTransferHandler(null);
+        fEstoque.setTransferHandler(null);
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Detalhes do Livro");
 
@@ -352,6 +360,11 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
                     .addComponent(jButton3)
                     .addComponent(buttonAtualizar)))
         );
+
+        fAltura.setTransferHandler(null);
+        fLargura.setTransferHandler(null);
+        fPeso.setTransferHandler(null);
+        fNumeroPaginas.setTransferHandler(null);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

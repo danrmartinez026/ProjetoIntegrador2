@@ -144,6 +144,10 @@ public class PesquisaCliente extends javax.swing.JInternalFrame {
                 .addComponent(buttonPesquisar))
         );
 
+        fNome.setTransferHandler(null);
+        fCpf.setTransferHandler(null);
+        fSobrenome.setTransferHandler(null);
+
         tablePesquisaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

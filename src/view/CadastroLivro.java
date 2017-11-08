@@ -106,6 +106,12 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
 
         jLabel14.setText("Editora *");
 
+        fEditora.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fEditoraKeyTyped(evt);
+            }
+        });
+
         jLabel12.setText("ISBN *");
 
         fIsbn.addActionListener(new java.awt.event.ActionListener() {
@@ -253,6 +259,14 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        fTitulo.setTransferHandler(null);
+        fAutor.setTransferHandler(null);
+        fEditora.setTransferHandler(null);
+        fIsbn.setTransferHandler(null);
+        fEdicao.setTransferHandler(null);
+        fValor.setTransferHandler(null);
+        fEstoque.setTransferHandler(null);
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Cadastro de Livros");
 
@@ -345,6 +359,11 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
                     .addComponent(jLabel35))
                 .addGap(26, 26, 26))
         );
+
+        fAltura.setTransferHandler(null);
+        fLargura.setTransferHandler(null);
+        fPeso.setTransferHandler(null);
+        fNumeroPaginas.setTransferHandler(null);
 
         buttonSalvar.setText("Salvar");
         buttonSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -597,6 +616,10 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonCancelarActionPerformed
+
+    private void fEditoraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fEditoraKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fEditoraKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
