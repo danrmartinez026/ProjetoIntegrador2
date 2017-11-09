@@ -109,10 +109,16 @@ public class MockLivro {
         }
     }
     
-    public static void excluirLivro(Integer id)throws Exception{
-        for(Livro livro: listaLivro){
-            if(id == livro.getId()&& !listaLivro.isEmpty()){
-                listaLivro.remove(livro);
+    public static void excluirLivro(Livro livro)throws Exception{
+        listaLivro.remove(livro);
+    }
+    
+    public static void atualizarEstoque(Livro livro, int quantidade){
+        if(livro != null){
+            for(Livro livroUp: listaLivro){
+                if(livro == livroUp){
+                    livroUp.setEstoque(livroUp.getEstoque() - quantidade);
+                }
             }
         }
     }

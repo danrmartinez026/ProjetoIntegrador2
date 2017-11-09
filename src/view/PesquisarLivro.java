@@ -297,7 +297,7 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
             if(id >= 0){
                 for(Livro livro : MockLivro.listaLivro){
                     if(tablePesquisa.getValueAt(tablePesquisa.getSelectedRow() , 0) == livro.getId()){
-                        parent.abrirTelaDetalhesLivro((int)tablePesquisa.getValueAt(tablePesquisa.getSelectedRow() , 0));
+                        parent.abrirTelaDetalhesLivro(livro);
                         DefaultTableModel model = (DefaultTableModel) tablePesquisa.getModel();
                         model.setRowCount(0);
                         pesquisaDetalhada.setEnabled(false);

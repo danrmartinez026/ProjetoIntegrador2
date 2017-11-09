@@ -27,6 +27,22 @@ public class ServiceLivro {
         }
     }
     
+    public static void excluirlivro(Livro livro) throws DataSourceException{
+        try{
+            MockLivro.excluirLivro(livro);
+        } catch(Exception e){
+            throw new DataSourceException("Erro na fonte de dados", e);
+        }
+    }
+    
+    public static void atualizarEstoque(Livro livro, int quantidade) throws DataSourceException{
+        try{
+            MockLivro.atualizarEstoque(livro, quantidade);
+        } catch(Exception e){
+            throw new DataSourceException("Erro na fonte de dados", e);
+        }
+    }
+    
     public static void atualizarCadastro(Livro livro)throws LivroException, DataSourceException{
         ValidadorLivro.validarLivro(livro);
         

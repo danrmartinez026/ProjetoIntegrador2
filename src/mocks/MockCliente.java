@@ -92,19 +92,14 @@ public class MockCliente {
                     clienteLista.setTelefone(cliente.getTelefone());
                     clienteLista.setComplemento(cliente.getComplemento());
                     clienteLista.setNumeroCasa(cliente.getNumeroCasa());
-                    System.out.println("o");
                 }
             }
         }
     }
     
     //recebe um id e procura na lista um cliente de mesmo id para exclui-lo
-    public static void excluirCliente(Integer id)throws Exception{
-        for(Cliente cliente: listaCliente){
-            if(id == cliente.getId() && !listaCliente.isEmpty()){
-                listaCliente.remove(cliente);
-            }
-        }
+    public static void excluirCliente(Cliente cliente)throws Exception{
+        listaCliente.remove(cliente);
     }
     
     public static List<Cliente> listar()

@@ -14,7 +14,9 @@ import javax.swing.table.DefaultTableModel;
 import mocks.MockLivro;
 import mocks.MockCliente;
 import mocks.MockVenda;
+import models.Cliente;
 import models.ItemVenda;
+import models.Livro;
 
 /**
  *
@@ -198,51 +200,51 @@ public class TelaPrincipal extends javax.swing.JFrame {
          
     }
     
-    public void abrirTelaDetalhesCliente(int id){
+    public void abrirTelaDetalhesCliente(Cliente cliente){
         if(detalhesCliente == null || !detalhesCliente.isDisplayable() && 
                 !detalhesCliente.isVisible()){
             detalhesCliente = new DetalhesCliente();
             deskPane.add(detalhesCliente);
             this.openFrameInCenter(detalhesCliente);
-            detalhesCliente.fNome.setText(MockCliente.listaCliente.get(id).getNome());
-            detalhesCliente.fSobrenome.setText(MockCliente.listaCliente.get(id).getSobrenome());
-            detalhesCliente.fCpf.setText(MockCliente.listaCliente.get(id).getCpf());
-            detalhesCliente.fRg.setText(MockCliente.listaCliente.get(id).getRg());
-            detalhesCliente.comboSexo.setSelectedItem(MockCliente.listaCliente.get(id).getSexo());
-            detalhesCliente.fRua.setText(MockCliente.listaCliente.get(id).getRua());
-            detalhesCliente.fBairro.setText(MockCliente.listaCliente.get(id).getBairro());
-            detalhesCliente.fNumero.setText(MockCliente.listaCliente.get(id).getNumeroCasa());
-            detalhesCliente.fComplemento.setText(MockCliente.listaCliente.get(id).getComplemento());
-            detalhesCliente.fCidade.setText(MockCliente.listaCliente.get(id).getCidade());
-            detalhesCliente.comboEstado.setSelectedItem(MockCliente.listaCliente.get(id).getEstado());
-            detalhesCliente.fEmail.setText(MockCliente.listaCliente.get(id).getEmail());
-            detalhesCliente.fCelular.setText(MockCliente.listaCliente.get(id).getCelular());
-            detalhesCliente.fTelefone.setText(MockCliente.listaCliente.get(id).getTelefone());
-            detalhesCliente.fCep.setText(MockCliente.listaCliente.get(id).getCep());
-            detalhesCliente.setId(id);
+            detalhesCliente.fNome.setText(cliente.getNome());
+            detalhesCliente.fSobrenome.setText(cliente.getSobrenome());
+            detalhesCliente.fCpf.setText(cliente.getCpf());
+            detalhesCliente.fRg.setText(cliente.getRg());
+            detalhesCliente.comboSexo.setSelectedItem(cliente.getSexo());
+            detalhesCliente.fRua.setText(cliente.getRua());
+            detalhesCliente.fBairro.setText(cliente.getBairro());
+            detalhesCliente.fNumero.setText(cliente.getNumeroCasa());
+            detalhesCliente.fComplemento.setText(cliente.getComplemento());
+            detalhesCliente.fCidade.setText(cliente.getCidade());
+            detalhesCliente.comboEstado.setSelectedItem(cliente.getEstado());
+            detalhesCliente.fEmail.setText(cliente.getEmail());
+            detalhesCliente.fCelular.setText(cliente.getCelular());
+            detalhesCliente.fTelefone.setText(cliente.getTelefone());
+            detalhesCliente.fCep.setText(cliente.getCep());
+            detalhesCliente.setCliente(cliente);
         }
     }
     
-    public void abrirTelaDetalhesLivro(int id){
+    public void abrirTelaDetalhesLivro(Livro livro){
         if(detalhesLivro == null || !detalhesLivro.isDisplayable()&& !detalhesLivro.isVisible()){
             detalhesLivro = new DetalhesLivro();
             deskPane.add(detalhesLivro);
             this.openFrameInCenter(detalhesLivro);
-            detalhesLivro.fEstoque.setText(MockLivro.listaLivro.get(id).getEstoque().toString());
-            detalhesLivro.fieldValor.setText(MockLivro.listaLivro.get(id).getValor().toString());
-            detalhesLivro.fTitulo.setText(MockLivro.listaLivro.get(id).getTitulo());
-            detalhesLivro.fAutor.setText(MockLivro.listaLivro.get(id).getAutor());
-            detalhesLivro.fEditora.setText(MockLivro.listaLivro.get(id).getEditora());
-            detalhesLivro.fEdicao.setText(MockLivro.listaLivro.get(id).getEdicao());
-            detalhesLivro.fIsbn.setText(MockLivro.listaLivro.get(id).getIsbn());
-            detalhesLivro.fAltura.setText(MockLivro.listaLivro.get(id).getAltura());
-            detalhesLivro.fPeso.setText(MockLivro.listaLivro.get(id).getPeso());
-            detalhesLivro.fLargura.setText(MockLivro.listaLivro.get(id).getLargura());
-            detalhesLivro.fNumeroPaginas.setText(MockLivro.listaLivro.get(id).getNumeroPaginas().toString());
-            detalhesLivro.comboIdioma.setSelectedItem(MockLivro.listaLivro.get(id).getIdioma());
-            detalhesLivro.comboGenero.setSelectedItem(MockLivro.listaLivro.get(id).getGenero());
-            detalhesLivro.fNumeroPaginas.setText(MockLivro.listaLivro.get(id).getNumeroPaginas().toString() + (""));
-            detalhesLivro.setId(id);
+            detalhesLivro.fEstoque.setText(livro.getEstoque().toString());
+            detalhesLivro.fieldValor.setText(livro.getValor().toString());
+            detalhesLivro.fTitulo.setText(livro.getTitulo());
+            detalhesLivro.fAutor.setText(livro.getAutor());
+            detalhesLivro.fEditora.setText(livro.getEditora());
+            detalhesLivro.fEdicao.setText(livro.getEdicao());
+            detalhesLivro.fIsbn.setText(livro.getIsbn());
+            detalhesLivro.fAltura.setText(livro.getAltura());
+            detalhesLivro.fPeso.setText(livro.getPeso());
+            detalhesLivro.fLargura.setText(livro.getLargura());
+            detalhesLivro.fNumeroPaginas.setText(livro.getNumeroPaginas().toString());
+            detalhesLivro.comboIdioma.setSelectedItem(livro.getIdioma());
+            detalhesLivro.comboGenero.setSelectedItem(livro.getGenero());
+            detalhesLivro.fNumeroPaginas.setText(livro.getNumeroPaginas().toString() + (""));
+            detalhesLivro.setLivro(livro);
         }
         detalhesLivro.getDesktopPane().getDesktopManager().deiconifyFrame(detalhesLivro);
         detalhesLivro.toFront();

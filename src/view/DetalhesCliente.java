@@ -17,15 +17,16 @@ import service.ServiceCliente;
 public class DetalhesCliente extends javax.swing.JInternalFrame {
     CadastroCliente cadastroCliente = null;
     
-    private int id;
+    private Cliente cliente = new Cliente();
 
-    public int getId() {
-        return id;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
+    
     
     
     /**
@@ -444,7 +445,7 @@ public class DetalhesCliente extends javax.swing.JInternalFrame {
 
         jLabel14.setText("CEP");
 
-        comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Paraná", "Paraíba", "Pará", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondonia", "Roraima", "Santa Catarina", "Sergipe", "São Paulo", "Tocantins" }));
+        comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Paraná", "Paraíba", "Pará", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondonia", "Roraima", "Santa Catarina", "Sergipe", "São Paulo", "Tocantins" }));
 
         fComplemento.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -583,8 +584,7 @@ public class DetalhesCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField8ActionPerformed
 
     private void buttonAtualizarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAtualizarClienteActionPerformed
-        Cliente cliente = new Cliente();
-        cliente.setId(getId());
+        
         cliente.setNome(fNome.getText());
         cliente.setSobrenome(fSobrenome.getText());
         cliente.setCpf(fCpf.getText());
@@ -775,8 +775,7 @@ public class DetalhesCliente extends javax.swing.JInternalFrame {
 
     private void buttonExcluirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirClienteActionPerformed
         try{
-            System.out.println(getId());
-        MockCliente.excluirCliente(getId());
+        ServiceCliente.excluirCliente(cliente);
         JOptionPane.showMessageDialog(rootPane, "Cadastro de cliente excluido com sucesso!");
         this.dispose();
         } catch(Exception e){

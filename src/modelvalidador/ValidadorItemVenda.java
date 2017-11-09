@@ -18,8 +18,8 @@ public class ValidadorItemVenda {
         if(item.getLivro() == null){
             throw new ItemVendaException("Selecione um livro");
         }
-        if(item.getQuantidade() <= 0 || item.getQuantidade() == null){
-            throw new ItemVendaException("Selecione uma quantidade ");
+        if(item.getQuantidade() <= 0){
+            throw new ItemVendaException("Selecione uma quantidade maior que 0");
         }
         
         for(ItemVenda itemVenda : venda.getListaItemVenda()){

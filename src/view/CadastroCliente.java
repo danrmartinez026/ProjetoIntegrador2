@@ -659,7 +659,6 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fSobrenomeKeyTyped
 
     private void fNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fNomeKeyTyped
-        System.out.println("oi");
         String permitidos = "abcdefghijklmnopqrstuwyvxz ".toUpperCase();
         Character ch = evt.getKeyChar();
         if(!permitidos.contains(ch.toString().toUpperCase())){

@@ -242,7 +242,7 @@ public class PesquisaCliente extends javax.swing.JInternalFrame {
             if(id >= 0){
                 for(Cliente cliente : MockCliente.listaCliente){
                     if(tablePesquisaCliente.getValueAt(tablePesquisaCliente.getSelectedRow() , 0) == cliente.getId()){
-                        parent.abrirTelaDetalhesCliente((int)tablePesquisaCliente.getValueAt(tablePesquisaCliente.getSelectedRow() , 0));
+                        parent.abrirTelaDetalhesCliente(cliente);
                         DefaultTableModel model = (DefaultTableModel) tablePesquisaCliente.getModel();
                         model.setRowCount(0);
                         pesquisaDetalhada.setEnabled(false);
@@ -254,6 +254,16 @@ public class PesquisaCliente extends javax.swing.JInternalFrame {
         } catch (Exception e){
             //JOptionPane.showMessageDialog(this, "Selecione 1 item para exibir detalhes");
         }
+
+//        for(Cliente cliente : MockCliente.listaCliente){
+//                    if(tablePesquisaCliente.getValueAt(tablePesquisaCliente.getSelectedRow() , 0) == cliente.getId()){
+//                        parent.abrirTelaDetalhesCliente(cliente);
+//                        DefaultTableModel model = (DefaultTableModel) tablePesquisaCliente.getModel();
+//                        model.setRowCount(0);
+//                        pesquisaDetalhada.setEnabled(false);
+//                    }
+//                }
+//        
     }//GEN-LAST:event_pesquisaDetalhadaActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

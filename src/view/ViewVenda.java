@@ -19,6 +19,7 @@ import static mocks.MockLivro.listaLivro;
 import models.Livro;
 import models.ItemVenda;
 import service.ServiceItemVenda;
+import service.ServiceLivro;
 import service.ServiceVenda;
 
 /**
@@ -40,10 +41,6 @@ public class ViewVenda extends javax.swing.JInternalFrame {
     public ViewVenda(TelaPrincipal parent) {
         initComponents();
         this.parent = parent;
-    
-        
-
-        
 
     }
 
@@ -235,6 +232,11 @@ public class ViewVenda extends javax.swing.JInternalFrame {
 
         jLabel8.setText("  Quantidade");
 
+        fQuantidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fQuantidadeActionPerformed(evt);
+            }
+        });
         fQuantidade.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 fQuantidadeKeyTyped(evt);
@@ -637,7 +639,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
             if(id >= 0){
                 for(Livro livro : MockLivro.listaLivro){
                     if(id == livro.getId()){
-                        parent.abrirTelaDetalhesLivro(id);
+                        parent.abrirTelaDetalhesLivro(livro);
                         DefaultTableModel model = (DefaultTableModel) tablePesquisa.getModel();
                         model.setRowCount(0);
                         pesquisaDetalhada.setEnabled(false);
@@ -667,7 +669,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
 
     private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
         if(tablePesquisa.getSelectedRow() < 0){
-            JOptionPane.showMessageDialog(rootPane, "Selecione Um livro");
+            JOptionPane.showMessageDialog(rootPane, "Selecione um Livro");
             
         } else if(fQuantidade.getText().equals("")){
             JOptionPane.showMessageDialog(rootPane, "Selecione uma quantidade");
@@ -741,10 +743,12 @@ public class ViewVenda extends javax.swing.JInternalFrame {
     private void buttonConcluirVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConcluirVendaActionPerformed
         venda.setValor(Double.parseDouble(fValorTotal.getText()));
         venda.setData(new Date());
-        
         try{
             if(JOptionPane.showConfirmDialog(parent, "Dedeja concluir a venda") == 0);
                 ServiceVenda.inserirVenda(venda);
+                for(ItemVenda item: venda.getListaItemVenda()){
+                    ServiceLivro.atualizarEstoque(item.getLivro(), item.getQuantidade());
+                }
                 this.dispose();
         } catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, e.getMessage(),"Erro", 
@@ -759,6 +763,10 @@ public class ViewVenda extends javax.swing.JInternalFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonCancelarVendaActionPerformed
+
+    private void fQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fQuantidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fQuantidadeActionPerformed
         
     
 

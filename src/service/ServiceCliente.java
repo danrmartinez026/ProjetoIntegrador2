@@ -36,4 +36,12 @@ public class ServiceCliente {
             throw new DataSourceException("Erro na fonte de dados", e);
         }
     }
+    
+    public static void excluirCliente(Cliente cliente) throws DataSourceException{
+        try{
+            MockCliente.excluirCliente(cliente);
+        } catch(Exception e){
+            throw new DataSourceException("Erro na fonte de dados", e);
+        }
+    }
 }
