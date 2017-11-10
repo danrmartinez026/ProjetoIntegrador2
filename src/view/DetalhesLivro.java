@@ -121,7 +121,7 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
 
         jLabel27.setText("Gênero *");
 
-        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Drama", "Romance", "Aventura", "Sci-fi" }));
+        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Drama", "Romance", "Aventura", "Sci-Fi", "Infantil", "Religiao", "Didatico" }));
 
         jLabel32.setText("Idioma *");
 
@@ -523,6 +523,8 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
         livro.setEdicao(fEdicao.getText());
         livro.setAltura(fAltura.getText());
         livro.setIsbn(fIsbn.getText());
+        livro.setNumeroPaginas((fNumeroPaginas.getText())); 
+        
         try{
             livro.setValor(Float.parseFloat(fieldValor.getText()) + 0.00f);
             livro.setEstoque(Integer.parseInt(fEstoque.getText()));
@@ -530,11 +532,7 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Erro");
         }
         
-        try{
-            livro.setNumeroPaginas(Integer.parseInt(fNumeroPaginas.getText())); 
-        }catch(Exception e){
-             JOptionPane.showMessageDialog(rootPane, "Erro");
-        }      
+            
         
         try{
             ServiceLivro.atualizarCadastro(livro);

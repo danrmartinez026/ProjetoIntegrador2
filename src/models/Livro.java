@@ -19,7 +19,7 @@ public class Livro {
     private String isbn;
     private String edicao;
     private String peso;
-    private Integer numeroPaginas;
+    private String numeroPaginas;
     private String altura;
     private String largura;
     private Integer id;
@@ -122,11 +122,11 @@ public class Livro {
         this.genero = genero;
     }
 
-    public Integer getNumeroPaginas() {
+    public String getNumeroPaginas() {
         return numeroPaginas;
     }
 
-    public void setNumeroPaginas(Integer numeroPaginas) {
+    public void setNumeroPaginas(String numeroPaginas) {
         this.numeroPaginas = numeroPaginas;
     }
 

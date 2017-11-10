@@ -8,6 +8,7 @@ package view;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Graphics;
+import java.text.DecimalFormat;
 import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
 import javax.swing.table.DefaultTableModel;
@@ -182,7 +183,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         detalhesRelatorio.fNome.setText(MockVenda.listaVenda.get(id).getCliente().getNome() +
                  " " + MockVenda.listaVenda.get(id).getCliente().getSobrenome());
         detalhesRelatorio.fCpf.setText(MockVenda.listaVenda.get(id).getCliente().getCpf());
-        detalhesRelatorio.fValorTotal.setText(String.valueOf(MockVenda.listaVenda.get(id).getValor()));
+        
+        DecimalFormat df = new DecimalFormat("#,###.##");  
+        detalhesRelatorio.fValorTotal.setText(df.format(MockVenda.listaVenda.get(id).getValor()));
         
         DefaultTableModel model = (DefaultTableModel) detalhesRelatorio.tableRelatorio.getModel();
          model.setRowCount(0);
@@ -194,7 +197,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
              row[2] = item.getLivro().getEditora();
              row[3] = item.getLivro().getIsbn();
              row[4] = item.getQuantidade();
-             row[5] = item.getValorUnitario();
+             row[5] = item.getValorUnitario() + 0.00f;
              model.addRow(row);
          }
          
@@ -205,11 +208,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 !detalhesCliente.isVisible()){
             detalhesCliente = new DetalhesCliente();
             deskPane.add(detalhesCliente);
+            
             this.openFrameInCenter(detalhesCliente);
             detalhesCliente.fNome.setText(cliente.getNome());
             detalhesCliente.fSobrenome.setText(cliente.getSobrenome());
             detalhesCliente.fCpf.setText(cliente.getCpf());
+            detalhesCliente.fCpf.setEditable(false);
             detalhesCliente.fRg.setText(cliente.getRg());
+            detalhesCliente.fRg.setEditable(false);
             detalhesCliente.comboSexo.setSelectedItem(cliente.getSexo());
             detalhesCliente.fRua.setText(cliente.getRua());
             detalhesCliente.fBairro.setText(cliente.getBairro());

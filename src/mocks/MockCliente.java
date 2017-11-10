@@ -21,7 +21,7 @@ public class MockCliente {
         clienteLista.setNome("Danilo");
         clienteLista.setSobrenome("Martinez");
         clienteLista.setSexo("Masculino");
-        clienteLista.setCpf("395.194.488-96");
+        clienteLista.setCpf("395.194.488-95");
         clienteLista.setRg("49.313.683-6");
         
         try{
@@ -34,7 +34,7 @@ public class MockCliente {
         clienteLista1.setNome("Ronaldo");
         clienteLista1.setSobrenome("Fenomeno");
         clienteLista1.setSexo("Masculino");
-        clienteLista1.setCpf("394.194.488-96");
+        clienteLista1.setCpf("394.194.488-95");
         clienteLista1.setRg("49.313.683-6");
         
         try{

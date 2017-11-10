@@ -130,7 +130,7 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
 
         jLabel27.setText("Gênero");
 
-        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Drama", "Romance", "Aventura", "Sci-Fi" }));
+        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Drama", "Romance", "Aventura", "Sci-Fi", "Infantil", "Religiao", "Didatico" }));
 
         jLabel32.setText("Idioma");
 
@@ -418,23 +418,23 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
         Livro livro = new Livro();
         
-        livro.setTitulo(fTitulo.getText());
-        livro.setEditora(fEditora.getText());
-        livro.setAutor(fAutor.getText());
-        livro.setGenero(comboGenero.getSelectedItem().toString());  
-        livro.setIdioma(comboIdioma.getSelectedItem().toString());
-        livro.setLargura(fLargura.getText());
-        livro.setPeso(fPeso.getText());
-        livro.setEdicao(fEdicao.getText());
-        livro.setAltura(fAltura.getText());
-        livro.setIsbn(fIsbn.getText());
-        livro.setEstoque(Integer.parseInt(fEstoque.getText()));
-        livro.setValor(Float.parseFloat(fieldValor.getText()));
-        
         try{
-            livro.setNumeroPaginas(Integer.parseInt(fNumeroPaginas.getText())); 
+            livro.setTitulo(fTitulo.getText());
+            livro.setEditora(fEditora.getText());
+            livro.setAutor(fAutor.getText());
+            livro.setGenero(comboGenero.getSelectedItem().toString());  
+            livro.setIdioma(comboIdioma.getSelectedItem().toString());
+            livro.setLargura(fLargura.getText());
+            livro.setPeso(fPeso.getText());
+            livro.setEdicao(fEdicao.getText());
+            livro.setAltura(fAltura.getText());
+            livro.setIsbn(fIsbn.getText());
+            livro.setEstoque(Integer.parseInt(fEstoque.getText()));
+            livro.setValor(Float.parseFloat(fieldValor.getText()) + 0.00f);
+            livro.setNumeroPaginas(fNumeroPaginas.getText()); 
         }catch(Exception e){
-            
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(),"Erro", 
+            JOptionPane.ERROR_MESSAGE);
         }      
         
         try{

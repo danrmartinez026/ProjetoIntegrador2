@@ -24,7 +24,7 @@ public class MockLivro {
         Livro livroUp = new Livro();
         
         livroUp.setTitulo("Harry Potter");
-        livroUp.setValor(200.75f);
+        livroUp.setValor(200.72f);
         livroUp.setEstoque(20);
         livroUp.setAutor("J.K. Rowlling");
         livroUp.setEditora("Abril");
@@ -32,7 +32,7 @@ public class MockLivro {
         livroUp.setIdioma("Portugues");
         livroUp.setIsbn("100000");
         livroUp.setEdicao("10");
-        livroUp.setNumeroPaginas(200);
+        livroUp.setNumeroPaginas("200");
         
         try{
         inserirLivro(livroUp);
@@ -51,7 +51,7 @@ public class MockLivro {
         livroUp1.setIdioma("Portugues");
         livroUp1.setIsbn("1004250");
         livroUp1.setEdicao("2");
-        livroUp1.setNumeroPaginas(400);
+        livroUp1.setNumeroPaginas("400");
         
         try{
         inserirLivro(livroUp1);
@@ -70,7 +70,7 @@ public class MockLivro {
         livroUp12.setIdioma("Portugues");
         livroUp12.setIsbn("2550");
         livroUp12.setEdicao("8");
-        livroUp12.setNumeroPaginas(800);
+        livroUp12.setNumeroPaginas("800");
         
         try{
         inserirLivro(livroUp12);

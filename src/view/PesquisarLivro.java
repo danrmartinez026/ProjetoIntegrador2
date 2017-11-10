@@ -99,7 +99,7 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
             }
         });
 
-        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONAR", "Drama", "Romance", "Aventura", "Sci-fi" }));
+        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Drama", "Romance", "Aventura", "Sci-Fi", "Infantil", "Religiao", "Didatico" }));
         comboGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboGeneroActionPerformed(evt);

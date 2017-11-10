@@ -6,7 +6,6 @@
 package view;
 
 import javax.swing.JOptionPane;
-import mocks.MockCliente;
 import models.Cliente;
 import service.ServiceCliente;
 
@@ -676,9 +675,9 @@ public class DetalhesCliente extends javax.swing.JInternalFrame {
             evt.consume();
         }
         
-        if(fNumero.getText().length() == 4){
+        if(fNumero.getText().length() == 5){
             evt.consume();
-            JOptionPane.showMessageDialog(rootPane, "Maximo 4 Numeros");
+            JOptionPane.showMessageDialog(rootPane, "Maximo 5 Numeros");
         }       
     }//GEN-LAST:event_fNumeroKeyTyped
 

@@ -26,6 +26,12 @@ public class ValidadorCliente {
             
             if(cliente.getRg().equals("  .   .   - ")){
                 throw new ClienteException ("Preencha todos os campos marcados com: ( * )");
+            } else {
+                for(Cliente cli: MockCliente.listaCliente){
+                    if(cli.getRg().equals(cliente.getRg())&& cli.getId() != cliente.getId()){
+                        throw new ClienteException ("RG ja cadastrado em outro cliente");
+                    }
+                }
             }
             
             if(cliente.getCpf().equals("   .   .   -  ")){
@@ -42,7 +48,7 @@ public class ValidadorCliente {
                 }
                 
                 for(Cliente cli: MockCliente.listaCliente){
-                    if(cli.getCpf().equals(cliente.getCpf())){
+                    if(cli.getCpf().equals(cliente.getCpf()) && cli.getId() != cliente.getId()){
                         throw new ClienteException ("CPF ja cadastrado em outro cliente");
                     }
                 }
