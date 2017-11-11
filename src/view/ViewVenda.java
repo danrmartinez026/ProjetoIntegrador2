@@ -90,7 +90,6 @@ public class ViewVenda extends javax.swing.JInternalFrame {
         fValorTotal = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
 
-        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);

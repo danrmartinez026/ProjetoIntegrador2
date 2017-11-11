@@ -120,7 +120,6 @@ public class DetalhesCliente extends javax.swing.JInternalFrame {
         jLabel22.setText("*");
 
         setBorder(null);
-        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
@@ -783,8 +782,9 @@ public class DetalhesCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_buttonExcluirClienteActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.dispose();
-
+        if(JOptionPane.showConfirmDialog(this, "Nao sair sem Atualizar o cliente?") == 0){
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     

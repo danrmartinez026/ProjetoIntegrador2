@@ -77,7 +77,6 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
             }
         });
 
-        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
@@ -612,8 +611,9 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fEstoqueKeyTyped
 
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
-        this.dispose();
-
+        if(JOptionPane.showConfirmDialog(this, "Deseja canelar o Cadastro?") == 0){
+            this.dispose();
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonCancelarActionPerformed
 

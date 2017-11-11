@@ -95,7 +95,6 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         });
 
         setBorder(null);
-        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
@@ -252,7 +251,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         jLabel8.setText("Celular");
 
         try {
-            fCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/ #####-####")));
+            fCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -597,8 +596,9 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fRgKeyTyped
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.dispose();
-
+        if(JOptionPane.showConfirmDialog(this, "Deseja cancelar o cadastro") == 0){
+            this.dispose();
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 

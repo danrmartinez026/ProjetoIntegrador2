@@ -49,16 +49,22 @@ public class ValidadorLivro {
                 throw new LivroException ("Preencha todos os campos marcados com: ( * )");
             }
             
-           if(!livro.getPeso().equals("")){
-               throw new LivroException ("Informe um Peso");
-           }
+            if(!livro.getPeso().equals("")){
+                if(Integer.valueOf(livro.getPeso()) <= 10){
+                    throw new LivroException ("Informe um Peso maior que 10");
+                }
+            }
             
             if(!livro.getAltura().equals("")){
-                throw new LivroException ("Informe uma altura");
+                if(Integer.valueOf(livro.getAltura()) <= 5){
+                    throw new LivroException ("Informe uma altura maior que 5");
+                }
             }
             
             if(!livro.getLargura().equals("")){
-                throw new LivroException ("Informe uma largura");
+                if(Integer.valueOf(livro.getLargura()) <= 5){
+                    throw new LivroException ("Informe uma largura maior que 5");
+                }
             }
             
             if(livro.getValor() == null){

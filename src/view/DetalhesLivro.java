@@ -87,7 +87,6 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
             }
         });
 
-        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
@@ -532,15 +531,12 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Erro");
         }
         
-            
-        
         try{
             ServiceLivro.atualizarCadastro(livro);
         } catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, e.getMessage(),"Erro", 
             JOptionPane.ERROR_MESSAGE);
             return;
-        
         }
         
         JOptionPane.showMessageDialog(this, "Livro Atualizado");
@@ -548,7 +544,9 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_buttonAtualizarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        this.dispose();  
+        if(JOptionPane.showConfirmDialog(this, "Deseja sair sem Atualizar o Livro?") == 0){
+            this.dispose();
+        } 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void fEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fEstoqueActionPerformed
