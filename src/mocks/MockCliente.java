@@ -16,49 +16,6 @@ import java.util.List;
  */
 public class MockCliente {
     
-    public static void falsoCliente(){
-        Cliente clienteLista = new Cliente();
-        clienteLista.setNome("Danilo");
-        clienteLista.setSobrenome("Martinez");
-        clienteLista.setSexo("Masculino");
-        clienteLista.setCpf("395.194.488-95");
-        clienteLista.setRg("49.313.683-6");
-        
-        try{
-        inserirCliente(clienteLista);
-        } catch (Exception e){
-            
-        }
-        
-        Cliente clienteLista1 = new Cliente();
-        clienteLista1.setNome("Ronaldo");
-        clienteLista1.setSobrenome("Fenomeno");
-        clienteLista1.setSexo("Masculino");
-        clienteLista1.setCpf("394.194.488-95");
-        clienteLista1.setRg("49.313.683-6");
-        
-        try{
-        inserirCliente(clienteLista1);
-        } catch (Exception e){
-            
-        }
-        
-        Cliente clienteLista2 = new Cliente();
-        clienteLista2.setNome("Juliana");
-        clienteLista2.setSobrenome("Juliete");
-        clienteLista2.setSexo("Feminino");
-        clienteLista2.setCpf("395.194.488-95");
-        clienteLista2.setRg("49.313.683-6");
-        
-        try{
-        inserirCliente(clienteLista2);
-        } catch (Exception e){
-            
-        }
-        
-        
-    }
-    
     //gerador de id
     private static int totalCliente = 0;
     

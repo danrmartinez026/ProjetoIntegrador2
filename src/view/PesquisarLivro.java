@@ -58,6 +58,7 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
         pesquisaDetalhada = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
+        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);

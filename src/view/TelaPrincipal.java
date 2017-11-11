@@ -361,8 +361,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         //</editor-fold>
         
         /* Create and display the form */
-        MockCliente.falsoCliente();
-        MockLivro.falsoLivro();
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

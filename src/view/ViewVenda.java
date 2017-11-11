@@ -86,10 +86,11 @@ public class ViewVenda extends javax.swing.JInternalFrame {
         tableCarrinho = new javax.swing.JTable();
         buttonCancelarVenda = new javax.swing.JButton();
         buttonAdd = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        buttoRetirarItem = new javax.swing.JButton();
         fValorTotal = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
 
+        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
@@ -444,10 +445,10 @@ public class ViewVenda extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("Retirar Item");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttoRetirarItem.setText("Retirar Item");
+        buttoRetirarItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttoRetirarItemActionPerformed(evt);
             }
         });
 
@@ -467,7 +468,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(146, 146, 146)
-                .addComponent(jButton1)
+                .addComponent(buttoRetirarItem)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buttonAdd)
                 .addGap(111, 111, 111))
@@ -481,7 +482,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonAdd)
-                    .addComponent(jButton1))
+                    .addComponent(buttoRetirarItem))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -547,7 +548,6 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                     row[1] = cliente.getNome();
                     row[2] = cliente.getSobrenome();
                     row[3] = cliente.getCpf();
-                    
                     model.addRow(row);
                 }
             }
@@ -560,23 +560,18 @@ public class ViewVenda extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tablePesquisaMouseClicked
 
     private void tablePesquisaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePesquisaMouseReleased
-        // TODO add your handling code here:
     }//GEN-LAST:event_tablePesquisaMouseReleased
 
     private void fTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fTituloActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_fTituloActionPerformed
 
     private void fEditoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fEditoraActionPerformed
-
     }//GEN-LAST:event_fEditoraActionPerformed
 
     private void comboGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboGeneroActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_comboGeneroActionPerformed
 
     private void fAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fAutorActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_fAutorActionPerformed
 
     
@@ -738,7 +733,6 @@ public class ViewVenda extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fQuantidadeKeyTyped
 
     private void buttonConcluirVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConcluirVendaActionPerformed
-        //venda.setValor(Double.parseDouble(fValorTotal.getText()));
         venda.setData(new Date());
         try{
             if(JOptionPane.showConfirmDialog(parent, "Dedeja concluir a venda") == 0);
@@ -757,15 +751,12 @@ public class ViewVenda extends javax.swing.JInternalFrame {
         if(JOptionPane.showConfirmDialog(parent, "Deseja cancelar a venda") == 0){
             this.dispose();
         }
-
-        // TODO add your handling code here:
     }//GEN-LAST:event_buttonCancelarVendaActionPerformed
 
     private void fQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fQuantidadeActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_fQuantidadeActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttoRetirarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttoRetirarItemActionPerformed
         if(tableCarrinho.getSelectedRow() < 0){
             JOptionPane.showMessageDialog(rootPane, "Selecione um item para Excluir");
         } else{
@@ -791,19 +782,25 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                     model.addRow(row);
                 }
             }
-            double valorTotal = 0;
-            for(ItemVenda itemVenda : venda.getListaItemVenda()){
-                valorTotal = (valorTotal + itemVenda.getLivro().getValor()) * (itemVenda.getQuantidade());
+            
+            if(model.getRowCount() == 0){
+                fValorTotal.setText("");
+            } else {
+                double valorTotal = 0;
+                for(ItemVenda itemVenda : venda.getListaItemVenda()){
+                    valorTotal = (valorTotal + itemVenda.getLivro().getValor()) * (itemVenda.getQuantidade());
+                }
+                venda.setValor(valorTotal);
+                DecimalFormat df = new DecimalFormat("#.##0.00");  
+                fValorTotal.setText(df.format(valorTotal));
             }
-            venda.setValor(valorTotal);
-            DecimalFormat df = new DecimalFormat("#.##0.00");  
-            fValorTotal.setText(df.format(valorTotal));
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttoRetirarItemActionPerformed
         
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttoRetirarItem;
     private javax.swing.JButton buttonAdd;
     private javax.swing.JButton buttonCancelarVenda;
     private javax.swing.JButton buttonConcluirVenda;
@@ -817,7 +814,6 @@ public class ViewVenda extends javax.swing.JInternalFrame {
     private javax.swing.JTextField fQuantidade;
     private javax.swing.JTextField fTitulo;
     private javax.swing.JTextField fValorTotal;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

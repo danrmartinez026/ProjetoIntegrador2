@@ -81,7 +81,11 @@ public class Relatorio extends javax.swing.JInternalFrame {
             }
         });
 
-        fMes.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("MM"))));
+        try {
+            fMes.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         buttonDetalhes.setText("Ver Produtos");
         buttonDetalhes.setEnabled(false);
@@ -108,8 +112,8 @@ public class Relatorio extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
-                            .addComponent(fMes, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 57, Short.MAX_VALUE)))
+                            .addComponent(fMes, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 15, Short.MAX_VALUE)))
                 .addGap(77, 77, 77)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(buttonPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -202,6 +206,7 @@ public class Relatorio extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPesquisarActionPerformed
+        buttonDetalhes.setEnabled(false);
         Calendar c = Calendar.getInstance();
         DefaultTableModel model = (DefaultTableModel) tableRelatorio.getModel();
         model.setRowCount(0);
@@ -213,13 +218,14 @@ public class Relatorio extends javax.swing.JInternalFrame {
                     if(fTitulo.getText().toUpperCase().equals(item.getLivro().getTitulo().toUpperCase())){
                         titulo = true;
                     }
+                }
             }
-        }
+            
             c.setTime(venda.getData());
-            Format month = new SimpleDateFormat("MM");
-            Format year = new SimpleDateFormat("dd,MM,YYYY");
-            String mes = month.format(c.getTime());
-            if(mes.equals(fMes.getText()) || fCliente.getText().equals(venda.getCliente().getNome())
+            Format monthYear = new SimpleDateFormat("MM/YYYY");
+            Format year = new SimpleDateFormat("dd/MM/YYYY");
+            String data = monthYear.format(c.getTime());
+            if(data.equals(fMes.getText()) || fCliente.getText().toUpperCase().equals(venda.getCliente().getNome().toUpperCase())
                     || titulo){
                 Object[] row = new Object[5];
                 row[0] = venda.getIdVenda();
@@ -229,6 +235,7 @@ public class Relatorio extends javax.swing.JInternalFrame {
                 model.addRow(row);
             }
         }
+        
     }//GEN-LAST:event_buttonPesquisarActionPerformed
 
     private void tableRelatorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableRelatorioMouseClicked

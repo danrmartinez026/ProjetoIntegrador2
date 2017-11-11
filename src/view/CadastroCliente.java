@@ -95,6 +95,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         });
 
         setBorder(null);
+        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);

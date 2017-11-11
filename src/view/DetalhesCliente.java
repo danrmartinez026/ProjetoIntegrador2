@@ -120,6 +120,7 @@ public class DetalhesCliente extends javax.swing.JInternalFrame {
         jLabel22.setText("*");
 
         setBorder(null);
+        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
@@ -772,12 +773,14 @@ public class DetalhesCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fTelefoneKeyTyped
 
     private void buttonExcluirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirClienteActionPerformed
-        try{
-        ServiceCliente.excluirCliente(cliente);
-        JOptionPane.showMessageDialog(rootPane, "Cadastro de cliente excluido com sucesso!");
-        this.dispose();
-        } catch(Exception e){
-            JOptionPane.showMessageDialog(rootPane, "Erro");
+        if(JOptionPane.showConfirmDialog(this, "Deseja realmente excluir este cadastro") == 0){
+            try{
+            ServiceCliente.excluirCliente(cliente);
+            JOptionPane.showMessageDialog(rootPane, "Cadastro de cliente excluido com sucesso!");
+            this.dispose();
+            } catch(Exception e){
+                JOptionPane.showMessageDialog(rootPane, "Erro");
+            }
         }
     }//GEN-LAST:event_buttonExcluirClienteActionPerformed
 

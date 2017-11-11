@@ -87,6 +87,7 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
             }
         });
 
+        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
@@ -567,18 +568,16 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fEstoqueKeyTyped
 
     private void buttonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirActionPerformed
-        try{
-            ServiceLivro.excluirlivro(livro);
-            JOptionPane.showMessageDialog(rootPane, "Livro excluido");
-            this.dispose();
-        } catch(Exception e){
-            JOptionPane.showMessageDialog(rootPane, e.getMessage(),"Erro", 
-            JOptionPane.ERROR_MESSAGE);
-        }
-
-
-
-// TODO add your handling code here:
+        if(JOptionPane.showConfirmDialog(this, "Deseja realmente excluir este cadastro") == 0){  
+            try{
+                ServiceLivro.excluirlivro(livro);
+                JOptionPane.showMessageDialog(rootPane, "Livro excluido");
+                this.dispose();
+            } catch(Exception e){
+                JOptionPane.showMessageDialog(rootPane, e.getMessage(),"Erro", 
+                JOptionPane.ERROR_MESSAGE);
+            }
+        } 
     }//GEN-LAST:event_buttonExcluirActionPerformed
 
 

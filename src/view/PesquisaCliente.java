@@ -59,6 +59,7 @@ public class PesquisaCliente extends javax.swing.JInternalFrame {
 
         jLabel5.setText("jLabel5");
 
+        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
