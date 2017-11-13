@@ -445,7 +445,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
                         .addComponent(jLabel11)
                         .addGap(18, 18, 18)
                         .addComponent(fCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 1, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
