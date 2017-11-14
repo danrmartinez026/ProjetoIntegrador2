@@ -98,9 +98,9 @@ public class ValidadorCliente {
     
     
     public static boolean validarCpf (String cpf ){
-        int     d1, d2;
-        int     digito1, digito2, resto;
-        int     digitoCPF;
+        int     d1 = 0, d2 = 0;
+        int     digito1 = 0, digito2 = 0, restoDig1 = 0;
+        int     restoDig2 = 0 ,digitoCPF = 0;
         String  nDigResult;
         
         if (cpf.equals("00000000000") ||cpf.equals("11111111111") ||
@@ -111,33 +111,34 @@ public class ValidadorCliente {
              return(false);
         }
         
-        d1 = d2 = 0;
-        digito1 = digito2 = resto = 0;
-        
-        for (int nCount = 1; nCount < cpf.length() -1; nCount++){
+        for (int nCount = 1; nCount < cpf.length(); nCount++){
             digitoCPF = Integer.valueOf (cpf.substring(nCount -1, nCount)).intValue();
-            d1 = d1 + ( 11 - nCount ) * digitoCPF;
+            if(nCount < 10){
+                d1 = d1 + ( 11 - nCount ) * digitoCPF;
+            }
             d2 = d2 + ( 12 - nCount ) * digitoCPF;
         }
         
-        resto = (d1 % 11);
+        restoDig1 = (d1 * 10) % 11;
+        restoDig2 = (d2 * 10) % 11;
         
-        if (resto < 2){
-            digito1 = 0;
-        } else {
-            digito1 = 11 - resto;
-            d2 += 2 * digito1;
-            resto = (d2 % 11);
+        if(restoDig1 == 10){
+            restoDig1 = 0;
         }
         
-        if (resto < 2){
-            digito2 = 0;
-        } else {
-            digito2 = 11 - resto;
-            String nDigVerific = cpf.substring (cpf.length()-2, cpf.length());
-            nDigResult = String.valueOf(digito1) + String.valueOf(digito2);
-            return nDigVerific.equals(nDigResult);
+        if(restoDig2 == 10){
+            restoDig2 = 0;
         }
+        
+        int n1 = Integer.valueOf(cpf.substring(9, 10));
+        int n2 = Integer.valueOf(cpf.substring(10,11));
+        
+        
+        if(n1 == restoDig1 && n2 == restoDig2){
+            return true;
+        }
+        
         return false;
+       
     }
 }

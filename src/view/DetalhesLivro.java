@@ -137,11 +137,7 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Valor *");
 
-        try {
-            fieldValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        fieldValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0.00"))));
 
         jLabel3.setText("Estoque *");
 

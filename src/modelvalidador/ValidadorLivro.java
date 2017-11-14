@@ -69,7 +69,7 @@ public class ValidadorLivro {
             
             if(livro.getValor() == null){
                 throw new LivroException ("Preencha todos os campos marcados com: ( * )");
-            }
+            } 
             
             if(livro.getEstoque() == null){
                 throw new LivroException ("Preencha todos os campos marcados com: ( * )");

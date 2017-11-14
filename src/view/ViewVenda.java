@@ -712,7 +712,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                 valorTotal = (valorTotal + itemVenda.getLivro().getValor()  * itemVenda.getQuantidade());
             }
             venda.setValor(valorTotal);
-            DecimalFormat df = new DecimalFormat("#,###.##");  
+            DecimalFormat df = new DecimalFormat("##,###.##");  
             fValorTotal.setText(df.format(valorTotal));
             buttonConcluirVenda.setEnabled(true);
             buttonCancelarVenda.setEnabled(true);
