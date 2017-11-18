@@ -15,7 +15,7 @@ import java.util.Date;
 public class Venda {
     private Cliente cliente;
     private ArrayList<ItemVenda> listaItemVenda = new ArrayList();
-    private double valor;
+    private String valor;
     private int idVenda;
     private Date data;
 
@@ -42,11 +42,11 @@ public class Venda {
 
 
 
-    public double getValor() {
+    public String getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(String valor) {
         this.valor = valor;
     }
 

@@ -48,6 +48,10 @@ public class MockLivro {
         }
     }
     
+    public static List<Livro> listar(){
+        return listaLivro;
+    }
+    
     public static void excluirLivro(Livro livro)throws Exception{
         listaLivro.remove(livro);
     }

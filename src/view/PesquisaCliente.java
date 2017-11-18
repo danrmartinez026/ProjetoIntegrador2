@@ -6,7 +6,6 @@
 package view;
 
 import java.util.List;
-import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import mocks.MockCliente;
@@ -240,7 +239,7 @@ public class PesquisaCliente extends javax.swing.JInternalFrame {
         try{
             int id = pesquisaCliente.get(tablePesquisaCliente.getSelectedRow()).getId();
             if(id >= 0){
-                for(Cliente cliente : MockCliente.listaCliente){
+                for(Cliente cliente : MockCliente.listar()){
                     if(tablePesquisaCliente.getValueAt(tablePesquisaCliente.getSelectedRow() , 0) == cliente.getId()){
                         parent.abrirTelaDetalhesCliente(cliente);
                         DefaultTableModel model = (DefaultTableModel) tablePesquisaCliente.getModel();
@@ -254,16 +253,6 @@ public class PesquisaCliente extends javax.swing.JInternalFrame {
         } catch (Exception e){
             //JOptionPane.showMessageDialog(this, "Selecione 1 item para exibir detalhes");
         }
-
-//        for(Cliente cliente : MockCliente.listaCliente){
-//                    if(tablePesquisaCliente.getValueAt(tablePesquisaCliente.getSelectedRow() , 0) == cliente.getId()){
-//                        parent.abrirTelaDetalhesCliente(cliente);
-//                        DefaultTableModel model = (DefaultTableModel) tablePesquisaCliente.getModel();
-//                        model.setRowCount(0);
-//                        pesquisaDetalhada.setEnabled(false);
-//                    }
-//                }
-//        
     }//GEN-LAST:event_pesquisaDetalhadaActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -344,11 +333,6 @@ public class PesquisaCliente extends javax.swing.JInternalFrame {
     private void tablePesquisaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePesquisaClienteMouseClicked
         pesquisaDetalhada.setEnabled(true);
     }//GEN-LAST:event_tablePesquisaClienteMouseClicked
-    
-    public void openFrameInCenter(JInternalFrame jif) {
-        
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonPesquisar;
     private javax.swing.JFormattedTextField fCpf;

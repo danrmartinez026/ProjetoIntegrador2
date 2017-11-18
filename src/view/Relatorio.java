@@ -72,7 +72,7 @@ public class Relatorio extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Titulo do Livro");
 
-        jLabel6.setText("Mês");
+        jLabel6.setText("Mês / Ano");
 
         buttonPesquisar.setText("Pesquisar");
         buttonPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -157,7 +157,7 @@ public class Relatorio extends javax.swing.JInternalFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Double.class
+                java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -212,7 +212,7 @@ public class Relatorio extends javax.swing.JInternalFrame {
         model.setRowCount(0);
         
         boolean titulo = false;
-        for(Venda venda:MockVenda.listaVenda){
+        for(Venda venda:MockVenda.listar()){
             if(!fTitulo.equals("")){
                 for(ItemVenda item : venda.getListaItemVenda()){
                     if(fTitulo.getText().toUpperCase().equals(item.getLivro().getTitulo().toUpperCase())){
@@ -235,7 +235,6 @@ public class Relatorio extends javax.swing.JInternalFrame {
                 model.addRow(row);
             }
         }
-        
     }//GEN-LAST:event_buttonPesquisarActionPerformed
 
     private void tableRelatorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableRelatorioMouseClicked

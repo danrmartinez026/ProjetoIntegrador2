@@ -27,9 +27,6 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
         this.parent = parent;
         initComponents();
         
-//    tablePesquisa.getColumnModel().getColumn(0).setMinWidth(0);
-//    tablePesquisa.getColumnModel().getColumn(0).setMaxWidth(0);
-//    tablePesquisa.getColumnModel().getColumn(0).setWidth(0);
     }
 
     /**
@@ -165,7 +162,7 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 true, false, false, false, false, false, false
@@ -181,6 +178,7 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
         });
         tablePesquisa.setToolTipText("");
         tablePesquisa.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tablePesquisa.getColumnModel().getColumn(0).setMinWidth(0);         tablePesquisa.getColumnModel().getColumn(0).setMaxWidth(0);         tablePesquisa.getColumnModel().getColumn(0).setWidth(0);
         tablePesquisa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablePesquisaMouseClicked(evt);
@@ -307,7 +305,7 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
         try{
             int id = pesquisaLivro.get(tablePesquisa.getSelectedRow()).getId();
             if(id >= 0){
-                for(Livro livro : MockLivro.listaLivro){
+                for(Livro livro : MockLivro.listar()){
                     if(tablePesquisa.getValueAt(tablePesquisa.getSelectedRow() , 0) == livro.getId()){
                         parent.abrirTelaDetalhesLivro(livro);
                         DefaultTableModel model = (DefaultTableModel) tablePesquisa.getModel();

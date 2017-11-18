@@ -12,8 +12,6 @@ import java.text.DecimalFormat;
 import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
 import javax.swing.table.DefaultTableModel;
-import mocks.MockLivro;
-import mocks.MockCliente;
 import mocks.MockVenda;
 import models.Cliente;
 import models.ItemVenda;
@@ -180,24 +178,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
         detalhesRelatorio = new DetalhesRelatorio();
         deskPane.add(detalhesRelatorio);
         this.openFrameInCenter(detalhesRelatorio);
-        detalhesRelatorio.fNome.setText(MockVenda.listaVenda.get(id).getCliente().getNome() +
-                 " " + MockVenda.listaVenda.get(id).getCliente().getSobrenome());
-        detalhesRelatorio.fCpf.setText(MockVenda.listaVenda.get(id).getCliente().getCpf());
+        detalhesRelatorio.fNome.setText(MockVenda.listar().get(id).getCliente().getNome() +
+                 " " + MockVenda.listar().get(id).getCliente().getSobrenome());
+        detalhesRelatorio.fCpf.setText(MockVenda.listar().get(id).getCliente().getCpf());
         
-        DecimalFormat df = new DecimalFormat("#,###.##");  
-        detalhesRelatorio.fValorTotal.setText(df.format(MockVenda.listaVenda.get(id).getValor()));
+        DecimalFormat df = new DecimalFormat("##,###.##");  
+        detalhesRelatorio.fValorTotal.setText(df.format(Double.parseDouble(MockVenda.listar().get(id).getValor())));
         
         DefaultTableModel model = (DefaultTableModel) detalhesRelatorio.tableRelatorio.getModel();
          model.setRowCount(0);
          
-         for(ItemVenda item :MockVenda.listaVenda.get(id).getListaItemVenda() ){
+         for(ItemVenda item :MockVenda.listar().get(id).getListaItemVenda() ){
              Object[] row = new Object[6];
              row[0] = item.getLivro().getTitulo();
              row[1] = item.getLivro().getAutor();
              row[2] = item.getLivro().getEditora();
              row[3] = item.getLivro().getIsbn();
              row[4] = item.getQuantidade();
-             row[5] = item.getValorUnitario() + 0.00f;
+             row[5] = item.getValorUnitario();
              model.addRow(row);
          }
          
@@ -237,7 +235,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             deskPane.add(detalhesLivro);
             this.openFrameInCenter(detalhesLivro);
             detalhesLivro.fEstoque.setText(livro.getEstoque().toString());
-            detalhesLivro.fieldValor.setText(livro.getValor().toString());
+            detalhesLivro.fValor.setText(livro.getValor().toString());
             detalhesLivro.fTitulo.setText(livro.getTitulo());
             detalhesLivro.fAutor.setText(livro.getAutor());
             detalhesLivro.fEditora.setText(livro.getEditora());

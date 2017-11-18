@@ -23,7 +23,7 @@ public class Livro {
     private String altura;
     private String largura;
     private Integer id;
-    private Float valor;
+    private String valor;
     private Integer estoque;
 
     public Integer getEstoque() {
@@ -74,11 +74,11 @@ public class Livro {
         this.largura = largura;
     }
     
-    public Float getValor() {
+    public String getValor() {
         return valor;
     }
 
-    public void setValor(Float valor) {
+    public void setValor(String valor) {
         this.valor = valor;
     }
     

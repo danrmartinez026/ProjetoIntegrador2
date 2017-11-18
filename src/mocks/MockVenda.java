@@ -23,6 +23,10 @@ public class MockVenda {
         listaVenda.add(venda);
     }
     
+    public static List<Venda> listar(){
+        return listaVenda;
+    }
+    
     
     
     

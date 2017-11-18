@@ -166,7 +166,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="M&#xea;s"/>
+            <Property name="text" type="java.lang.String" value="M&#xea;s / Ano"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="buttonPesquisar">
@@ -212,7 +212,7 @@
                 <Column editable="false" title="Id" type="java.lang.Object"/>
                 <Column editable="false" title="Data" type="java.lang.Integer"/>
                 <Column editable="false" title="Cliente" type="java.lang.Object"/>
-                <Column editable="false" title="Valor" type="java.lang.Double"/>
+                <Column editable="false" title="Valor" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value=""/>

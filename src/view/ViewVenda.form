@@ -147,6 +147,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastrar Cliente"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="buttonPesquisar">
           <Properties>
@@ -224,10 +227,12 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                          <Component id="comboGenero" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane5" min="-2" pref="405" max="-2" attributes="0"/>
-                          <Component id="fEditora" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="305" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="comboGenero" min="-2" max="-2" attributes="0"/>
+                              <Component id="fEditora" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
@@ -254,21 +259,23 @@
                               </Group>
                           </Group>
                       </Group>
+                      <Component id="jScrollPane5" alignment="0" min="-2" pref="490" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                              <Component id="fQuantidade" min="-2" pref="79" max="-2" attributes="0"/>
-                              <Component id="pesquisaDetalhada" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="buttonPesquisarLivro" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                  <Component id="fQuantidade" min="-2" pref="79" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="buttonPesquisarLivro" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                          <Component id="pesquisaDetalhada" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -288,24 +295,29 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="fTitulo" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="fEditora" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="pesquisaDetalhada" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="fTitulo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="fEditora" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="pesquisaDetalhada" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Component id="buttonPesquisarLivro" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="20" max="32767" attributes="0"/>
+                  <EmptySpace pref="9" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="fQuantidade" min="-2" pref="29" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane5" alignment="1" min="-2" pref="90" max="-2" attributes="0"/>
                   </Group>
@@ -350,14 +362,14 @@
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="8" rowCount="0">
-                    <Column editable="true" title="Id" type="java.lang.Integer"/>
+                    <Column editable="false" title="Id" type="java.lang.Integer"/>
                     <Column editable="false" title="Titulo" type="java.lang.String"/>
                     <Column editable="false" title="Editora" type="java.lang.String"/>
                     <Column editable="false" title="Autor" type="java.lang.String"/>
                     <Column editable="false" title="Genero" type="java.lang.String"/>
                     <Column editable="false" title="Edi&#xe7;&#xe3;o" type="java.lang.String"/>
                     <Column editable="false" title="Estoque" type="java.lang.Integer"/>
-                    <Column editable="false" title="Valor" type="java.lang.Double"/>
+                    <Column editable="false" title="Valor" type="java.lang.String"/>
                   </Table>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>

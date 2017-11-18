@@ -23,10 +23,7 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
     public void setLivro(Livro livro) {
         this.livro = livro;
     }
-
-    /**
-     * Creates new form CadastroProduto
-     */
+    
     public DetalhesLivro() {
         
         initComponents();
@@ -41,8 +38,6 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        fValor = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         fTitulo = new javax.swing.JTextField();
@@ -59,7 +54,7 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
         fEdicao = new javax.swing.JTextField();
         comboIdioma = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        fieldValor = new javax.swing.JFormattedTextField();
+        fValor = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
         fEstoque = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -78,14 +73,6 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
         buttonAtualizar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         buttonExcluir = new javax.swing.JButton();
-
-        jButton1.setText("jButton1");
-
-        fValor.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                fValorKeyTyped(evt);
-            }
-        });
 
         setClosable(true);
         setIconifiable(true);
@@ -137,7 +124,12 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Valor *");
 
-        fieldValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0.00"))));
+        fValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
+        fValor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fValorKeyTyped(evt);
+            }
+        });
 
         jLabel3.setText("Estoque *");
 
@@ -157,9 +149,9 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel14)
                             .addComponent(jLabel12)
@@ -171,12 +163,7 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
                             .addComponent(fAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(54, 54, 54))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(27, 27, 27)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel27)
                             .addComponent(jLabel32)
@@ -188,7 +175,11 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
                             .addComponent(comboGenero, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(fEstoque)
                             .addComponent(fEdicao, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)))
-                    .addComponent(fieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(175, 175, 175)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(fValor, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -221,7 +212,7 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(fieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -401,17 +392,6 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fValorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fValorKeyTyped
-        Character ch = evt.getKeyChar();
-        String permitidos = "0123456789";
-        if(!permitidos.contains(ch.toString())){
-            evt.consume();
-        } else if(fieldValor.getText().length() >= 10){
-            evt.consume();
-            JOptionPane.showMessageDialog(rootPane, "Excede o valor Maximo permitido");
-        }
-    }//GEN-LAST:event_fValorKeyTyped
-
     private void fEdicaoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fEdicaoKeyTyped
         Character ch = evt.getKeyChar();
         String permitidos = "0123456789";
@@ -505,10 +485,16 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_fNumeroPaginasKeyTyped
-
-    
     
     private void buttonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAtualizarActionPerformed
+        String valor = "";
+        for(int i = 0; i < fValor.getText().length(); i++){
+            if(fValor.getText().charAt(i) != '.'){
+                valor = valor + fValor.getText().charAt(i);
+            }
+        }
+        valor = valor.replace(',', '.');
+        livro.setValor(valor);
         livro.setTitulo(fTitulo.getText());
         livro.setEditora(fEditora.getText());
         livro.setAutor(fAutor.getText());
@@ -522,7 +508,6 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
         livro.setNumeroPaginas((fNumeroPaginas.getText())); 
         
         try{
-            livro.setValor(Float.parseFloat(fieldValor.getText()) + 0.00f);
             livro.setEstoque(Integer.parseInt(fEstoque.getText()));
         }catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, "Erro");
@@ -576,6 +561,18 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
         } 
     }//GEN-LAST:event_buttonExcluirActionPerformed
 
+    private void fValorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fValorKeyTyped
+        Character ch = evt.getKeyChar();
+        String permitidos = "0123456789,";
+        if(!permitidos.contains(ch.toString())){
+            evt.consume();
+        }
+        
+        if(fValor.getText().length() > 6){
+            evt.consume();
+        }
+    }//GEN-LAST:event_fValorKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAtualizar;
@@ -592,9 +589,7 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
     public javax.swing.JTextField fNumeroPaginas;
     public javax.swing.JTextField fPeso;
     public javax.swing.JTextField fTitulo;
-    public javax.swing.JTextField fValor;
-    public javax.swing.JFormattedTextField fieldValor;
-    private javax.swing.JButton jButton1;
+    public javax.swing.JFormattedTextField fValor;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

@@ -102,6 +102,11 @@ public class ViewVenda extends javax.swing.JInternalFrame {
         jLabel2.setText("CPF");
 
         jButton2.setText("Cadastrar Cliente");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         buttonPesquisar.setText("Pesquisar");
         buttonPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -240,10 +245,10 @@ public class ViewVenda extends javax.swing.JInternalFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -319,10 +324,11 @@ public class ViewVenda extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(comboGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(fEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(305, 305, 305)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(comboGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -340,19 +346,20 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel5))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel11)))))
+                                .addComponent(jLabel11))))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(fQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pesquisaDetalhada))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonPesquisarLivro)
-                        .addGap(76, 76, 76))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(buttonPesquisarLivro)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel8)
+                                .addComponent(fQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(38, 38, 38))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(pesquisaDetalhada)
+                        .addGap(23, 23, 23))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,21 +373,24 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                             .addComponent(fAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(fTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(fEditora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pesquisaDetalhada))
-                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(fTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel4)
+                                .addComponent(fEditora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(pesquisaDetalhada)))
+                        .addGap(20, 20, 20)
                         .addComponent(buttonPesquisarLivro)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(fQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21))
+                        .addGap(16, 16, 16))
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5))
         );
@@ -600,7 +610,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                     row[4] = liv.getGenero();
                     row[5] = liv.getEdicao();
                     row[6] = liv.getEstoque();
-                    row[7] = (double)liv.getValor() + 0.00d;
+                    row[7] = Double.valueOf(liv.getValor());
                     model.addRow(row);
                 }
             }
@@ -701,7 +711,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                         row[3] = liv.getAutor();
                         row[4] = liv.getIsbn();
                         row[5] = venda.getListaItemVenda().get(i).getQuantidade();
-                        row[6] = (double)liv.getValor() * venda.getListaItemVenda().get(i).getQuantidade();
+                        row[6] = Double.valueOf(liv.getValor()) * venda.getListaItemVenda().get(i).getQuantidade();
                         model.addRow(row);
                     }
                 }
@@ -709,9 +719,9 @@ public class ViewVenda extends javax.swing.JInternalFrame {
             
             Double valorTotal = 0.0;
             for(ItemVenda itemVenda : venda.getListaItemVenda()){
-                valorTotal = (valorTotal + itemVenda.getLivro().getValor()  * itemVenda.getQuantidade());
+                valorTotal = (valorTotal + (Double.valueOf(itemVenda.getLivro().getValor()))  * itemVenda.getQuantidade());
             }
-            venda.setValor(valorTotal);
+            venda.setValor(valorTotal.toString());
             DecimalFormat df = new DecimalFormat("##,###.##");  
             fValorTotal.setText(df.format(valorTotal));
             buttonConcluirVenda.setEnabled(true);
@@ -778,7 +788,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                     row[3] = liv.getAutor();
                     row[4] = liv.getIsbn();
                     row[5] = venda.getListaItemVenda().get(i).getQuantidade();
-                    row[6] = (double)liv.getValor() * venda.getListaItemVenda().get(i).getQuantidade()+ 0.00d;
+                    row[6] = Double.valueOf(liv.getValor()) * venda.getListaItemVenda().get(i).getQuantidade()+ 0.00d;
                     model.addRow(row);
                 }
             }
@@ -786,16 +796,20 @@ public class ViewVenda extends javax.swing.JInternalFrame {
             if(model.getRowCount() == 0){
                 fValorTotal.setText("");
             } else {
-                double valorTotal = 0;
+                Double valorTotal = 0.0;
                 for(ItemVenda itemVenda : venda.getListaItemVenda()){
-                    valorTotal = (valorTotal + itemVenda.getLivro().getValor()) * (itemVenda.getQuantidade());
+                    valorTotal = Double.valueOf(valorTotal + itemVenda.getLivro().getValor()) * (itemVenda.getQuantidade());
                 }
-                venda.setValor(valorTotal);
+                venda.setValor(valorTotal.toString());
                 DecimalFormat df = new DecimalFormat("#.##0.00");  
                 fValorTotal.setText(df.format(valorTotal));
             }
         }
     }//GEN-LAST:event_buttoRetirarItemActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        parent.abrirTelaCadastroCliente();
+    }//GEN-LAST:event_jButton2ActionPerformed
         
     
 

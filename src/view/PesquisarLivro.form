@@ -241,7 +241,7 @@
                     <Column editable="false" title="Autor" type="java.lang.String"/>
                     <Column editable="false" title="Genero" type="java.lang.String"/>
                     <Column editable="false" title="Edi&#xe7;&#xe3;o" type="java.lang.String"/>
-                    <Column editable="false" title="Valor" type="java.lang.Float"/>
+                    <Column editable="false" title="Valor" type="java.lang.String"/>
                   </Table>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -253,6 +253,9 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tablePesquisaMouseClicked"/>
                 <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tablePesquisaMouseReleased"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="tablePesquisa.getColumnModel().getColumn(0).setMinWidth(0);         tablePesquisa.getColumnModel().getColumn(0).setMaxWidth(0);         tablePesquisa.getColumnModel().getColumn(0).setWidth(0);"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

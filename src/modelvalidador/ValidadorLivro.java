@@ -67,11 +67,11 @@ public class ValidadorLivro {
                 }
             }
             
-            if(livro.getValor() == null){
+            if(livro.getValor() == null || livro.getValor().equals("")){
                 throw new LivroException ("Preencha todos os campos marcados com: ( * )");
             } 
             
-            if(livro.getEstoque() == null){
+            if(livro.getEstoque() == null || livro.getEstoque() == 0){
                 throw new LivroException ("Preencha todos os campos marcados com: ( * )");
             }
             
