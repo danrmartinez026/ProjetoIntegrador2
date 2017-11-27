@@ -6,7 +6,8 @@
 package modelvalidador;
 
 import exceptions.ClienteException;
-import mocks.MockCliente;
+import dao.DaoCliente;
+import java.sql.SQLException;
 import models.Cliente;
 
 /**
@@ -14,7 +15,10 @@ import models.Cliente;
  * @author Danilo
  */
 public class ValidadorCliente {
-    public static void validarCliente(Cliente cliente) throws ClienteException{
+    
+    
+    public static void validarCliente(Cliente cliente) throws ClienteException, Exception {
+        
         if(cliente != null){
             if(cliente.getNome().equals("")){
                 throw new ClienteException ("Preencha todos os campos marcados com: ( * )");
@@ -24,14 +28,18 @@ public class ValidadorCliente {
                 throw new ClienteException ("Preencha todos os campos marcados com: ( * )");
             }
             
-            if(cliente.getRg().equals("  .   .   - ")){
-                throw new ClienteException ("Preencha todos os campos marcados com: ( * )");
-            } else {
-                for(Cliente cli: MockCliente.listaCliente){
-                    if(cli.getRg().equals(cliente.getRg())&& cli.getId() != cliente.getId()){
-                        throw new ClienteException ("RG ja cadastrado em outro cliente");
+            try{
+                if(cliente.getRg().equals("  .   .   - ")){
+                    throw new ClienteException ("Preencha todos os campos marcados com: ( * )");
+                } else {
+                    for(Cliente cli: DaoCliente.listar()){
+                        if(cli.getRg().equals(cliente.getRg()) && cli.getId() != cliente.getId()){
+                            throw new ClienteException ("RG ja cadastrado em outro cliente");
+                        }
                     }
                 }
+            } catch (SQLException e){
+                
             }
             
             if(cliente.getCpf().equals("   .   .   -  ")){
@@ -47,10 +55,14 @@ public class ValidadorCliente {
                     throw new ClienteException ("CPF invalido");
                 }
                 
-                for(Cliente cli: MockCliente.listaCliente){
-                    if(cli.getCpf().equals(cliente.getCpf()) && cli.getId() != cliente.getId()){
-                        throw new ClienteException ("CPF ja cadastrado em outro cliente");
+                try{
+                    for(Cliente cli: DaoCliente.listar()){
+                        if(cli.getCpf().equals(cliente.getCpf()) && cli.getId() != cliente.getId()){
+                            throw new ClienteException ("CPF ja cadastrado em outro cliente");
+                        }
                     }
+                } catch(SQLException e){
+                    
                 }
             }
             

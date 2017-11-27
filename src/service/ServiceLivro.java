@@ -7,7 +7,7 @@ package service;
 
 import exceptions.DataSourceException;
 import exceptions.LivroException;
-import mocks.MockLivro;
+import dao.DaoLivro;
 import models.Livro;
 import modelvalidador.ValidadorLivro;
 
@@ -20,7 +20,7 @@ public class ServiceLivro {
         ValidadorLivro.validarLivro(livro);
         try{
             
-            MockLivro.inserirLivro(livro);
+            DaoLivro.inserirLivro(livro);
         } catch(Exception e){
             e.printStackTrace();
             throw new DataSourceException("Erro na fonte de dados", e);
@@ -29,7 +29,7 @@ public class ServiceLivro {
     
     public static void excluirlivro(Livro livro) throws DataSourceException{
         try{
-            MockLivro.excluirLivro(livro);
+            DaoLivro.excluirLivro(livro);
         } catch(Exception e){
             throw new DataSourceException("Erro na fonte de dados", e);
         }
@@ -37,7 +37,7 @@ public class ServiceLivro {
     
     public static void atualizarEstoque(Livro livro, int quantidade) throws DataSourceException{
         try{
-            MockLivro.atualizarEstoque(livro, quantidade);
+            DaoLivro.atualizarEstoque(livro, quantidade);
         } catch(Exception e){
             throw new DataSourceException("Erro na fonte de dados", e);
         }
@@ -48,7 +48,7 @@ public class ServiceLivro {
         
         try{
             
-            MockLivro.atualizarLivro(livro);
+            DaoLivro.atualizarLivro(livro);
         } catch(Exception e){
             e.printStackTrace();
             throw new DataSourceException("Erro na fonte de dados", e);

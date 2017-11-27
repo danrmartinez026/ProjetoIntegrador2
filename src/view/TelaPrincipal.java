@@ -12,7 +12,7 @@ import java.text.DecimalFormat;
 import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
 import javax.swing.table.DefaultTableModel;
-import mocks.MockVenda;
+import dao.DaoVenda;
 import models.Cliente;
 import models.ItemVenda;
 import models.Livro;
@@ -28,7 +28,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     CadastroLivro cadLivro = null;
     DetalhesCliente detalhesCliente = null;
     DetalhesLivro detalhesLivro = null;
-    PesquisarLivro pesquisarLivro = null;
+    PesquisaLivro pesquisarLivro = null;
     Relatorio relatorio = null;
     ViewVenda venda = null;
     DetalhesRelatorio detalhesRelatorio = null;
@@ -178,17 +178,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         detalhesRelatorio = new DetalhesRelatorio();
         deskPane.add(detalhesRelatorio);
         this.openFrameInCenter(detalhesRelatorio);
-        detalhesRelatorio.fNome.setText(MockVenda.listar().get(id).getCliente().getNome() +
-                 " " + MockVenda.listar().get(id).getCliente().getSobrenome());
-        detalhesRelatorio.fCpf.setText(MockVenda.listar().get(id).getCliente().getCpf());
+        detalhesRelatorio.fNome.setText(DaoVenda.listar().get(id).getCliente().getNome() +
+                 " " + DaoVenda.listar().get(id).getCliente().getSobrenome());
+        detalhesRelatorio.fCpf.setText(DaoVenda.listar().get(id).getCliente().getCpf());
         
         DecimalFormat df = new DecimalFormat("##,###.##");  
-        detalhesRelatorio.fValorTotal.setText(df.format(Double.parseDouble(MockVenda.listar().get(id).getValor())));
+        detalhesRelatorio.fValorTotal.setText(df.format(Double.parseDouble(DaoVenda.listar().get(id).getValor())));
         
         DefaultTableModel model = (DefaultTableModel) detalhesRelatorio.tableRelatorio.getModel();
          model.setRowCount(0);
          
-         for(ItemVenda item :MockVenda.listar().get(id).getListaItemVenda() ){
+         for(ItemVenda item :DaoVenda.listar().get(id).getListaItemVenda() ){
              Object[] row = new Object[6];
              row[0] = item.getLivro().getTitulo();
              row[1] = item.getLivro().getAutor();
@@ -292,7 +292,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void menuPesquisarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPesquisarProdutoActionPerformed
         if(pesquisarLivro == null || !pesquisarLivro.isDisplayable() && !pesquisarLivro.isVisible()){
-            pesquisarLivro = new PesquisarLivro(this);
+            pesquisarLivro = new PesquisaLivro(this);
             deskPane.add(pesquisarLivro);
             this.openFrameInCenter(pesquisarLivro);
         }

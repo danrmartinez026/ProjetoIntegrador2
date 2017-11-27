@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mocks;
+package dao;
 
 import models.ItemVenda;
 import models.Venda;
@@ -12,7 +12,7 @@ import models.Venda;
  *
  * @author Danilo
  */
-public class MockItemVenda {
+public class DaoItemVenda {
     
     public static void inserirItemVenda(ItemVenda item, Venda venda){
         if(item != null){

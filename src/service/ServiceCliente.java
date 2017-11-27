@@ -7,7 +7,7 @@ package service;
 
 import exceptions.ClienteException;
 import exceptions.DataSourceException;
-import mocks.MockCliente;
+import dao.DaoCliente;
 import models.Cliente;
 import modelvalidador.ValidadorCliente;
 
@@ -16,21 +16,21 @@ import modelvalidador.ValidadorCliente;
  * @author Danilo
  */
 public class ServiceCliente {
-    public static void cadastrarCliente(Cliente cliente)throws ClienteException, DataSourceException{
+    public static void cadastrarCliente(Cliente cliente)throws ClienteException, DataSourceException, Exception{
         ValidadorCliente.validarCliente(cliente);
         try{
-            MockCliente.inserirCliente(cliente);
+            DaoCliente.inserirCliente(cliente);
         } catch(Exception e){
             e.printStackTrace();
             throw new DataSourceException("Erro na fonte de dados", e);
         }
     }
     
-    public static void atualizarCliente(Cliente cliente)throws ClienteException, DataSourceException{
+    public static void atualizarCliente(Cliente cliente)throws ClienteException, DataSourceException, Exception{
         ValidadorCliente.validarCliente(cliente);
         try{
             
-            MockCliente.atualizarCliente(cliente);
+            DaoCliente.atualizarCliente(cliente);
         } catch(Exception e){
             e.printStackTrace();
             throw new DataSourceException("Erro na fonte de dados", e);
@@ -39,7 +39,7 @@ public class ServiceCliente {
     
     public static void excluirCliente(Cliente cliente) throws DataSourceException{
         try{
-            MockCliente.excluirCliente(cliente);
+            DaoCliente.excluirCliente(cliente);
         } catch(Exception e){
             throw new DataSourceException("Erro na fonte de dados", e);
         }

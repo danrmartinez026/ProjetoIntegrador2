@@ -9,7 +9,7 @@ import exceptions.DataSourceException;
 import exceptions.VendaException;
 import models.Venda;
 import modelvalidador.ValidadorVenda;
-import mocks.MockVenda;
+import dao.DaoVenda;
 /**
  *
  * @author Danilo
@@ -19,7 +19,7 @@ public class ServiceVenda {
         
         try{
             ValidadorVenda.validaVenda(venda);
-            MockVenda.inserirVenda(venda);
+            DaoVenda.inserirVenda(venda);
         } catch(Exception e){
             e.printStackTrace();
             throw new DataSourceException("Erro na fonte de dados", e);

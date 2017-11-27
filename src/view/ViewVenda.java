@@ -12,11 +12,12 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import models.Cliente;
 import javax.swing.table.DefaultTableModel;
-import mocks.MockCliente;
-import static mocks.MockCliente.listaCliente;
-import mocks.MockLivro;
+import dao.DaoCliente;
+import dao.DaoLivro;
 import models.Venda;
-import static mocks.MockLivro.listaLivro;
+import static dao.DaoLivro.listaLivro;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.Livro;
 import models.ItemVenda;
 import service.ServiceItemVenda;
@@ -462,6 +463,8 @@ public class ViewVenda extends javax.swing.JInternalFrame {
             }
         });
 
+        fValorTotal.setEditable(false);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -543,12 +546,16 @@ public class ViewVenda extends javax.swing.JInternalFrame {
 
         DefaultTableModel model = (DefaultTableModel) tablePesquisaCliente.getModel();
         model.setRowCount(0);
-
-        pesquisaCliente = MockCliente.procurarCliente(fNome.getText(), ""
+        
+        try{
+        pesquisaCliente = DaoCliente.procurarCliente(fNome.getText(), ""
             , fCpf.getText());
+        } catch (Exception e){
+            
+        }
 
         if(pesquisaCliente == null){
-            JOptionPane.showMessageDialog(this, "Preencha ao menos um campo de pesquisa");
+            JOptionPane.showMessageDialog(this, "Nenhum resultado obtido");
         } else {
             for(int i = 0; i < pesquisaCliente.size(); i++){
                 Cliente cliente = pesquisaCliente.get(i);
@@ -592,9 +599,14 @@ public class ViewVenda extends javax.swing.JInternalFrame {
 
         DefaultTableModel model = (DefaultTableModel) tablePesquisa.getModel();
         model.setRowCount(0);
-
-        pesquisaLivro = MockLivro.procurarLivro(fTitulo.getText(), fAutor.getText()
-            , fEditora.getText(),comboGenero.getSelectedItem().toString());
+        
+        
+        try {
+            pesquisaLivro = DaoLivro.procurarLivro(fTitulo.getText(), fAutor.getText()
+                    , fEditora.getText(),comboGenero.getSelectedItem().toString());
+        } catch (Exception ex) {
+            Logger.getLogger(ViewVenda.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         if(pesquisaLivro == null){
             JOptionPane.showMessageDialog(this, "Preencha ao menos um campo de pesquisa");
@@ -619,9 +631,20 @@ public class ViewVenda extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_buttonPesquisarLivroActionPerformed
 
     private void tablePesquisaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePesquisaClienteMouseClicked
-        venda.setCliente(listaCliente.get(Integer.parseInt(tablePesquisaCliente.getValueAt
-        (tablePesquisaCliente.getSelectedRow(), 0).toString())));
-        
+        try{
+            Cliente cliente = null;
+            for(Cliente cli: DaoCliente.listar()){
+                if(cli.getId() == Integer.parseInt(tablePesquisaCliente.getValueAt
+                  (tablePesquisaCliente.getSelectedRow(), 0).toString())){
+                    cliente = cli;
+                    break;
+                }
+            }
+        venda.setCliente(cliente);
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(),"Erro", 
+            JOptionPane.ERROR_MESSAGE);
+        }
         lCliente.setText(venda.getCliente().getNome()
         + (" ") + venda.getCliente().getSobrenome());
         DefaultTableModel model = (DefaultTableModel) tablePesquisaCliente.getModel();
@@ -638,12 +661,13 @@ public class ViewVenda extends javax.swing.JInternalFrame {
         try{
             int id = pesquisaLivro.get(tablePesquisa.getSelectedRow()).getId();
             if(id >= 0){
-                for(Livro livro : MockLivro.listaLivro){
+                for(Livro livro : DaoLivro.listaLivro){
                     if(id == livro.getId()){
                         parent.abrirTelaDetalhesLivro(livro);
                         DefaultTableModel model = (DefaultTableModel) tablePesquisa.getModel();
                         model.setRowCount(0);
                         pesquisaDetalhada.setEnabled(false);
+                        break;
                     }
                 }
             } else {
@@ -681,13 +705,17 @@ public class ViewVenda extends javax.swing.JInternalFrame {
         } else {
             ItemVenda item = new ItemVenda();
             
-            for(Livro livro : listaLivro){
-                if(Integer.parseInt(tablePesquisa.getValueAt(tablePesquisa.getSelectedRow(),0).toString()) == livro.getId()){
-                    item.setLivro(livro);
-                    item.setQuantidade(Integer.parseInt(fQuantidade.getText()));
-                    item.setValorUnitario(Float.parseFloat(tablePesquisa.getValueAt(tablePesquisa.getSelectedRow(),7).toString()));
-                    break;
+            try {
+                for(Livro livro : DaoLivro.listar()){
+                    if(Integer.parseInt(tablePesquisa.getValueAt(tablePesquisa.getSelectedRow(),0).toString()) == livro.getId()){
+                        item.setLivro(livro);
+                        item.setQuantidade(Integer.parseInt(fQuantidade.getText()));
+                        item.setValorUnitario(Float.parseFloat(tablePesquisa.getValueAt(tablePesquisa.getSelectedRow(),7).toString()));
+                        break;
+                    }
                 }
+            } catch (Exception ex) {
+                Logger.getLogger(ViewVenda.class.getName()).log(Level.SEVERE, null, ex);
             }
             
             try{

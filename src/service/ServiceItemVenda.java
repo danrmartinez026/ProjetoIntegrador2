@@ -7,7 +7,7 @@ package service;
 
 import exceptions.DataSourceException;
 import exceptions.ItemVendaException;
-import mocks.MockItemVenda;
+import dao.DaoItemVenda;
 import models.ItemVenda;
 import models.Venda;
 import modelvalidador.ValidadorItemVenda;
@@ -21,7 +21,7 @@ public class ServiceItemVenda {
         ValidadorItemVenda.validarItemVenda(item , venda);
         
         try{
-            MockItemVenda.inserirItemVenda(item, venda);
+            DaoItemVenda.inserirItemVenda(item, venda);
         } catch(Exception e){
             e.printStackTrace();
             throw new DataSourceException("Erro na fonte de dados", e);

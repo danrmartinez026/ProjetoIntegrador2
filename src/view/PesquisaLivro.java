@@ -8,7 +8,7 @@ package view;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import mocks.MockLivro;
+import dao.DaoLivro;
 import models.Livro;
 
 
@@ -16,14 +16,14 @@ import models.Livro;
  *
  * @author danilo.martinez
  */
-public class PesquisarLivro extends javax.swing.JInternalFrame {
+public class PesquisaLivro extends javax.swing.JInternalFrame {
     private TelaPrincipal parent;
     public List<Livro> pesquisaLivro;
 
     /**
      * Creates new form PesquisarLivro
      */
-    public PesquisarLivro(TelaPrincipal parent) {
+    public PesquisaLivro(TelaPrincipal parent) {
         this.parent = parent;
         initComponents();
         
@@ -262,9 +262,11 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
         DefaultTableModel model = (DefaultTableModel) tablePesquisa.getModel();
         model.setRowCount(0);
         
-        pesquisaLivro = MockLivro.procurarLivro(fTitulo.getText(), fAutor.getText()
+        try{
+        pesquisaLivro = DaoLivro.procurarLivro(fTitulo.getText(), fAutor.getText()
                 , fEditora.getText(),comboGenero.getSelectedItem().toString());
-        
+        } catch(Exception e){
+        }
         if(pesquisaLivro == null){
             JOptionPane.showMessageDialog(this, "Preencha ao menos um campo de pesquisa");
         } else {
@@ -305,13 +307,15 @@ public class PesquisarLivro extends javax.swing.JInternalFrame {
         try{
             int id = pesquisaLivro.get(tablePesquisa.getSelectedRow()).getId();
             if(id >= 0){
-                for(Livro livro : MockLivro.listar()){
+                for(Livro livro : DaoLivro.listar()){
                     if(tablePesquisa.getValueAt(tablePesquisa.getSelectedRow() , 0) == livro.getId()){
                         parent.abrirTelaDetalhesLivro(livro);
                         DefaultTableModel model = (DefaultTableModel) tablePesquisa.getModel();
                         model.setRowCount(0);
                         pesquisaDetalhada.setEnabled(false);
+                        break;
                     }
+                    System.out.println(livro.getId());
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Selecione 1 item para exibir detalhes");

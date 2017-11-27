@@ -8,7 +8,7 @@ package view;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import mocks.MockCliente;
+import dao.DaoCliente;
 import models.Cliente;
 /**
  *
@@ -239,7 +239,7 @@ public class PesquisaCliente extends javax.swing.JInternalFrame {
         try{
             int id = pesquisaCliente.get(tablePesquisaCliente.getSelectedRow()).getId();
             if(id >= 0){
-                for(Cliente cliente : MockCliente.listar()){
+                for(Cliente cliente : DaoCliente.listar()){
                     if(tablePesquisaCliente.getValueAt(tablePesquisaCliente.getSelectedRow() , 0) == cliente.getId()){
                         parent.abrirTelaDetalhesCliente(cliente);
                         DefaultTableModel model = (DefaultTableModel) tablePesquisaCliente.getModel();
@@ -251,7 +251,6 @@ public class PesquisaCliente extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Selecione 1 item para exibir detalhes");
             }  
         } catch (Exception e){
-            //JOptionPane.showMessageDialog(this, "Selecione 1 item para exibir detalhes");
         }
     }//GEN-LAST:event_pesquisaDetalhadaActionPerformed
 
@@ -259,22 +258,23 @@ public class PesquisaCliente extends javax.swing.JInternalFrame {
         if(JOptionPane.showConfirmDialog(this, "Deseja cancelar a pesquisa?") == 0){
             this.dispose();
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    
-    
     private void buttonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPesquisarActionPerformed
         pesquisaCliente = null;
         
         DefaultTableModel model = (DefaultTableModel) tablePesquisaCliente.getModel();
         model.setRowCount(0);
         
-        pesquisaCliente = MockCliente.procurarCliente(fNome.getText(), fSobrenome.getText()
+        try{
+        pesquisaCliente = DaoCliente.procurarCliente(fNome.getText(), fSobrenome.getText()
                 , fCpf.getText());
+        } catch (Exception e){
+            
+        }
         
         if(pesquisaCliente == null){
-            JOptionPane.showMessageDialog(this, "Preencha ao menos um campo de pesquisa");
+            JOptionPane.showMessageDialog(this, "Nenhum resultado obtido");
         } else {
             for(int i = 0; i < pesquisaCliente.size(); i++){
                 Cliente cliente = pesquisaCliente.get(i);

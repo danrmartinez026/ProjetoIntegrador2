@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mocks;
+package dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import models.Venda;
  *
  * @author Danilo
  */
-public class MockVenda {
+public class DaoVenda {
     public static List<Venda> listaVenda = new ArrayList( );
     public static int totalVenda = 0;
     

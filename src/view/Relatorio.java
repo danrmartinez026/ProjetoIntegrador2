@@ -9,7 +9,7 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.table.DefaultTableModel;
-import mocks.MockVenda;
+import dao.DaoVenda;
 import models.ItemVenda;
 import models.Venda;
 
@@ -212,7 +212,7 @@ public class Relatorio extends javax.swing.JInternalFrame {
         model.setRowCount(0);
         
         boolean titulo = false;
-        for(Venda venda:MockVenda.listar()){
+        for(Venda venda:DaoVenda.listar()){
             if(!fTitulo.equals("")){
                 for(ItemVenda item : venda.getListaItemVenda()){
                     if(fTitulo.getText().toUpperCase().equals(item.getLivro().getTitulo().toUpperCase())){
