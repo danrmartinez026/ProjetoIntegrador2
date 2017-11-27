@@ -300,6 +300,77 @@ public class DaoLivro {
         }
     }
     
+    public static Livro obter(Integer id)throws SQLException,Exception{
+        // faz uma analise previa visando aumentar a performance em caso de pesquisa nula
+        if(id == null){
+            return null;
+        }
+         
+        //apartir de um id de um livro,procura o mesmo no banco de dados
+        String sql = "SELECT * FROM livro WHERE livro_id=?";
+        //lista de cliente contendo o resultado da pesquisa
+        Livro livro = new Livro();
+        //Conexão para abertura e fechamento
+        Connection connection = null;
+        //Statement para obtenção através da conexão, execução de
+        //comandos SQL e fechamentos
+        PreparedStatement preparedStatement = null;
+        //Armazenará os resultados do banco de dados
+        ResultSet result = null;
+        
+        try {
+            //Abre uma conexão com o banco de dados
+            connection = ConnectionUtils.getConnection();
+            //Cria um statement para execução de instruções SQL
+            preparedStatement = connection.prepareStatement(sql);
+            
+            //Configura os parâmetros do "PreparedStatement"
+            preparedStatement.setInt(1, id);
+            
+            
+            
+            //Executa a consulta SQL no banco de dados
+            result = preparedStatement.executeQuery();
+            
+            //Itera por cada item do resultado
+            while (result.next()) {
+                //Se a lista não foi inicializada, a inicializa
+                
+                //Cria uma instância de Livro e popula com os valores do BD
+                
+                livro.setId(result.getInt("livro_id"));
+                livro.setTitulo(result.getString("titulo"));
+                livro.setAutor(result.getString("autor"));
+                livro.setEditora(result.getString("editora"));
+                livro.setEdicao(result.getString("edicao"));
+                livro.setGenero(result.getString("genero"));
+                livro.setIdioma(result.getString("idioma"));
+                livro.setIsbn(result.getString("isbn"));
+                livro.setEstoque(result.getInt("Estoque"));
+                livro.setValor(result.getString("valor"));
+                livro.setAltura(result.getString("altura"));
+                livro.setLargura(result.getString("largura"));
+                livro.setPeso(result.getString("peso"));
+                livro.setNumeroPaginas(result.getString("numero_paginas"));
+            }
+        } finally {
+            //Se o result ainda estiver aberto, realiza seu fechamento
+            if (result != null && !result.isClosed()) {
+                result.close();
+            }
+            //Se o statement ainda estiver aberto, realiza seu fechamento
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            //Se a conexão ainda estiver aberta, realiza seu fechamento
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+        //Retorna o livro encontrado no banco de dados
+        return livro;
+    }
+    
     public static List<Livro> procurarLivro(String titulo,String autor, String editora,String genero)
             throws SQLException,Exception{
         

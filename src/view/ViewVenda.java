@@ -13,9 +13,9 @@ import javax.swing.JOptionPane;
 import models.Cliente;
 import javax.swing.table.DefaultTableModel;
 import dao.DaoCliente;
+import dao.DaoItemVenda;
 import dao.DaoLivro;
 import models.Venda;
-import static dao.DaoLivro.listaLivro;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.Livro;
@@ -32,8 +32,8 @@ public class ViewVenda extends javax.swing.JInternalFrame {
     DetalhesLivro detalhesLivro = null;
     private TelaPrincipal parent;
     Venda venda = new Venda();
-    
-        
+    public List<Cliente> pesquisaCliente;
+    public List<Livro> pesquisaLivro = new ArrayList();    
     
 
     /**
@@ -540,7 +540,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public List<Cliente> pesquisaCliente;
+    
     private void buttonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPesquisarActionPerformed
         pesquisaCliente = null;
 
@@ -592,7 +592,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fAutorActionPerformed
 
     
-    public List<Livro> pesquisaLivro = new ArrayList();
+    
     
     private void buttonPesquisarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPesquisarLivroActionPerformed
         pesquisaLivro = null;
@@ -771,6 +771,21 @@ public class ViewVenda extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fQuantidadeKeyTyped
 
     private void buttonConcluirVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConcluirVendaActionPerformed
+        
+        if(tableCarrinho.getRowCount() >= 1){    
+            for(int i = 0;i < tableCarrinho.getRowCount();i++){
+                ItemVenda item = new ItemVenda();
+                try {
+                    item.setLivro(DaoLivro.obter((int)tableCarrinho.getValueAt(i, 0)));
+                    item.setQuantidade((int)tableCarrinho.getValueAt(i, 5));
+                    item.setValorUnitario((float)tableCarrinho.getValueAt(i, 6));
+                    DaoItemVenda.inserirItemVenda(item, venda);
+                } catch (Exception ex) {
+                    Logger.getLogger(ViewVenda.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        
         venda.setData(new Date());
         try{
             if(JOptionPane.showConfirmDialog(parent, "Dedeja concluir a venda") == 0);
