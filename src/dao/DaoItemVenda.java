@@ -14,15 +14,36 @@ import models.Venda;
  */
 public class DaoItemVenda {
     
+    
+    
     public static void inserirItemVenda(ItemVenda item, Venda venda){
-        if(item != null){
-            for(ItemVenda itemVenda:venda.getListaItemVenda()){
-                if(item.getLivro().getId() == itemVenda.getLivro().getId()){
-                    itemVenda.setQuantidade(item.getQuantidade());
-                    return;
-                }
-            }
-            venda.getListaItemVenda().add(item);
-        }
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//        if(item != null){
+//            for(ItemVenda itemVenda:venda.getListaItemVenda()){
+//                if(item.getLivro().getId() == itemVenda.getLivro().getId()){
+//                    itemVenda.setQuantidade(item.getQuantidade());
+//                    return;
+//                }
+//            }
+//            venda.getListaItemVenda().add(item);
+//        }
     }
 }

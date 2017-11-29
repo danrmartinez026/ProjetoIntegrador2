@@ -31,7 +31,27 @@ CREATE TABLE livro (
     valor VARCHAR (20) NOT NULL,
     altura VARCHAR (10),
     largura VARCHAR (10),
-    peso VARCHAR (10) NOT NULL,
+    peso VARCHAR (10),
     numero_paginas VARCHAR (10),
     enabled BOOLEAN
 );
+
+CREATE TABLE item_venda(
+    item_venda_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    livro_id INT NOT NULL,
+    valor_unitario FLOAT (10) NOT NULL,
+    quantidade INTEGER(10) NOT NULL,
+    FOREIGN KEY (livro_id) REFERENCES Livro (livro_id)
+    );
+
+
+
+CREATE TABLE venda (
+    venda_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    cliente_id INT NOT NULL,
+    item_venda_id INT NOT NULL,
+    valor_total FLOAT (20) NOT NULL,
+    data_compra DATE NOT NULL,
+    FOREIGN KEY (cliente_id) REFERENCES Cliente (cliente_id),
+    FOREIGN KEY (item_venda_id) REFERENCES Item_venda (item_venda_id)
+    );

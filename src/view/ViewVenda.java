@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import dao.DaoCliente;
 import dao.DaoItemVenda;
 import dao.DaoLivro;
+import exceptions.ItemVendaException;
 import models.Venda;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,7 +34,8 @@ public class ViewVenda extends javax.swing.JInternalFrame {
     private TelaPrincipal parent;
     Venda venda = new Venda();
     public List<Cliente> pesquisaCliente;
-    public List<Livro> pesquisaLivro = new ArrayList();    
+    public List<Livro> pesquisaLivro = new ArrayList();
+    public List<ItemVenda> listaItemVenda = new ArrayList();
     
 
     /**
@@ -718,19 +720,45 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                 Logger.getLogger(ViewVenda.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            try{
-                ServiceItemVenda.inserirItemVenda(item , venda);
-            } catch (Exception e){
-                JOptionPane.showMessageDialog(rootPane, e.getMessage(),"Erro", 
-                JOptionPane.ERROR_MESSAGE);
-                return;
+            if(item.getLivro() == null){
+            JOptionPane.showMessageDialog(this,"Selecione um livro");
             }
+            if(item.getQuantidade() <= 0){
+                JOptionPane.showMessageDialog(this,"Selecione uma quantidade maior que 0");
+            }
+
+            for(ItemVenda itemVenda : listaItemVenda){
+                if(itemVenda.getLivro().getId() == item.getLivro().getId() 
+                        && itemVenda.getQuantidade() == item.getQuantidade() ){
+                    JOptionPane.showMessageDialog(this,"Selecione um livro diferente ou uma quantidade diferente");
+                } 
+            }
+            
+//            if(item != null){
+//                for(ItemVenda itemVenda:listaItemVenda){
+//                    if(item.getLivro().getId() == itemVenda.getLivro().getId()){
+//                        itemVenda.setQuantidade(item.getQuantidade());
+//                        return;
+//                    }
+//                }
+//            }
+            listaItemVenda.add(item);
+        
+            
+            
+//            try{
+//                ServiceItemVenda.inserirItemVenda(item , venda);
+//            } catch (Exception e){
+//                JOptionPane.showMessageDialog(rootPane, e.getMessage(),"Erro", 
+//                JOptionPane.ERROR_MESSAGE);
+//                return;
+//            }
             
             if(item.getLivro() != null){
                 DefaultTableModel model = (DefaultTableModel) tableCarrinho.getModel();
                 model.setRowCount(0);
-                for(int i = 0; i < venda.getListaItemVenda().size(); i++){
-                    Livro liv = venda.getListaItemVenda().get(i).getLivro();
+                for(int i = 0; i < listaItemVenda.size(); i++){
+                    Livro liv = listaItemVenda.get(i).getLivro();
                     if(liv != null){
                         Object[] row = new Object[7];
                         row[0] = liv.getId();
@@ -738,15 +766,15 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                         row[2] = liv.getEditora();
                         row[3] = liv.getAutor();
                         row[4] = liv.getIsbn();
-                        row[5] = venda.getListaItemVenda().get(i).getQuantidade();
-                        row[6] = Double.valueOf(liv.getValor()) * venda.getListaItemVenda().get(i).getQuantidade();
+                        row[5] = listaItemVenda.get(i).getQuantidade();
+                        row[6] = Double.valueOf(liv.getValor()) * listaItemVenda.get(i).getQuantidade();
                         model.addRow(row);
                     }
                 }
             }
             
             Double valorTotal = 0.0;
-            for(ItemVenda itemVenda : venda.getListaItemVenda()){
+            for(ItemVenda itemVenda : listaItemVenda){
                 valorTotal = (valorTotal + (Double.valueOf(itemVenda.getLivro().getValor()))  * itemVenda.getQuantidade());
             }
             venda.setValor(valorTotal.toString());
@@ -813,16 +841,16 @@ public class ViewVenda extends javax.swing.JInternalFrame {
         if(tableCarrinho.getSelectedRow() < 0){
             JOptionPane.showMessageDialog(rootPane, "Selecione um item para Excluir");
         } else{
-            for(ItemVenda item: venda.getListaItemVenda()){
+            for(ItemVenda item: listaItemVenda){
                 if(item.getLivro().getId() == tableCarrinho.getValueAt(tableCarrinho.getSelectedRow(), 0)){
-                    venda.getListaItemVenda().remove(item);
+                    listaItemVenda.remove(item);
                     break;
                 }
             }
             DefaultTableModel model = (DefaultTableModel) tableCarrinho.getModel();
             model.setRowCount(0);
-            for(int i = 0; i < venda.getListaItemVenda().size(); i++){
-                Livro liv = venda.getListaItemVenda().get(i).getLivro();
+            for(int i = 0; i < listaItemVenda.size(); i++){
+                Livro liv = listaItemVenda.get(i).getLivro();
                 if(liv != null){
                     Object[] row = new Object[7];
                     row[0] = liv.getId();
@@ -830,8 +858,8 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                     row[2] = liv.getEditora();
                     row[3] = liv.getAutor();
                     row[4] = liv.getIsbn();
-                    row[5] = venda.getListaItemVenda().get(i).getQuantidade();
-                    row[6] = Double.valueOf(liv.getValor()) * venda.getListaItemVenda().get(i).getQuantidade()+ 0.00d;
+                    row[5] = listaItemVenda.get(i).getQuantidade();
+                    row[6] = Double.valueOf(liv.getValor()) * listaItemVenda.get(i).getQuantidade()+ 0.00d;
                     model.addRow(row);
                 }
             }
@@ -840,7 +868,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                 fValorTotal.setText("");
             } else {
                 Double valorTotal = 0.0;
-                for(ItemVenda itemVenda : venda.getListaItemVenda()){
+                for(ItemVenda itemVenda : listaItemVenda){
                     valorTotal = Double.valueOf(valorTotal + itemVenda.getLivro().getValor()) * (itemVenda.getQuantidade());
                 }
                 venda.setValor(valorTotal.toString());
