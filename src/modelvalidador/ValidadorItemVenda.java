@@ -14,7 +14,7 @@ import models.Venda;
  * @author Danilo
  */
 public class ValidadorItemVenda {
-    public static void validarItemVenda(ItemVenda item, Venda venda) throws ItemVendaException{
+    public static void validarItemVenda(int venda_id, ItemVenda item) throws ItemVendaException{
         if(item.getLivro() == null){
             throw new ItemVendaException("Selecione um livro");
         }
@@ -22,11 +22,11 @@ public class ValidadorItemVenda {
             throw new ItemVendaException("Selecione uma quantidade maior que 0");
         }
         
-        for(ItemVenda itemVenda : venda.getListaItemVenda()){
-            if(itemVenda.getLivro().getId() == item.getLivro().getId() 
-                    && itemVenda.getQuantidade() == item.getQuantidade() ){
-                throw new ItemVendaException("Selecione um livro diferente ou uma quantidade diferente");
-            } 
-        }
+//        for(ItemVenda itemVenda : venda.getListaItemVenda()){
+//            if(itemVenda.getLivro().getId() == item.getLivro().getId() 
+//                    && itemVenda.getQuantidade() == item.getQuantidade() ){
+//                throw new ItemVendaException("Selecione um livro diferente ou uma quantidade diferente");
+//            } 
+//        }
     }
 }

@@ -174,32 +174,32 @@ public class TelaPrincipal extends javax.swing.JFrame {
         cadCliente.toFront();
     }
     
-    public void abrirTelaDetalhesRelatorio(int id){
-        detalhesRelatorio = new DetalhesRelatorio();
-        deskPane.add(detalhesRelatorio);
-        this.openFrameInCenter(detalhesRelatorio);
-        detalhesRelatorio.fNome.setText(DaoVenda.listar().get(id).getCliente().getNome() +
-                 " " + DaoVenda.listar().get(id).getCliente().getSobrenome());
-        detalhesRelatorio.fCpf.setText(DaoVenda.listar().get(id).getCliente().getCpf());
-        
-        DecimalFormat df = new DecimalFormat("##,###.##");  
-        detalhesRelatorio.fValorTotal.setText(df.format(Double.parseDouble(DaoVenda.listar().get(id).getValor())));
-        
-        DefaultTableModel model = (DefaultTableModel) detalhesRelatorio.tableRelatorio.getModel();
-         model.setRowCount(0);
-         
-         for(ItemVenda item :DaoVenda.listar().get(id).getListaItemVenda() ){
-             Object[] row = new Object[6];
-             row[0] = item.getLivro().getTitulo();
-             row[1] = item.getLivro().getAutor();
-             row[2] = item.getLivro().getEditora();
-             row[3] = item.getLivro().getIsbn();
-             row[4] = item.getQuantidade();
-             row[5] = item.getValorUnitario();
-             model.addRow(row);
-         }
-         
-    }
+//    public void abrirTelaDetalhesRelatorio(int id){
+//        detalhesRelatorio = new DetalhesRelatorio();
+//        deskPane.add(detalhesRelatorio);
+//        this.openFrameInCenter(detalhesRelatorio);
+//        detalhesRelatorio.fNome.setText(DaoVenda.listar().get(id).getCliente().getNome() +
+//                 " " + DaoVenda.listar().get(id).getCliente().getSobrenome());
+//        detalhesRelatorio.fCpf.setText(DaoVenda.listar().get(id).getCliente().getCpf());
+//        
+//        DecimalFormat df = new DecimalFormat("##,###.##");  
+//        detalhesRelatorio.fValorTotal.setText(df.format(Double.parseDouble(DaoVenda.listar().get(id).getValor())));
+//        
+//        DefaultTableModel model = (DefaultTableModel) detalhesRelatorio.tableRelatorio.getModel();
+//         model.setRowCount(0);
+//         
+//         for(ItemVenda item :DaoVenda.listar().get(id).getListaItemVenda() ){
+//             Object[] row = new Object[6];
+//             row[0] = item.getLivro().getTitulo();
+//             row[1] = item.getLivro().getAutor();
+//             row[2] = item.getLivro().getEditora();
+//             row[3] = item.getLivro().getIsbn();
+//             row[4] = item.getQuantidade();
+//             row[5] = item.getValorUnitario();
+//             model.addRow(row);
+//         }
+//         
+//    }
     
     public void abrirTelaDetalhesCliente(Cliente cliente){
         if(detalhesCliente == null || !detalhesCliente.isDisplayable() && 

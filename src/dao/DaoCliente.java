@@ -192,9 +192,74 @@ public class DaoCliente {
         //listar().remove(cliente);
     }
     
-    public static void obterCliente()throws SQLException, Exception{
+    public static Cliente obterCliente(Integer id)throws SQLException, Exception{
+        // faz uma analise previa visando aumentar a performance em caso de pesquisa nula
+        if(id == null){
+            return null;
+        }
+         
+        //apartir de um id de um cliente,procura o mesmo no banco de dados
+        String sql = "SELECT * FROM cliente WHERE cliente_id=?";
+        //lista de cliente contendo o resultado da pesquisa
+        Cliente cliente = new Cliente();
+        //Conexão para abertura e fechamento
+        Connection connection = null;
+        //Statement para obtenção através da conexão, execução de
+        //comandos SQL e fechamentos
+        PreparedStatement preparedStatement = null;
+        //Armazenará os resultados do banco de dados
+        ResultSet result = null;
         
-        //Prepara script de pesquisa
+        try {
+            //Abre uma conexão com o banco de dados
+            connection = ConnectionUtils.getConnection();
+            //Cria um statement para execução de instruções SQL
+            preparedStatement = connection.prepareStatement(sql);
+            
+            //Configura os parâmetros do "PreparedStatement"
+            preparedStatement.setInt(1, id);
+            
+            
+            
+            //Executa a consulta SQL no banco de dados
+            result = preparedStatement.executeQuery();
+            
+            //Itera por cada item do resultado
+            while (result.next()) {
+                
+                cliente.setId(result.getInt("cliente_id"));
+                cliente.setNome(result.getString("nome"));
+                cliente.setSobrenome(result.getString("sobrenome"));
+                cliente.setCpf(result.getString("cpf"));
+                cliente.setSexo(result.getString("sexo"));
+                cliente.setRg(result.getString("rg"));
+                cliente.setRua(result.getString("rua"));
+                cliente.setNumeroCasa(result.getString("numero_casa"));
+                cliente.setComplemento(result.getString("complemento"));
+                cliente.setCidade(result.getString("cidade"));
+                cliente.setEstado(result.getString("estado"));
+                cliente.setBairro(result.getString("bairro"));
+                cliente.setCep(result.getString("cep"));
+                cliente.setCelular(result.getString("celular"));
+                cliente.setTelefone(result.getString("telefone"));
+                cliente.setEmail(result.getString("email"));
+            }
+        } finally {
+            //Se o result ainda estiver aberto, realiza seu fechamento
+            if (result != null && !result.isClosed()) {
+                result.close();
+            }
+            //Se o statement ainda estiver aberto, realiza seu fechamento
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            //Se a conexão ainda estiver aberta, realiza seu fechamento
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+        //Retorna o cliente encontrado no banco de dados
+        return cliente;
     }
     
     public static List<Cliente> listar()

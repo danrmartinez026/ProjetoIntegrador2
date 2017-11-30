@@ -695,19 +695,34 @@ public class ViewVenda extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fCpfKeyTyped
 
     private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
+        // verifica se algum livro foi selecionado
         if(tablePesquisa.getSelectedRow() < 0){
             JOptionPane.showMessageDialog(rootPane, "Selecione um Livro");
-            
+            return;
+        // verifica se uma quantidade foi selecionada    
         } else if(fQuantidade.getText().equals("")){
             JOptionPane.showMessageDialog(rootPane, "Selecione uma quantidade");
+            return;
             
+        } else if(Integer.parseInt(fQuantidade.getText()) <= 0){
+            JOptionPane.showMessageDialog(this,"Selecione uma quantidade maior que 0");
+            return;
+        // verifica se a quantidade digitada e maior do que o estoque do livro selecionado    
         } else if(Integer.parseInt(tablePesquisa.getValueAt(tablePesquisa.getSelectedRow(), 6).toString()) < Integer.parseInt(fQuantidade.getText())){
             JOptionPane.showMessageDialog(rootPane, "Quantidade solicitada acima do estoque atual");
             
+        
         } else {
+            // inicializa o item para receber o livro e a quantidade selecionados
             ItemVenda item = new ItemVenda();
             
+            //insere um livro, uma quantidade e o valor do produto naquele momento da venda 
+            //no arraylist de item
             try {
+                // busca pelo id do livro selecionado na tabela para compara-lo 
+                // no banco de dados de livros, quando encontrado insere o mesmo 
+                // no item de venda juntamente com a quantidade e o valor
+                // do livro naquele momento da venda
                 for(Livro livro : DaoLivro.listar()){
                     if(Integer.parseInt(tablePesquisa.getValueAt(tablePesquisa.getSelectedRow(),0).toString()) == livro.getId()){
                         item.setLivro(livro);
@@ -720,17 +735,18 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                 Logger.getLogger(ViewVenda.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            if(item.getLivro() == null){
-            JOptionPane.showMessageDialog(this,"Selecione um livro");
-            }
-            if(item.getQuantidade() <= 0){
-                JOptionPane.showMessageDialog(this,"Selecione uma quantidade maior que 0");
-            }
+//            if(item.getLivro() == null){
+//            JOptionPane.showMessageDialog(this,"Selecione um livro");
+//            }
+            
 
             for(ItemVenda itemVenda : listaItemVenda){
                 if(itemVenda.getLivro().getId() == item.getLivro().getId() 
                         && itemVenda.getQuantidade() == item.getQuantidade() ){
                     JOptionPane.showMessageDialog(this,"Selecione um livro diferente ou uma quantidade diferente");
+                    return;
+                } else if(itemVenda.getLivro().getId() == item.getLivro().getId()){
+                    itemVenda.setQuantidade(item.getQuantidade());
                 } 
             }
             
@@ -800,24 +816,41 @@ public class ViewVenda extends javax.swing.JInternalFrame {
 
     private void buttonConcluirVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConcluirVendaActionPerformed
         
-        if(tableCarrinho.getRowCount() >= 1){    
+        
+        
+        
+        
+//        if(tableCarrinho.getRowCount() >= 1){    
+//            for(int i = 0;i < tableCarrinho.getRowCount();i++){
+//                ItemVenda item = new ItemVenda();
+//                try {
+//                    item.setLivro(DaoLivro.obter((int)tableCarrinho.getValueAt(i, 0)));
+//                    item.setQuantidade((int)tableCarrinho.getValueAt(i, 5));
+//                    item.setValorUnitario((float)tableCarrinho.getValueAt(i, 6));
+//                    DaoItemVenda.inserirItemVenda(1 , item);
+//                } catch (Exception ex) {
+//                    Logger.getLogger(ViewVenda.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        }
+        
+        venda.setData(new Date());
+        try{
+            if(JOptionPane.showConfirmDialog(parent, "Dedeja concluir a venda") == 0);
+                int id = ServiceVenda.inserirVenda(venda);
+                if(tableCarrinho.getRowCount() >= 1){    
             for(int i = 0;i < tableCarrinho.getRowCount();i++){
                 ItemVenda item = new ItemVenda();
                 try {
                     item.setLivro(DaoLivro.obter((int)tableCarrinho.getValueAt(i, 0)));
                     item.setQuantidade((int)tableCarrinho.getValueAt(i, 5));
-                    item.setValorUnitario((float)tableCarrinho.getValueAt(i, 6));
-                    DaoItemVenda.inserirItemVenda(item, venda);
+                    item.setValorUnitario(Float.parseFloat(tableCarrinho.getValueAt(i, 6).toString()));
+                    DaoItemVenda.inserirItemVenda(id , item);
                 } catch (Exception ex) {
                     Logger.getLogger(ViewVenda.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
-        
-        venda.setData(new Date());
-        try{
-            if(JOptionPane.showConfirmDialog(parent, "Dedeja concluir a venda") == 0);
-                ServiceVenda.inserirVenda(venda);
                 for(ItemVenda item: venda.getListaItemVenda()){
                     ServiceLivro.atualizarEstoque(item.getLivro(), item.getQuantidade());
                 }

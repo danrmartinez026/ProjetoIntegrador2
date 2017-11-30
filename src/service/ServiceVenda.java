@@ -15,14 +15,15 @@ import dao.DaoVenda;
  * @author Danilo
  */
 public class ServiceVenda {
-    public static void inserirVenda(Venda venda) throws VendaException,DataSourceException{
-        
+    public static int inserirVenda(Venda venda) throws VendaException,DataSourceException{
+        int id = 0;
         try{
             ValidadorVenda.validaVenda(venda);
-            DaoVenda.inserirVenda(venda);
+            id = DaoVenda.inserirVenda(venda);
         } catch(Exception e){
             e.printStackTrace();
             throw new DataSourceException("Erro na fonte de dados", e);
         }
+        return id;
     }
 }

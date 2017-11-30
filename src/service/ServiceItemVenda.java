@@ -17,11 +17,11 @@ import modelvalidador.ValidadorItemVenda;
  * @author Danilo
  */
 public class ServiceItemVenda {
-    public static void inserirItemVenda(ItemVenda item, Venda venda)throws ItemVendaException,DataSourceException{
-        ValidadorItemVenda.validarItemVenda(item , venda);
+    public static void inserirItemVenda(int venda_id, ItemVenda item)throws ItemVendaException,DataSourceException{
+        ValidadorItemVenda.validarItemVenda(venda_id , item);
         
         try{
-            DaoItemVenda.inserirItemVenda(item, venda);
+            DaoItemVenda.inserirItemVenda(venda_id, item);
         } catch(Exception e){
             e.printStackTrace();
             throw new DataSourceException("Erro na fonte de dados", e);

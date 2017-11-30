@@ -212,7 +212,7 @@ public class Relatorio extends javax.swing.JInternalFrame {
         model.setRowCount(0);
         
         boolean titulo = false;
-        for(Venda venda:DaoVenda.listar()){
+        for(Venda venda:DaoVenda.relatorioVenda()){
             if(!fTitulo.equals("")){
                 for(ItemVenda item : venda.getListaItemVenda()){
                     if(fTitulo.getText().toUpperCase().equals(item.getLivro().getTitulo().toUpperCase())){
@@ -242,7 +242,7 @@ public class Relatorio extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tableRelatorioMouseClicked
 
     private void buttonDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDetalhesActionPerformed
-        parent.abrirTelaDetalhesRelatorio((int)tableRelatorio.getValueAt(tableRelatorio.getSelectedRow(), 0));
+       // parent.abrirTelaDetalhesRelatorio((int)tableRelatorio.getValueAt(tableRelatorio.getSelectedRow(), 0));
         
         
     }//GEN-LAST:event_buttonDetalhesActionPerformed
