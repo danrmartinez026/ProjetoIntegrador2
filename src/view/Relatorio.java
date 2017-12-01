@@ -5,6 +5,7 @@
  */
 package view;
 
+import dao.DaoItemVenda;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -16,6 +17,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import models.ItemVenda;
 import models.Venda;
 
@@ -78,10 +80,20 @@ public class Relatorio extends javax.swing.JInternalFrame {
         });
 
         fInicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        fInicio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fInicioKeyTyped(evt);
+            }
+        });
 
         jLabel8.setText("Data Fim");
 
         fFim.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        fFim.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fFimKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -206,28 +218,36 @@ public class Relatorio extends javax.swing.JInternalFrame {
         if(listaVenda != null){
             boolean titulo = false;
             for(Venda venda:listaVenda){
-    //            if(!fTitulo.equals("")){
-    //                for(ItemVenda item : venda.getListaItemVenda()){
-    //                    if(fTitulo.getText().toUpperCase().equals(item.getLivro().getTitulo().toUpperCase())){
-    //                        titulo = true;
-    //                    }
-    //                }
-    //            }
-
-                c.setTime(venda.getData());
-                Format monthYear = new SimpleDateFormat("MM/YYYY");
+                double valorTotal = 0.2d;
                 Format year = new SimpleDateFormat("dd/MM/YYYY");
-    //            
-    //            String data = monthYear.format(c.getTime());
-    //            if(data.equals(fMesInicio.getText()) || fCliente.getText().toUpperCase().equals(venda.getCliente().getNome().toUpperCase())
-    //                    || titulo){
-                    Object[] row = new Object[5];
-                    row[0] = venda.getIdVenda();
-                    row[1] = year.format(venda.getData());
-                    row[2] = venda.getCliente().getNome() + " " + venda.getCliente().getSobrenome();
-                    row[3] = venda.getValor();
-                    model.addRow(row);
+                    Object[] rowVenda = new Object[8];
+                    rowVenda[0] = year.format(venda.getData());
+                    rowVenda[1] = venda.getCliente().getNome() + " " + venda.getCliente().getSobrenome();
+                    //rowVenda[2] = venda.getValor();
+                    //model.addRow(rowVenda);
+                try {
+                    for(ItemVenda item: DaoItemVenda.itensVenda(venda.getIdVenda())){
+                       // Object[] rowVenda= new Object[8];
+                        rowVenda[2] = item.getLivro().getTitulo();
+                        rowVenda[3] = item.getLivro().getEdicao();
+                        rowVenda[4] = item.getLivro().getIsbn();
+                        rowVenda[5] = item.getQuantidade();
+                        rowVenda[6] = item.getValorUnitario();
+                        valorTotal += item.getValorUnitario() * item.getQuantidade();
 
+                        //rowItens[6] = venda.getValor();
+                        model.addRow(rowVenda);
+                    }
+                } catch (Exception ex) {
+                    Logger.getLogger(Relatorio.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Object[] linhaBranca = new Object[8];
+                linhaBranca[0] = "";
+                model.addRow(linhaBranca);
+                
+                Object[] valorTotalVenda = new Object[8];
+                valorTotalVenda[0] = "Valor Total";
+                valorTotalVenda[7] = valorTotal;
             }
         }
     }//GEN-LAST:event_buttonPesquisarActionPerformed
@@ -235,6 +255,30 @@ public class Relatorio extends javax.swing.JInternalFrame {
     private void tableRelatorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableRelatorioMouseClicked
         //buttonDetalhes.setEnabled(true);
     }//GEN-LAST:event_tableRelatorioMouseClicked
+
+    private void fInicioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fInicioKeyTyped
+        Character ch = evt.getKeyChar();
+        String permitidos = "0123456789/";
+        if(!permitidos.contains(ch.toString())){
+            evt.consume();
+        }
+        
+        if(fInicio.getText().length() == 10){
+            evt.consume();
+        }
+    }//GEN-LAST:event_fInicioKeyTyped
+
+    private void fFimKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fFimKeyTyped
+        Character ch = evt.getKeyChar();
+        String permitidos = "0123456789/";
+        if(!permitidos.contains(ch.toString())){
+            evt.consume();
+        }
+        
+        if(fFim.getText().length() == 10){
+            evt.consume();
+        }
+    }//GEN-LAST:event_fFimKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

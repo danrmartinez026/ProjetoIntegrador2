@@ -14,6 +14,15 @@ public class ItemVenda {
     private Livro livro;
     private Integer quantidade;
     private float valorUnitario;
+    private int idLivro;
+
+    public int getIdLivro() {
+        return idLivro;
+    }
+
+    public void setIdLivro(int idLivro) {
+        this.idLivro = idLivro;
+    }
 
     public float getValorUnitario() {
         return valorUnitario;

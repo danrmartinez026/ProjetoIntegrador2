@@ -79,7 +79,7 @@ public class DaoItemVenda {
         
         // faz uma busca no banco de dados com base no id de venda encontrado como chave 
         // estrangeira nos itens venda correspondentes
-        String sql = "SELECT * FORM item_venda WHERE item_venda venda_id =? ";
+        String sql = "SELECT * FROM item_venda WHERE item_venda.venda_id =? ";
 
         // inicializa lista de retorno de venda
         List<ItemVenda> listaItens = null;
@@ -101,7 +101,7 @@ public class DaoItemVenda {
             preparedStatement = connection.prepareStatement(sql);
             
             
-            preparedStatement.setString(1, "%" + id + "%");
+            preparedStatement.setInt(1, id);
             
             // execulta a query no banco de dados
             preparedStatement.execute();
@@ -118,7 +118,7 @@ public class DaoItemVenda {
                 ItemVenda item = new ItemVenda();
                 
                 // preenche o item com os valores correspondes
-                item.setLivro(DaoLivro.obter(result.getInt("livro_id")));
+                item.setIdLivro(result.getInt("livro_id"));
                 item.setQuantidade(result.getInt("quantidade"));
                 item.setValorUnitario(result.getFloat("valor_unitario"));
                 
@@ -136,6 +136,10 @@ public class DaoItemVenda {
             if (connection != null && !connection.isClosed()) {
                 connection.close();
             }
+        }
+         
+        for(ItemVenda item: listaItens){
+             item.setLivro(DaoLivro.obter(item.getIdLivro()));
         }
         return listaItens;
     }
