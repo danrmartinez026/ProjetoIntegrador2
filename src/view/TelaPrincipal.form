@@ -7,7 +7,7 @@
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagens/group.png"/>
+              <Image iconType="3" name="/resources/group.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cliente"/>
           </Properties>
@@ -33,7 +33,7 @@
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagens/teste_1.png"/>
+              <Image iconType="3" name="/resources/livro.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Produto"/>
           </Properties>
@@ -59,7 +59,7 @@
         <Menu class="javax.swing.JMenu" name="jMenu3">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagens/venda1.png"/>
+              <Image iconType="3" name="/resources/venda1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Vendas"/>
           </Properties>
@@ -129,7 +129,7 @@
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JDesktopPane(){&#xa;    public void paintComponent(Graphics g){&#xa;        g.drawImage(image,0,0,getWidth(),getHeight(),this);&#xa;    }&#xa;}"/>
-        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="ImageIcon icon = new ImageIcon(getClass().getResource(&quot;/imagens/livraria-lello.jpg&quot;));&#xa;Image image = icon.getImage();"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="ImageIcon icon = new ImageIcon(getClass().getResource(&quot;/resources/livraria_lello.jpg&quot;));&#xa;Image image = icon.getImage();"/>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>
 

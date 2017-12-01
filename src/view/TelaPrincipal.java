@@ -50,7 +50,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ImageIcon icon = new ImageIcon(getClass().getResource("/imagens/livraria-lello.jpg"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/resources/livraria_lello.jpg"));
         Image image = icon.getImage();
         deskPane = new javax.swing.JDesktopPane(){
             public void paintComponent(Graphics g){
@@ -84,7 +84,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGap(0, 800, Short.MAX_VALUE)
         );
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/group.png"))); // NOI18N
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/group.png"))); // NOI18N
         jMenu1.setText("Cliente");
 
         menuCadastroCliente.setText("Cadastrar");
@@ -105,7 +105,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/teste_1.png"))); // NOI18N
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/livro.png"))); // NOI18N
         jMenu2.setText("Produto");
 
         menuCadastrarProduto.setText("Cadastrar");
@@ -126,7 +126,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/venda1.png"))); // NOI18N
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/venda1.png"))); // NOI18N
         jMenu3.setText("Vendas");
 
         menuVenda.setText("Efeturar Venda");

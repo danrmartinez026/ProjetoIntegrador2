@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import models.Venda;
@@ -83,7 +84,7 @@ public class DaoVenda {
             return null;
         }
         
-        String sql = "SELECT * FORM venda WHERE venda.data_compra BETWEEN '?' AND '?' ";
+        String sql = "SELECT * FROM venda WHERE venda.data_compra BETWEEN ? AND ? ";
 
         // inicializa lista de retorno de venda
         List<Venda> listaRelatorio = null;
@@ -97,21 +98,21 @@ public class DaoVenda {
         //Armazenará os resultados do banco de dados
         ResultSet result = null;
         
-         try{
+        try{
             // abre uma conxao com o banco de dados
             connection = ConnectionUtils.getConnection();
             
             // Cria um statement para execução de instruções SQL
             preparedStatement = connection.prepareStatement(sql);
             
+            java.sql.Date dataInicio = new java.sql.Date(inicio.getTime());
+            java.sql.Date dataFim = new java.sql.Date(fim.getTime());
             
-            Timestamp ini = new Timestamp(inicio.getTime());
-            Timestamp f = new Timestamp(fim.getTime());
-            preparedStatement.setString(1, "%" + ini + "%");
-            preparedStatement.setString(2, "%" + f + "%");
+            preparedStatement.setDate(1, dataInicio);
+            preparedStatement.setDate(2, dataFim);
             
-            // execulta a query no banco de dados
-            preparedStatement.execute();
+//            // execulta a query no banco de dados
+//            preparedStatement.execute();
             
             //Executa a consulta SQL no banco de dados
             result = preparedStatement.executeQuery();
@@ -123,8 +124,9 @@ public class DaoVenda {
                     
                 Venda venda = new Venda();
                 
-                venda.setCliente(DaoCliente.obterCliente(result.getInt("cliente_id")));
-                venda.setData(result.getDate("data_venda"));
+                venda.setIdCliente(result.getInt("cliente_id"));
+                java.util.Date dataVenda = result.getDate("data_compra");
+                venda.setData(dataVenda);
                 venda.setIdVenda(result.getInt("venda_id"));
                 listaRelatorio.add(venda);
                 
@@ -141,19 +143,10 @@ public class DaoVenda {
             }
         }
         
-        
-        
-        
-        
-        
-        
-        
-        
+        for(Venda venda: listaRelatorio){
+            venda.setCliente(DaoCliente.obterCliente(venda.getIdCliente()));
+        }
         
         return listaRelatorio;
     }
-    
-    
-    
-    
 }

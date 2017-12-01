@@ -18,6 +18,15 @@ public class Venda {
     private String valor;
     private int idVenda;
     private Date data;
+    private int idCliente;
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
 
     public Date getData() {
         return data;

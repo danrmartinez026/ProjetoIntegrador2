@@ -8,7 +8,10 @@ package dao;
 import connection.ConnectionUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import models.ItemVenda;
 import models.Livro;
 import models.Venda;
@@ -68,5 +71,72 @@ public class DaoItemVenda {
 //            }
 //            venda.getListaItemVenda().add(item);
 //        }
+    }
+    
+    
+    //recebe um id de venda e faz uma lista de itens de venda relacionado ao id fornecido
+    public static List<ItemVenda> itensVenda(int id)throws SQLException, Exception{
+        
+        // faz uma busca no banco de dados com base no id de venda encontrado como chave 
+        // estrangeira nos itens venda correspondentes
+        String sql = "SELECT * FORM item_venda WHERE item_venda venda_id =? ";
+
+        // inicializa lista de retorno de venda
+        List<ItemVenda> listaItens = null;
+        
+        // abre uma conxao com o banco de dados
+        Connection connection = null;
+        
+        //atraves da conexao ira, executar comandos sql
+        PreparedStatement preparedStatement = null;
+        
+        //Armazenará os resultados do banco de dados
+        ResultSet result = null;
+        
+         try{
+            // abre uma conxao com o banco de dados
+            connection = ConnectionUtils.getConnection();
+            
+            // Cria um statement para execução de instruções SQL
+            preparedStatement = connection.prepareStatement(sql);
+            
+            
+            preparedStatement.setString(1, "%" + id + "%");
+            
+            // execulta a query no banco de dados
+            preparedStatement.execute();
+            
+            //Executa a consulta SQL no banco de dados
+            result = preparedStatement.executeQuery();
+            
+            // itera pelos resultados encontrados
+            while(result.next()){
+                // verifica se a lista esta nula, se estiver a instancia
+                if(listaItens == null) listaItens = new ArrayList();
+                    
+                // instancia o item de venda para inserir o mesmo numa lista de itens
+                ItemVenda item = new ItemVenda();
+                
+                // preenche o item com os valores correspondes
+                item.setLivro(DaoLivro.obter(result.getInt("livro_id")));
+                item.setQuantidade(result.getInt("quantidade"));
+                item.setValorUnitario(result.getFloat("valor_unitario"));
+                
+                // adiciona o item preenchido por essa iteracao nos resultados encontrados
+                listaItens.add(item);
+                
+            }
+            
+        } finally {
+            // Se o statement ainda estiver aberto, realiza seu fechamento
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            // Se a conexão ainda estiver aberta, realiza seu fechamento
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+        return listaItens;
     }
 }
