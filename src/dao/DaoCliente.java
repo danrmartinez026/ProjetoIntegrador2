@@ -199,7 +199,7 @@ public class DaoCliente {
         }
          
         //apartir de um id de um cliente,procura o mesmo no banco de dados
-        String sql = "SELECT * FROM cliente WHERE cliente_id=?";
+        String sql = "SELECT * FROM cliente WHERE cliente_id=? AND enabled = true";
         //lista de cliente contendo o resultado da pesquisa
         Cliente cliente = new Cliente();
         //Conexão para abertura e fechamento

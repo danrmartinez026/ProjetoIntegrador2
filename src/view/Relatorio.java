@@ -216,9 +216,9 @@ public class Relatorio extends javax.swing.JInternalFrame {
         
         
         if(listaVenda != null){
-            boolean titulo = false;
+            double valorTotal = 0.2d;
             for(Venda venda:listaVenda){
-                double valorTotal = 0.2d;
+                
                 Format year = new SimpleDateFormat("dd/MM/YYYY");
                     Object[] rowVenda = new Object[8];
                     rowVenda[0] = year.format(venda.getData());
@@ -244,11 +244,11 @@ public class Relatorio extends javax.swing.JInternalFrame {
                 Object[] linhaBranca = new Object[8];
                 linhaBranca[0] = "";
                 model.addRow(linhaBranca);
-                
-                Object[] valorTotalVenda = new Object[8];
+            }
+            Object[] valorTotalVenda = new Object[8];
                 valorTotalVenda[0] = "Valor Total";
                 valorTotalVenda[7] = valorTotal;
-            }
+                model.addRow(valorTotalVenda);
         }
     }//GEN-LAST:event_buttonPesquisarActionPerformed
 

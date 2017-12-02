@@ -739,7 +739,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
 //            JOptionPane.showMessageDialog(this,"Selecione um livro");
 //            }
             
-
+            boolean add = true;
             for(ItemVenda itemVenda : listaItemVenda){
                 if(itemVenda.getLivro().getId() == item.getLivro().getId() 
                         && itemVenda.getQuantidade() == item.getQuantidade() ){
@@ -747,6 +747,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                     return;
                 } else if(itemVenda.getLivro().getId() == item.getLivro().getId()){
                     itemVenda.setQuantidade(item.getQuantidade());
+                    add = false;
                 } 
             }
             
@@ -758,7 +759,10 @@ public class ViewVenda extends javax.swing.JInternalFrame {
 //                    }
 //                }
 //            }
-            listaItemVenda.add(item);
+            
+            if(listaItemVenda.isEmpty() || add){
+                listaItemVenda.add(item);
+            }
         
             
             
@@ -834,27 +838,42 @@ public class ViewVenda extends javax.swing.JInternalFrame {
 //            }
 //        }
         
-        venda.setData(new Date());
+        
         try{
-            if(JOptionPane.showConfirmDialog(parent, "Dedeja concluir a venda") == 0);
-                int id = ServiceVenda.inserirVenda(venda);
-                if(tableCarrinho.getRowCount() >= 1){    
-            for(int i = 0;i < tableCarrinho.getRowCount();i++){
-                ItemVenda item = new ItemVenda();
-                try {
-                    item.setLivro(DaoLivro.obter((int)tableCarrinho.getValueAt(i, 0)));
-                    item.setQuantidade((int)tableCarrinho.getValueAt(i, 5));
-                    item.setValorUnitario(Float.parseFloat(tableCarrinho.getValueAt(i, 6).toString()));
-                    DaoItemVenda.inserirItemVenda(id , item);
-                } catch (Exception ex) {
-                    Logger.getLogger(ViewVenda.class.getName()).log(Level.SEVERE, null, ex);
+            
+            // verifica se o carrinho esta vazio
+            if(tableCarrinho.getRowCount() > 0){
+                // adiciona a data listada na hora da compra
+                venda.setData(new Date());
+                // pergunta se o usuario quer encerrar a venda
+                if(JOptionPane.showConfirmDialog(parent, "Dedeja concluir a venda") == 0){
+                   // recebe o id da venda gerada no banco de dados para inserir no item venda
+                    int id = ServiceVenda.inserirVenda(venda);
+                    
+                // itera pelo carrinho de compras para popular o item de venda e inserir
+                // o mesmo no banco de dados juntamente ao id da venda
+                    for(int i = 0;i < tableCarrinho.getRowCount();i++){
+                        // instancia o item de venda
+                        ItemVenda item = new ItemVenda();
+                        try {
+                            // popula o item de venda
+                            item.setLivro(DaoLivro.obter((int)tableCarrinho.getValueAt(i, 0)));
+                            item.setQuantidade((int)tableCarrinho.getValueAt(i, 5));
+                            item.setValorUnitario(Float.parseFloat(tableCarrinho.getValueAt(i, 6).toString()));
+                            // insere ele no banco de dados
+                            ServiceItemVenda.inserirItemVenda(id, item);
+                            // atualiza o estoque do produto apos ter sido efetuada a compra
+                            ServiceLivro.atualizarEstoque(item.getLivro(), item.getQuantidade());
+
+                        this.dispose();
+                        } catch (Exception ex) {
+                            Logger.getLogger(ViewVenda.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
                 }
+            } else {
+                JOptionPane.showMessageDialog(rootPane,"Carrinho vazio");
             }
-        }
-                for(ItemVenda item: venda.getListaItemVenda()){
-                    ServiceLivro.atualizarEstoque(item.getLivro(), item.getQuantidade());
-                }
-                this.dispose();
         } catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, e.getMessage(),"Erro", 
             JOptionPane.ERROR_MESSAGE);

@@ -248,7 +248,7 @@ public class DaoLivro {
         //conexao para abertura e fechamento
         Connection connection = null;
         
-        //atraves da conexao ira, executar comandos sql
+        //atraves da conexao, ira executar comandos sql
         PreparedStatement preparedStatement = null;
         
         try{
@@ -258,7 +258,7 @@ public class DaoLivro {
             //Cria um statement para execução de instruções SQL
             preparedStatement = connection.prepareStatement(sql);
             
-            //exclui logicamente o cliente
+            //exclui logicamente o livro
             preparedStatement.setBoolean(1, false);
             preparedStatement.setInt(2, livro.getId());
             
@@ -290,14 +290,52 @@ public class DaoLivro {
 //        listaLivro.remove(livro);
     }
     
-    public static void atualizarEstoque(Livro livro, int quantidade){
-        if(livro != null){
-            for(Livro livroUp: listaLivro){
-                if(livro == livroUp){
-                    livroUp.setEstoque(livroUp.getEstoque() - quantidade);
+    public static void atualizarEstoque(Livro livro, int quantidade)throws SQLException, Exception{
+        if(livro != null && livro.getId() != null && !listar().isEmpty()){
+
+                //Prepara uma string com os dados de preenchimento do livro para atualizar o mesmo
+            String sql = "UPDATE livro SET estoque=? WHERE (livro_id=?)";
+
+            //conexao para abertura e fechamento
+            Connection connection = null;
+
+            //atraves da conexao ira, executar comandos sql
+            PreparedStatement preparedStatement = null;
+
+            try{
+                //abre uma conxao com o banco de dados
+                connection = ConnectionUtils.getConnection();
+
+                //Cria um statement para execução de instruções SQL
+                preparedStatement = connection.prepareStatement(sql);
+
+                //Configura os parametros a serem excutados conforme a String  sql foi gerada
+                preparedStatement.setInt(1, livro.getEstoque() - quantidade);
+                preparedStatement.setInt(2, livro.getId());
+
+                //executa o comando no banco de dados
+                preparedStatement.execute();
+            } finally {
+                //Se o statement ainda estiver aberto, realiza seu fechamento
+                if (preparedStatement != null && !preparedStatement.isClosed()) {
+                    preparedStatement.close();
+                }
+                //Se a conexão ainda estiver aberta, realiza seu fechamento
+                if (connection != null && !connection.isClosed()) {
+                    connection.close();
                 }
             }
-        }
+        }    
+
+
+//                CODIGO MOCK
+//        if(livro != null){
+//            for(Livro livroUp: listaLivro){
+//                if(livro == livroUp){
+//                    livroUp.setEstoque(livroUp.getEstoque() - quantidade);
+//                }
+//            }
+//        }
     }
     
     public static Livro obter(Integer id)throws SQLException,Exception{
