@@ -9,7 +9,7 @@ import exceptions.DataSourceException;
 import exceptions.LivroException;
 import dao.DaoLivro;
 import models.Livro;
-import modelvalidador.ValidadorLivro;
+import model_Validador.ValidadorLivro;
 
 /**
  *

@@ -9,7 +9,7 @@ import exceptions.ClienteException;
 import exceptions.DataSourceException;
 import dao.DaoCliente;
 import models.Cliente;
-import modelvalidador.ValidadorCliente;
+import model_Validador.ValidadorCliente;
 
 /**
  *

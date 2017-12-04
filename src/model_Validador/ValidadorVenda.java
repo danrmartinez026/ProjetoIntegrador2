@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelvalidador;
+package model_Validador;
 
 import exceptions.VendaException;
 import models.Venda;

@@ -8,7 +8,7 @@ package service;
 import exceptions.DataSourceException;
 import exceptions.VendaException;
 import models.Venda;
-import modelvalidador.ValidadorVenda;
+import model_Validador.ValidadorVenda;
 import dao.DaoVenda;
 /**
  *

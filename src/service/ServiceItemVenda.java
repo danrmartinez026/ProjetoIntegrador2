@@ -10,7 +10,7 @@ import exceptions.ItemVendaException;
 import dao.DaoItemVenda;
 import models.ItemVenda;
 import models.Venda;
-import modelvalidador.ValidadorItemVenda;
+import model_Validador.ValidadorItemVenda;
 
 /**
  *
