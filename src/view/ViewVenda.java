@@ -93,6 +93,8 @@ public class ViewVenda extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
+        setResizable(true);
+        setPreferredSize(new java.awt.Dimension(620, 720));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Cliente"));
 
@@ -383,7 +385,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                                 .addComponent(pesquisaDetalhada)))
                         .addGap(20, 20, 20)
                         .addComponent(buttonPesquisarLivro)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8)
@@ -476,7 +478,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                 .addComponent(fValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(109, 109, 109)
                 .addComponent(buttonConcluirVenda)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(146, 146, 146)
                 .addComponent(buttoRetirarItem)
@@ -524,7 +526,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(1, 1, 1)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -625,7 +627,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
         
         // verifica se a lista de livros esta nula
         if(pesquisaLivro == null){
-            JOptionPane.showMessageDialog(this, "Preencha ao menos um campo de pesquisa");
+            JOptionPane.showMessageDialog(this, "Nenhum resultado obtido");
         } else {
             // contendo ao menos um livro na lista, itera-se pela lista afim de 
             // preencher a tabela de livros

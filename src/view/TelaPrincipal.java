@@ -72,6 +72,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(800, 800));
 
         deskPane.setBackground(new java.awt.Color(255, 255, 204));
+        deskPane.setRequestFocusEnabled(false);
 
         javax.swing.GroupLayout deskPaneLayout = new javax.swing.GroupLayout(deskPane);
         deskPane.setLayout(deskPaneLayout);

@@ -570,7 +570,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
 
     private void fCpfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fCpfKeyTyped
         Character ch = evt.getKeyChar();
-        String permitidos = "0123456789";
+        String permitidos = "0123456789qwertyuiopasdfghjklçzxcvbnm";
         if(!permitidos.contains(ch.toString())){
             evt.consume();
         }

@@ -32,9 +32,11 @@ public class ValidadorCliente {
                 if(cliente.getRg().equals("  .   .   - ")){
                     throw new ClienteException ("Preencha todos os campos marcados com: ( * )");
                 } else {
-                    for(Cliente cli: DaoCliente.listar()){
-                        if(cli.getRg().equals(cliente.getRg()) && cli.getId() != cliente.getId()){
-                            throw new ClienteException ("RG ja cadastrado em outro cliente");
+                    if(DaoCliente.listar() != null){
+                        for(Cliente cli: DaoCliente.listar()){
+                            if(cli.getRg().equals(cliente.getRg()) && cli.getId() != cliente.getId()){
+                                throw new ClienteException ("RG ja cadastrado em outro cliente");
+                            }
                         }
                     }
                 }
@@ -56,9 +58,11 @@ public class ValidadorCliente {
                 }
                 
                 try{
-                    for(Cliente cli: DaoCliente.listar()){
-                        if(cli.getCpf().equals(cliente.getCpf()) && cli.getId() != cliente.getId()){
-                            throw new ClienteException ("CPF ja cadastrado em outro cliente");
+                    if(DaoCliente.listar() != null){
+                        for(Cliente cli: DaoCliente.listar()){
+                            if(cli.getCpf().equals(cliente.getCpf()) && cli.getId() != cliente.getId()){
+                                throw new ClienteException ("CPF ja cadastrado em outro cliente");
+                            }
                         }
                     }
                 } catch(SQLException e){

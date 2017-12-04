@@ -1,3 +1,7 @@
+CREATE DATABASE ProjetoIntegrador2;
+
+USE projetointegrador2;
+
 CREATE TABLE cliente (
     cliente_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
@@ -36,8 +40,16 @@ CREATE TABLE livro (
     enabled BOOLEAN
 );
 
+CREATE TABLE venda (
+    venda_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    cliente_id INT NOT NULL,
+    data_compra DATE NOT NULL,
+    FOREIGN KEY (cliente_id) REFERENCES Cliente (cliente_id),
+    );
+
 CREATE TABLE item_venda(
     item_venda_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    venda_id INT NOT NULL,
     livro_id INT NOT NULL,
     valor_unitario FLOAT (10) NOT NULL,
     quantidade INTEGER(10) NOT NULL,
@@ -46,10 +58,3 @@ CREATE TABLE item_venda(
     );
 
 
-
-CREATE TABLE venda (
-    venda_id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    cliente_id INT NOT NULL,
-    data_compra DATE NOT NULL,
-    FOREIGN KEY (cliente_id) REFERENCES Cliente (cliente_id),
-    );
