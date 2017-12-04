@@ -129,7 +129,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/venda1.png"))); // NOI18N
         jMenu3.setText("Vendas");
 
-        menuVenda.setText("Efeturar Venda");
+        menuVenda.setText("Efetuar Venda");
         menuVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuVendaActionPerformed(evt);

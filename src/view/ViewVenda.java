@@ -13,9 +13,7 @@ import javax.swing.JOptionPane;
 import models.Cliente;
 import javax.swing.table.DefaultTableModel;
 import dao.DaoCliente;
-import dao.DaoItemVenda;
 import dao.DaoLivro;
-import exceptions.ItemVendaException;
 import models.Venda;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -95,8 +93,6 @@ public class ViewVenda extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Cliente"));
 
@@ -544,21 +540,31 @@ public class ViewVenda extends javax.swing.JInternalFrame {
 
     
     private void buttonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPesquisarActionPerformed
+        // atribui valor nulo a uma lista de clientes a ser preenchido
         pesquisaCliente = null;
-
+        
+        // instancia um modelo de tabela com os parametros da tabela modelada 
+        // no projeto visual
         DefaultTableModel model = (DefaultTableModel) tablePesquisaCliente.getModel();
+        // zera a quantidade de linhas da tabela
         model.setRowCount(0);
         
-        try{
-        pesquisaCliente = DaoCliente.procurarCliente(fNome.getText(), ""
-            , fCpf.getText());
-        } catch (Exception e){
-            
+        
+        try {
+            // pesquisa cliente no banco de dados,usando apenas nome e cpf
+            // e preenche a lista de clientes com os resultados retornados
+            pesquisaCliente = DaoCliente.procurarCliente(fNome.getText(), ""
+                    , fCpf.getText());
+        } catch (Exception ex) {
+            Logger.getLogger(ViewVenda.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+       
+        // confere a lista de clientes nao esta nula
         if(pesquisaCliente == null){
             JOptionPane.showMessageDialog(this, "Nenhum resultado obtido");
         } else {
+            // se a lista tiver algum conteudo, por meio de iteracao
+            // sera preenchida a tabela com os clientes da lista
             for(int i = 0; i < pesquisaCliente.size(); i++){
                 Cliente cliente = pesquisaCliente.get(i);
                 if(cliente != null){
@@ -574,6 +580,8 @@ public class ViewVenda extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_buttonPesquisarActionPerformed
 
     private void tablePesquisaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePesquisaMouseClicked
+        // libera o botao de pesquisa quando o usuario clicar em um livro
+        // na lista de livros
         pesquisaDetalhada.setEnabled(true);
         
     }//GEN-LAST:event_tablePesquisaMouseClicked
@@ -597,22 +605,30 @@ public class ViewVenda extends javax.swing.JInternalFrame {
     
     
     private void buttonPesquisarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPesquisarLivroActionPerformed
+        // atribui valor nulo para uma lista de livros a ser preenchida
         pesquisaLivro = null;
-
+        
+        // instancia um modelo de tabela com os parametros da tabela modelada 
+        // no projeto visual
         DefaultTableModel model = (DefaultTableModel) tablePesquisa.getModel();
         model.setRowCount(0);
         
         
         try {
+            // pesquisa no banco de dados os livros que coincidir com os paramentros
+            // informados ( titulo , autor , editora e genero)
             pesquisaLivro = DaoLivro.procurarLivro(fTitulo.getText(), fAutor.getText()
                     , fEditora.getText(),comboGenero.getSelectedItem().toString());
         } catch (Exception ex) {
             Logger.getLogger(ViewVenda.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
+        // verifica se a lista de livros esta nula
         if(pesquisaLivro == null){
             JOptionPane.showMessageDialog(this, "Preencha ao menos um campo de pesquisa");
         } else {
+            // contendo ao menos um livro na lista, itera-se pela lista afim de 
+            // preencher a tabela de livros
             for(int i = 0; i < pesquisaLivro.size(); i++){
                 Livro liv = pesquisaLivro.get(i);
                 if(liv != null){
@@ -629,45 +645,70 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                 }
             }
         }
+        // trava o botao de detalhes para ser somente liberado quando o usuario 
+        // clicar em algum livro na tabela
         pesquisaDetalhada.setEnabled(false);
     }//GEN-LAST:event_buttonPesquisarLivroActionPerformed
 
     private void tablePesquisaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePesquisaClienteMouseClicked
         try{
+            // instancia primeriamente como nulo, um cliente para receber o cliente
+            // selecionado pelo usuario atraves de um clique na tabela de cliente
             Cliente cliente = null;
+            // itera por todos os clientes existentes no banco de dados, procurando
+            // pelo id do cliente selecionado elo cliente na tabela de clientes
             for(Cliente cli: DaoCliente.listar()){
                 if(cli.getId() == Integer.parseInt(tablePesquisaCliente.getValueAt
                   (tablePesquisaCliente.getSelectedRow(), 0).toString())){
+                    // uma vez encontrado o cliente sera atribuido a variavel cliente
                     cliente = cli;
+                    // quebra a iteracao qnd encontrado o cliente
                     break;
                 }
             }
-        venda.setCliente(cliente);
+            // atribui o cliente na venda
+            venda.setCliente(cliente);
         } catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, e.getMessage(),"Erro", 
             JOptionPane.ERROR_MESSAGE);
         }
+        // adiciona o nome do cliente em uma label afim de destacar o mesmo
         lCliente.setText(venda.getCliente().getNome()
         + (" ") + venda.getCliente().getSobrenome());
+       
+        // instancia um modelo de tabela, para apagar o resultados da pesquisa de cliente
+        // e deixar apenas o cliente escolhido para tornar assim mais claro que o cliente
+        // foi selecionado para venda
         DefaultTableModel model = (DefaultTableModel) tablePesquisaCliente.getModel();
         for(int i = 0; i < model.getRowCount(); i++){
+            // apaga todos os clientes da lista menos o selecionado 
             if(i != tablePesquisaCliente.getSelectedRow()){
                 model.removeRow(i);
             }
         }
+        
+        // libera a pesquisa de livro para proseguir com a venda
         buttonPesquisarLivro.setEnabled(true);
         
     }//GEN-LAST:event_tablePesquisaClienteMouseClicked
 
     private void pesquisaDetalhadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisaDetalhadaActionPerformed
         try{
+            // verifica se o usuario clicou em algum item na tabela de livros
+            // para capturar o id selecionado caso haja confirmacao positiva
             int id = pesquisaLivro.get(tablePesquisa.getSelectedRow()).getId();
             if(id >= 0){
-                for(Livro livro : DaoLivro.listaLivro){
+                // itera por todos os livros disponiveis no banco de dados
+                for(Livro livro : DaoLivro.listar()){
+                    // procura pelo livro escolhido na tabela
                     if(id == livro.getId()){
+                        // abre uma nova tela com os detalhes do livro selecionado
+                        // e permite a atualizacao do mesmo
                         parent.abrirTelaDetalhesLivro(livro);
+                        // zera a tabela a de livros
                         DefaultTableModel model = (DefaultTableModel) tablePesquisa.getModel();
                         model.setRowCount(0);
+                        // bloqueia o botao de pesquisa
                         pesquisaDetalhada.setEnabled(false);
                         break;
                     }
@@ -681,6 +722,8 @@ public class ViewVenda extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_pesquisaDetalhadaActionPerformed
 
+    
+    // cria uma mascara para o campo cpf onde serao aceitos no maximo 11 numeros
     private void fCpfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fCpfKeyTyped
         Character ch = evt.getKeyChar();
         String permitidos = "0123456789";
@@ -739,12 +782,24 @@ public class ViewVenda extends javax.swing.JInternalFrame {
 //            JOptionPane.showMessageDialog(this,"Selecione um livro");
 //            }
             
+            // cria um valor booleano para filtrar a insercao do item venda
+            // em casos especificos
             boolean add = true;
+            // itera pelos itens de venda
             for(ItemVenda itemVenda : listaItemVenda){
+                
+                // verifica se ha um item identico ja inserido na lista de itens
+                // se houver, imediatamente anula a insercao do item e exibi uma
+                // mensagem de aviso ao usuario
                 if(itemVenda.getLivro().getId() == item.getLivro().getId() 
                         && itemVenda.getQuantidade() == item.getQuantidade() ){
                     JOptionPane.showMessageDialog(this,"Selecione um livro diferente ou uma quantidade diferente");
                     return;
+                    // verifica se ha um item de venda com o mesmo livro porem uma quantidade 
+                    // diferente da registrada, em caso de confirmacao positiva
+                    // o item de venda tera a quantidade alterada e o booleano 
+                    // sera alterado para falso afim de evitar um insercao desnecessario
+                    // do item na lista de itens de venda
                 } else if(itemVenda.getLivro().getId() == item.getLivro().getId()){
                     itemVenda.setQuantidade(item.getQuantidade());
                     add = false;
@@ -759,7 +814,8 @@ public class ViewVenda extends javax.swing.JInternalFrame {
 //                    }
 //                }
 //            }
-            
+            // verifica se a lista esta vazia ou se o booleano permite a insercao
+            // do item na lkista de itens de venda
             if(listaItemVenda.isEmpty() || add){
                 listaItemVenda.add(item);
             }
@@ -774,9 +830,14 @@ public class ViewVenda extends javax.swing.JInternalFrame {
 //                return;
 //            }
             
+            // verifica se o item de venda possui um livro atribuido
             if(item.getLivro() != null){
+                // instancia um modelo de tabela com os parametros da tabela modelada 
+                // no projeto visual
                 DefaultTableModel model = (DefaultTableModel) tableCarrinho.getModel();
                 model.setRowCount(0);
+                // itera por todos os itens de venda na lista, assim preenchendo a tabela
+                // carrinho de compras
                 for(int i = 0; i < listaItemVenda.size(); i++){
                     Livro liv = listaItemVenda.get(i).getLivro();
                     if(liv != null){

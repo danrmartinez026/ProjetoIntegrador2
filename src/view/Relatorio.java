@@ -63,8 +63,6 @@ public class Relatorio extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
 
         jLabel1.setText("RELATÓRIO");
 
@@ -216,7 +214,7 @@ public class Relatorio extends javax.swing.JInternalFrame {
         
         
         if(listaVenda != null){
-            double valorTotal = 0.2d;
+            double valorTotal = 0.00d;
             for(Venda venda:listaVenda){
                 
                 Format year = new SimpleDateFormat("dd/MM/YYYY");
@@ -233,7 +231,7 @@ public class Relatorio extends javax.swing.JInternalFrame {
                         rowVenda[4] = item.getLivro().getIsbn();
                         rowVenda[5] = item.getQuantidade();
                         rowVenda[6] = item.getValorUnitario();
-                        valorTotal += item.getValorUnitario() * item.getQuantidade();
+                        valorTotal += item.getValorUnitario() * Float.parseFloat(item.getQuantidade().toString());
 
                         //rowItens[6] = venda.getValor();
                         model.addRow(rowVenda);

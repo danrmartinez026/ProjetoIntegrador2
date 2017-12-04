@@ -41,6 +41,7 @@ public class DetalhesRelatorio extends javax.swing.JInternalFrame {
         jTextField2.setText("jTextField2");
 
         setClosable(true);
+        setIconifiable(true);
 
         jLabel1.setText("Nome do Cliente");
 
