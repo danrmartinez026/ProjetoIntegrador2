@@ -102,7 +102,10 @@ public class ValidadorCliente {
             }
             
             if(!cliente.getEmail().equals("")){
-                if(cliente.getEmail().lastIndexOf(".com") == -1 && !cliente.getEmail().contains("@")){
+                if(cliente.getEmail().lastIndexOf(".com") != cliente.getEmail().length() - 4 || !cliente.getEmail().contains("@")
+                       || !cliente.getEmail().contains(".com") 
+                       || cliente.getEmail().lastIndexOf(".com")-1 == cliente.getEmail().lastIndexOf("@")
+                       || cliente.getEmail().lastIndexOf("@") == 0){
                     throw new ClienteException ("Preencha o campo email corretamente");
                 }
             }

@@ -72,91 +72,57 @@ public class DaoLivro {
                 connection.close();
             }
         }
-//
-//
-//              CODIGO MOCK
-//        livro.setId(totalLivro++);
-//        listaLivro.add(livro);
     }
     
     public static void atualizarLivro(Livro livro)throws Exception, SQLException{
         if(livro != null && livro.getId() != null && !listar().isEmpty()){
-            
-            //Prepara uma string com os dados de preenchimento do livro para atualizar o mesmo
-        String sql = "UPDATE livro SET titulo=?, autor=?, editora=?, edicao=?, estoque=?, valor=?,"
-                + "genero=?, idioma=?, isbn=?, altura=?, largura=?, peso=?, numero_paginas=?"
-                + "WHERE (livro_id=?)";
-        
-        //conexao para abertura e fechamento
-        Connection connection = null;
-        
-        //atraves da conexao ira, executar comandos sql
-        PreparedStatement preparedStatement = null;
-        
-        try{
-            //abre uma conxao com o banco de dados
-            connection = ConnectionUtils.getConnection();
-            
-            //Cria um statement para execução de instruções SQL
-            preparedStatement = connection.prepareStatement(sql);
-            
-            //Configura os parametros a serem excutados conforme a String  sql foi gerada
-            preparedStatement.setString(1, livro.getTitulo());
-            preparedStatement.setString(2, livro.getAutor());
-            preparedStatement.setString(3, livro.getEditora());
-            preparedStatement.setString(4, livro.getEdicao());
-            preparedStatement.setInt(5, livro.getEstoque());
-            preparedStatement.setString(6, livro.getValor());
-            preparedStatement.setString(7, livro.getGenero());
-            preparedStatement.setString(8, livro.getIdioma());
-            preparedStatement.setString(9, livro.getIsbn());
-            preparedStatement.setString(10, livro.getAltura());
-            preparedStatement.setString(11, livro.getLargura());
-            preparedStatement.setString(12, livro.getPeso());
-            preparedStatement.setString(13, livro.getNumeroPaginas());
-            preparedStatement.setInt(14, livro.getId());
-            
-            //executa o comando no banco de dados
-            preparedStatement.execute();
-        } finally {
-            //Se o statement ainda estiver aberto, realiza seu fechamento
-            if (preparedStatement != null && !preparedStatement.isClosed()) {
-                preparedStatement.close();
+
+                //Prepara uma string com os dados de preenchimento do livro para atualizar o mesmo
+            String sql = "UPDATE livro SET titulo=?, autor=?, editora=?, edicao=?, estoque=?, valor=?,"
+                    + "genero=?, idioma=?, isbn=?, altura=?, largura=?, peso=?, numero_paginas=?"
+                    + "WHERE (livro_id=?)";
+
+            //conexao para abertura e fechamento
+            Connection connection = null;
+
+            //atraves da conexao ira, executar comandos sql
+            PreparedStatement preparedStatement = null;
+
+            try{
+                //abre uma conxao com o banco de dados
+                connection = ConnectionUtils.getConnection();
+
+                //Cria um statement para execução de instruções SQL
+                preparedStatement = connection.prepareStatement(sql);
+
+                //Configura os parametros a serem excutados conforme a String  sql foi gerada
+                preparedStatement.setString(1, livro.getTitulo());
+                preparedStatement.setString(2, livro.getAutor());
+                preparedStatement.setString(3, livro.getEditora());
+                preparedStatement.setString(4, livro.getEdicao());
+                preparedStatement.setInt(5, livro.getEstoque());
+                preparedStatement.setString(6, livro.getValor());
+                preparedStatement.setString(7, livro.getGenero());
+                preparedStatement.setString(8, livro.getIdioma());
+                preparedStatement.setString(9, livro.getIsbn());
+                preparedStatement.setString(10, livro.getAltura());
+                preparedStatement.setString(11, livro.getLargura());
+                preparedStatement.setString(12, livro.getPeso());
+                preparedStatement.setString(13, livro.getNumeroPaginas());
+                preparedStatement.setInt(14, livro.getId());
+
+                //executa o comando no banco de dados
+                preparedStatement.execute();
+            } finally {
+                //Se o statement ainda estiver aberto, realiza seu fechamento
+                if (preparedStatement != null && !preparedStatement.isClosed()) {
+                    preparedStatement.close();
+                }
+                //Se a conexão ainda estiver aberta, realiza seu fechamento
+                if (connection != null && !connection.isClosed()) {
+                    connection.close();
+                }
             }
-            //Se a conexão ainda estiver aberta, realiza seu fechamento
-            if (connection != null && !connection.isClosed()) {
-                connection.close();
-            }
-        }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-//            for(Livro livroUp : listaLivro){
-//                if(livroUp.getId() == livro.getId()){
-//                    livroUp.setId(livro.getId());
-//                    livroUp.setTitulo(livro.getTitulo());
-//                    livroUp.setValor(livro.getValor());
-//                    livroUp.setEstoque(livro.getEstoque());
-//                    livroUp.setAutor(livro.getAutor());
-//                    livroUp.setEditora(livro.getEditora());
-//                    livroUp.setGenero(livro.getGenero());
-//                    livroUp.setIdioma(livro.getIdioma());
-//                    livroUp.setIsbn(livro.getIsbn());
-//                    livroUp.setEdicao(livro.getEdicao());
-//                    livroUp.setNumeroPaginas(livro.getNumeroPaginas());
-//                    livroUp.setAltura(livro.getAltura());
-//                    livroUp.setLargura(livro.getLargura());
-//                    livroUp.setPeso(livro.getPeso());
-//                }
-//            }
         }
     }
     
@@ -274,20 +240,6 @@ public class DaoLivro {
                 connection.close();
             }
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-//                  CODIGO MOCK       
-//        listaLivro.remove(livro);
     }
     
     public static void atualizarEstoque(Livro livro, int quantidade)throws SQLException, Exception{
@@ -326,16 +278,6 @@ public class DaoLivro {
                 }
             }
         }    
-
-
-//                CODIGO MOCK
-//        if(livro != null){
-//            for(Livro livroUp: listaLivro){
-//                if(livro == livroUp){
-//                    livroUp.setEstoque(livroUp.getEstoque() - quantidade);
-//                }
-//            }
-//        }
     }
     
     public static Livro obter(Integer id)throws SQLException,Exception{
@@ -505,38 +447,7 @@ public class DaoLivro {
         }
         //Retorna a lista de clientes do banco de dados
         return listaResultado;  
-        
-        
-//                        CODIGO MOCK
-//       
-//        if(titulo.equals("") && autor.equals("") && editora.equals("")
-//                && genero.equalsIgnoreCase("selecionar") ){
-//            return null;
-//        }
-//        
-//        for(Livro livro: listaLivro){
-//            if(livro.getTitulo().toUpperCase().contains(titulo.toUpperCase()) && !titulo.equals("")){
-//                if (!resultadoPesquisa.contains(livro)){
-//                    resultadoPesquisa.add(livro);     
-//                }
-//            }
-//            if(livro.getAutor().toUpperCase().contains(autor.toUpperCase()) && !autor.equals("")){
-//                if (!resultadoPesquisa.contains(livro)){
-//                    resultadoPesquisa.add(livro);     
-//                }
-//            }
-//            if(livro.getEditora().toUpperCase().contains(editora.toUpperCase()) && !editora.equals("")){
-//                if (!resultadoPesquisa.contains(livro)){
-//                    resultadoPesquisa.add(livro);     
-//                }
-//            }
-//            if(livro.getGenero().toUpperCase().contains(genero.toUpperCase())){
-//                if (!resultadoPesquisa.contains(livro)){
-//                    resultadoPesquisa.add(livro);     
-//                }
-//            }
-//        }
-//        return resultadoPesquisa;
+  
     }     
     
     

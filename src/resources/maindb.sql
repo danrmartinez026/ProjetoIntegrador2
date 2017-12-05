@@ -1,4 +1,4 @@
-CREATE DATABASE ProjetoIntegrador2;
+CREATE DATABASE IF NOT EXISTS ProjetoIntegrador2;
 
 USE projetointegrador2;
 
@@ -13,7 +13,7 @@ CREATE TABLE cliente (
     cidade VARCHAR(100),
     estado VARCHAR(100),
     numero_casa VARCHAR(10),
-    bairro VARCHAR(100);
+    bairro VARCHAR(100),
     complemento VARCHAR(50),
     cep VARCHAR(15),
     celular VARCHAR(20),
@@ -44,7 +44,7 @@ CREATE TABLE venda (
     venda_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     cliente_id INT NOT NULL,
     data_compra DATE NOT NULL,
-    FOREIGN KEY (cliente_id) REFERENCES Cliente (cliente_id),
+    FOREIGN KEY (cliente_id) REFERENCES Cliente (cliente_id)
     );
 
 CREATE TABLE item_venda(

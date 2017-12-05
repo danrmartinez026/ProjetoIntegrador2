@@ -171,19 +171,19 @@ public class Relatorio extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPesquisarActionPerformed
-       // buttonDetalhes.setEnabled(false);
        // faz um previa analise das datas informadas
        // afim de evitar erros com datas invalidas
        if(fInicio.getText().equals("") || fFim.getText().equals("")){
@@ -205,40 +205,54 @@ public class Relatorio extends javax.swing.JInternalFrame {
         }
         
         listaVenda = new ArrayList();
+        
+        long dt = ((dataFim.getTime() - dataInicio.getTime()) + 3600000) /86400000L ;
+        
         try {
-            
-            listaVenda = DaoVenda.listar(dataInicio, dataFim);
+            if(!dataInicio.after(dataFim) && dt <= 31 ){
+                listaVenda = DaoVenda.listar(dataInicio, dataFim);
+            } else {
+                JOptionPane.showMessageDialog(parent, "Valores de data invalidos");
+                return;
+            }
         } catch (Exception ex) {
              Logger.getLogger(Relatorio.class.getName()).log(Level.SEVERE, null, ex);
         } 
         
         
         if(listaVenda != null){
-            double valorTotal = 0.00d;
+            double valorTotal = 0;
             for(Venda venda:listaVenda){
-                
+                double valorParcial = 0;
                 Format year = new SimpleDateFormat("dd/MM/YYYY");
                     Object[] rowVenda = new Object[8];
+                    StringBuilder s = new StringBuilder();
                     rowVenda[0] = year.format(venda.getData());
-                    rowVenda[1] = venda.getCliente().getNome() + " " + venda.getCliente().getSobrenome();
-                    //rowVenda[2] = venda.getValor();
-                    //model.addRow(rowVenda);
+                    s.append(venda.getCliente().getNome());
+                    s.append(" ");
+                    s.append(venda.getCliente().getSobrenome());
+                    rowVenda[1] = s.toString();
                 try {
                     for(ItemVenda item: DaoItemVenda.itensVenda(venda.getIdVenda())){
-                       // Object[] rowVenda= new Object[8];
                         rowVenda[2] = item.getLivro().getTitulo();
                         rowVenda[3] = item.getLivro().getEdicao();
                         rowVenda[4] = item.getLivro().getIsbn();
                         rowVenda[5] = item.getQuantidade();
                         rowVenda[6] = item.getValorUnitario();
                         valorTotal += item.getValorUnitario() * Float.parseFloat(item.getQuantidade().toString());
-
-                        //rowItens[6] = venda.getValor();
+                        valorParcial += item.getValorUnitario() * Float.parseFloat(item.getQuantidade().toString());
                         model.addRow(rowVenda);
+                        rowVenda[0] = "";
+                        rowVenda[1] = "";
                     }
                 } catch (Exception ex) {
                     Logger.getLogger(Relatorio.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                Object[] valorCompra = new Object[8];
+                valorCompra[0] = "Valor da Compra";
+                valorCompra[7] = valorParcial;
+                model.addRow(valorCompra);
+                
                 Object[] linhaBranca = new Object[8];
                 linhaBranca[0] = "";
                 model.addRow(linhaBranca);
@@ -247,6 +261,8 @@ public class Relatorio extends javax.swing.JInternalFrame {
                 valorTotalVenda[0] = "Valor Total";
                 valorTotalVenda[7] = valorTotal;
                 model.addRow(valorTotalVenda);
+        } else {
+            JOptionPane.showMessageDialog(parent, "Nenhum resultado obtido");
         }
     }//GEN-LAST:event_buttonPesquisarActionPerformed
 

@@ -69,9 +69,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuRelatorio = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximumSize(new java.awt.Dimension(1000, 826));
+        setMinimumSize(new java.awt.Dimension(1000, 826));
+        setResizable(false);
         setSize(new java.awt.Dimension(800, 800));
 
         deskPane.setBackground(new java.awt.Color(255, 255, 204));
+        deskPane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         deskPane.setRequestFocusEnabled(false);
 
         javax.swing.GroupLayout deskPaneLayout = new javax.swing.GroupLayout(deskPane);
@@ -154,7 +159,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(deskPane)
+            .addComponent(deskPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,6 +167,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
    
     
@@ -174,33 +180,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         cadCliente.getDesktopPane().getDesktopManager().deiconifyFrame(cadCliente);
         cadCliente.toFront();
     }
-    
-//    public void abrirTelaDetalhesRelatorio(int id){
-//        detalhesRelatorio = new DetalhesRelatorio();
-//        deskPane.add(detalhesRelatorio);
-//        this.openFrameInCenter(detalhesRelatorio);
-//        detalhesRelatorio.fNome.setText(DaoVenda.listar().get(id).getCliente().getNome() +
-//                 " " + DaoVenda.listar().get(id).getCliente().getSobrenome());
-//        detalhesRelatorio.fCpf.setText(DaoVenda.listar().get(id).getCliente().getCpf());
-//        
-//        DecimalFormat df = new DecimalFormat("##,###.##");  
-//        detalhesRelatorio.fValorTotal.setText(df.format(Double.parseDouble(DaoVenda.listar().get(id).getValor())));
-//        
-//        DefaultTableModel model = (DefaultTableModel) detalhesRelatorio.tableRelatorio.getModel();
-//         model.setRowCount(0);
-//         
-//         for(ItemVenda item :DaoVenda.listar().get(id).getListaItemVenda() ){
-//             Object[] row = new Object[6];
-//             row[0] = item.getLivro().getTitulo();
-//             row[1] = item.getLivro().getAutor();
-//             row[2] = item.getLivro().getEditora();
-//             row[3] = item.getLivro().getIsbn();
-//             row[4] = item.getQuantidade();
-//             row[5] = item.getValorUnitario();
-//             model.addRow(row);
-//         }
-//         
-//    }
     
     public void abrirTelaDetalhesCliente(Cliente cliente){
         if(detalhesCliente == null || !detalhesCliente.isDisplayable() && 

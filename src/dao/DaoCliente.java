@@ -128,29 +128,6 @@ public class DaoCliente {
                 connection.close();
             }
         }
-//            
-//            CODIGO MOCK
-//            
-//            for(Cliente clienteLista: listaCliente){
-//                if(cliente.getId() == clienteLista.getId() && clienteLista != null){
-//                    clienteLista.setNome(cliente.getNome());
-//                    clienteLista.setSobrenome(cliente.getSobrenome());
-//                    clienteLista.setSexo(cliente.getSexo());
-//                    clienteLista.setCpf(cliente.getCpf());
-//                    clienteLista.setRg(cliente.getRg());
-//                    clienteLista.setCelular(cliente.getCelular());
-//                    clienteLista.setEmail(cliente.getEmail());
-//                    clienteLista.setTelefone(cliente.getTelefone());
-//                    clienteLista.setCidade(cliente.getCidade());
-//                    clienteLista.setRua(cliente.getRua());
-//                    clienteLista.setBairro(cliente.getBairro());
-//                    clienteLista.setEstado(cliente.getEstado());
-//                    clienteLista.setTelefone(cliente.getTelefone());
-//                    clienteLista.setComplemento(cliente.getComplemento());
-//                    clienteLista.setNumeroCasa(cliente.getNumeroCasa());
-//                }
-//            }
-        
     }
     
     //recebe um cliente e procura na lista um cliente de mesmo id para exclui-lo logicamente
@@ -188,8 +165,6 @@ public class DaoCliente {
                 connection.close();
             }
         }
-        
-        //listar().remove(cliente);
     }
     
     public static Cliente obterCliente(Integer id)throws SQLException, Exception{
@@ -199,7 +174,7 @@ public class DaoCliente {
         }
          
         //apartir de um id de um cliente,procura o mesmo no banco de dados
-        String sql = "SELECT * FROM cliente WHERE cliente_id=? AND enabled = true";
+        String sql = "SELECT * FROM cliente WHERE cliente_id=?";
         //lista de cliente contendo o resultado da pesquisa
         Cliente cliente = new Cliente();
         //Conexão para abertura e fechamento

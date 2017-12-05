@@ -149,6 +149,7 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
                 fValorKeyTyped(evt);
             }
         });
+        fValor.setTransferHandler(null);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -191,7 +192,6 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel32)
                                     .addComponent(jLabel27))))))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(comboIdioma, 0, 139, Short.MAX_VALUE)

@@ -31,9 +31,9 @@ public class ViewVenda extends javax.swing.JInternalFrame {
     DetalhesLivro detalhesLivro = null;
     private TelaPrincipal parent;
     Venda venda = new Venda();
-    public List<Cliente> pesquisaCliente;
-    public List<Livro> pesquisaLivro = new ArrayList();
-    public List<ItemVenda> listaItemVenda = new ArrayList();
+    List<Cliente> pesquisaCliente;
+    List<Livro> pesquisaLivro = new ArrayList();
+    List<ItemVenda> listaItemVenda = new ArrayList();
     
 
     /**
@@ -93,8 +93,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setResizable(true);
-        setPreferredSize(new java.awt.Dimension(620, 720));
+        setPreferredSize(new java.awt.Dimension(680, 780));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Cliente"));
 
@@ -808,29 +807,12 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                 } 
             }
             
-//            if(item != null){
-//                for(ItemVenda itemVenda:listaItemVenda){
-//                    if(item.getLivro().getId() == itemVenda.getLivro().getId()){
-//                        itemVenda.setQuantidade(item.getQuantidade());
-//                        return;
-//                    }
-//                }
-//            }
             // verifica se a lista esta vazia ou se o booleano permite a insercao
             // do item na lkista de itens de venda
             if(listaItemVenda.isEmpty() || add){
                 listaItemVenda.add(item);
             }
         
-            
-            
-//            try{
-//                ServiceItemVenda.inserirItemVenda(item , venda);
-//            } catch (Exception e){
-//                JOptionPane.showMessageDialog(rootPane, e.getMessage(),"Erro", 
-//                JOptionPane.ERROR_MESSAGE);
-//                return;
-//            }
             
             // verifica se o item de venda possui um livro atribuido
             if(item.getLivro() != null){
@@ -882,26 +864,6 @@ public class ViewVenda extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fQuantidadeKeyTyped
 
     private void buttonConcluirVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConcluirVendaActionPerformed
-        
-        
-        
-        
-        
-//        if(tableCarrinho.getRowCount() >= 1){    
-//            for(int i = 0;i < tableCarrinho.getRowCount();i++){
-//                ItemVenda item = new ItemVenda();
-//                try {
-//                    item.setLivro(DaoLivro.obter((int)tableCarrinho.getValueAt(i, 0)));
-//                    item.setQuantidade((int)tableCarrinho.getValueAt(i, 5));
-//                    item.setValorUnitario((float)tableCarrinho.getValueAt(i, 6));
-//                    DaoItemVenda.inserirItemVenda(1 , item);
-//                } catch (Exception ex) {
-//                    Logger.getLogger(ViewVenda.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            }
-//        }
-        
-        
         try{
             
             // verifica se o carrinho esta vazio
@@ -927,12 +889,34 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                             ServiceItemVenda.inserirItemVenda(id, item);
                             // atualiza o estoque do produto apos ter sido efetuada a compra
                             ServiceLivro.atualizarEstoque(item.getLivro(), item.getQuantidade());
-
-                        this.dispose();
                         } catch (Exception ex) {
                             Logger.getLogger(ViewVenda.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
+                    // limpando dados da venda para efetuar novas vendas 
+                            // sem fechar a tela
+                    DetalhesLivro detalhesLivro = null;
+                    Venda venda = null;
+                    pesquisaCliente.clear();
+                    listaItemVenda.clear();
+                    lCliente.setText("");
+                    pesquisaDetalhada.setEnabled(false);
+                    buttonConcluirVenda.setEnabled(false);
+                    buttonPesquisarLivro.setEnabled(false);
+                    DefaultTableModel model = (DefaultTableModel) tableCarrinho.getModel();
+                    model.setRowCount(0);
+                    DefaultTableModel modelLivro = (DefaultTableModel) tablePesquisa.getModel();
+                    modelLivro.setRowCount(0);
+                    DefaultTableModel modelCliente = (DefaultTableModel) tablePesquisaCliente.getModel();
+                    modelCliente.setRowCount(0);
+                    fValorTotal.setText("");
+                    fTitulo.setText("");
+                    fAutor.setText("");
+                    comboGenero.setSelectedIndex(0);
+                    fNome.setText("");
+                    fCpf.setText("");
+                    fEditora.setText("");
+                    fQuantidade.setText("");
                 }
             } else {
                 JOptionPane.showMessageDialog(rootPane,"Carrinho vazio");
@@ -984,11 +968,12 @@ public class ViewVenda extends javax.swing.JInternalFrame {
             } else {
                 Double valorTotal = 0.0;
                 for(ItemVenda itemVenda : listaItemVenda){
-                    valorTotal = Double.valueOf(valorTotal + itemVenda.getLivro().getValor()) * (itemVenda.getQuantidade());
+                    valorTotal = (valorTotal + (Double.valueOf(itemVenda.getLivro().getValor()))  * itemVenda.getQuantidade());
                 }
                 venda.setValor(valorTotal.toString());
-                DecimalFormat df = new DecimalFormat("#.##0.00");  
+                DecimalFormat df = new DecimalFormat("##,###.##");  
                 fValorTotal.setText(df.format(valorTotal));
+//                
             }
         }
     }//GEN-LAST:event_buttoRetirarItemActionPerformed

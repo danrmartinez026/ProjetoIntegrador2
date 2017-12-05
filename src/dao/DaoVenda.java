@@ -13,7 +13,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import models.Venda;
@@ -71,9 +70,6 @@ public class DaoVenda {
             }
         }
         return id;
-        
-//        venda.setIdVenda(totalVenda++);
-//        listaVenda.add(venda);
     }
     
     public static List<Venda> listar(Date inicio, Date fim) throws SQLException, Exception{
@@ -143,10 +139,11 @@ public class DaoVenda {
             }
         }
         
-        for(Venda venda: listaRelatorio){
-            venda.setCliente(DaoCliente.obterCliente(venda.getIdCliente()));
+        if(listaRelatorio != null){
+            for(Venda venda: listaRelatorio){
+                venda.setCliente(DaoCliente.obterCliente(venda.getIdCliente()));
+            }
         }
-        
         return listaRelatorio;
     }
 }
