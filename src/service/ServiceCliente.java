@@ -16,6 +16,7 @@ import model_Validador.ValidadorCliente;
  * @author Danilo
  */
 public class ServiceCliente {
+    // faz a validacao do cliente e faz a insercao do mesmo no BD atraves do metodo de inserir cliente
     public static void cadastrarCliente(Cliente cliente)throws ClienteException, DataSourceException, Exception{
         ValidadorCliente.validarCliente(cliente);
         try{
@@ -26,6 +27,7 @@ public class ServiceCliente {
         }
     }
     
+    // valida o cliente e chama o metodo de atualizacao de cliente no BD
     public static void atualizarCliente(Cliente cliente)throws ClienteException, DataSourceException, Exception{
         ValidadorCliente.validarCliente(cliente);
         try{
@@ -37,6 +39,7 @@ public class ServiceCliente {
         }
     }
     
+    // valida o cliente e chama o metodo de exclusao de cliente no BD
     public static void excluirCliente(Cliente cliente) throws DataSourceException{
         try{
             DaoCliente.excluirCliente(cliente);

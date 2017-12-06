@@ -15,6 +15,7 @@ import dao.DaoVenda;
  * @author Danilo
  */
 public class ServiceVenda {
+    // valida a venda e a insere no banco de dados e retorna a chave gerada
     public static int inserirVenda(Venda venda) throws VendaException,DataSourceException{
         int id = 0;
         try{

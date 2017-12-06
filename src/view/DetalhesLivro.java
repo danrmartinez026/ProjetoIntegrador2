@@ -89,6 +89,12 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
 
         jLabel13.setText("Autor *");
 
+        fAutor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fAutorKeyTyped(evt);
+            }
+        });
+
         jLabel14.setText("Editora *");
 
         jLabel12.setText("ISBN *");
@@ -106,7 +112,7 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
 
         jLabel27.setText("Gênero *");
 
-        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Drama", "Romance", "Aventura", "Sci-Fi", "Infantil", "Religiao", "Didatico" }));
+        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Drama", "Romance", "Aventura", "Sci-Fi", "Infantil", "Religiao", "Didatico", "Biografia", "Adulto" }));
 
         jLabel32.setText("Idioma *");
 
@@ -118,7 +124,7 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
             }
         });
 
-        comboIdioma.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Português", "Ingles" }));
+        comboIdioma.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Português", "Inglês", "Alemão", "Espanhol", "Italiano", "Japonês", "Chinês" }));
 
         jLabel1.setText("Valor *");
 
@@ -419,14 +425,14 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
             evt.consume();
         }
         
-        if(fIsbn.getText().length() > 10){
+        if(fIsbn.getText().length() == 10){
             evt.consume();
             JOptionPane.showMessageDialog(rootPane, "Maximo 10 Numeros");
         }
     }//GEN-LAST:event_fIsbnKeyTyped
 
     private void fTituloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fTituloKeyTyped
-        if(fTitulo.getText().length() > 50){
+        if(fTitulo.getText().length() == 50){
             evt.consume();
             JOptionPane.showMessageDialog(rootPane, "Maximo 50 Caracteres");
         }
@@ -571,10 +577,23 @@ public class DetalhesLivro extends javax.swing.JInternalFrame {
             evt.consume();
         }
         
-        if(fValor.getText().length() > 6){
+        if(fValor.getText().length() == 6){
             evt.consume();
         }
     }//GEN-LAST:event_fValorKeyTyped
+
+    private void fAutorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fAutorKeyTyped
+        String permitidos = " abcdefghijklmnopqrstuwyvxzáéóíãâê".toUpperCase();
+        Character ch = evt.getKeyChar();
+        if(!permitidos.contains(ch.toString().toUpperCase())){
+            evt.consume();
+        }
+        
+        if(fAutor.getText().length() == 50){
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Maximo 50 Caracteres");
+        }
+    }//GEN-LAST:event_fAutorKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

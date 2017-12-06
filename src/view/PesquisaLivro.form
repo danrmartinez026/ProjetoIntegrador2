@@ -122,6 +122,7 @@
         <Component class="javax.swing.JTextField" name="fTitulo">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fTituloActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fTituloKeyTyped"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fTitulo.setTransferHandler(null);"/>
@@ -148,6 +149,7 @@
         <Component class="javax.swing.JTextField" name="fAutor">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fAutorActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fAutorKeyTyped"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fAutor.setTransferHandler(null);"/>
@@ -170,7 +172,7 @@
         <Component class="javax.swing.JComboBox" name="comboGenero">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="8">
+              <StringArray count="9">
                 <StringItem index="0" value="Selecionar"/>
                 <StringItem index="1" value="Drama"/>
                 <StringItem index="2" value="Romance"/>
@@ -179,6 +181,7 @@
                 <StringItem index="5" value="Infantil"/>
                 <StringItem index="6" value="Religiao"/>
                 <StringItem index="7" value="Didatico"/>
+                <StringItem index="8" value="Adulto"/>
               </StringArray>
             </Property>
           </Properties>

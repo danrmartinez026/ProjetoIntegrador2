@@ -13,15 +13,11 @@ import models.Venda;
  * @author Danilo
  */
 public class ValidadorVenda {
+    // valida uma venda, para que outras areas do sistema possam usa-la corretamente
     public static void validaVenda(Venda venda) throws VendaException{
+        // verifica se o cliente desta venda, foi devidamente alocado
         if(venda.getCliente() == null){
             throw new VendaException("Nao foi informado um cliente");
         }
-        
-        if(venda.getListaItemVenda() == null){
-            throw new VendaException("Nao foi informado um produto");
-        }
-        
-        
     }
 }

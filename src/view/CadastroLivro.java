@@ -116,7 +116,7 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
 
         jLabel27.setText("Gênero");
 
-        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Drama", "Romance", "Aventura", "Sci-Fi", "Infantil", "Religiao", "Didatico" }));
+        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Drama", "Romance", "Aventura", "Sci-Fi", "Infantil", "Religiao", "Didatico", "Biografia", "Adulto", " " }));
 
         jLabel32.setText("Idioma");
 
@@ -128,7 +128,7 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
             }
         });
 
-        comboIdioma.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Português", "Ingles" }));
+        comboIdioma.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Português", "Inglês", "Alemão", "Espanhol", "Italiano", "Japonês", "Chinês" }));
 
         jLabel1.setText("Valor *");
 
@@ -447,7 +447,7 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_buttonSalvarActionPerformed
 
     private void fTituloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fTituloKeyTyped
-        if(fTitulo.getText().length() > 50){
+        if(fTitulo.getText().length() == 50){
             evt.consume();
             JOptionPane.showMessageDialog(rootPane, "Maximo 50 Caracteres");
         }
@@ -468,7 +468,7 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
             evt.consume();
         }
         
-        if(fIsbn.getText().length() > 10){
+        if(fIsbn.getText().length() == 10){
             evt.consume();
             JOptionPane.showMessageDialog(rootPane, "Maximo 10 Numeros");
         }
@@ -479,13 +479,13 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fIsbnKeyReleased
 
     private void fAutorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fAutorKeyTyped
-        String permitidos = " abcdefghijklmnopqrstuwyvxz".toUpperCase();
+        String permitidos = " abcdefghijklmnopqrstuwyvxzáéóíãâê".toUpperCase();
         Character ch = evt.getKeyChar();
         if(!permitidos.contains(ch.toString().toUpperCase())){
             evt.consume();
         }
         
-        if(fAutor.getText().length() > 50){
+        if(fAutor.getText().length() == 50){
             evt.consume();
             JOptionPane.showMessageDialog(rootPane, "Maximo 50 Caracteres");
         }
@@ -498,9 +498,9 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
             evt.consume();
         }
         
-        if(fEdicao.getText().length() == 2){
+        if(fEdicao.getText().length() == 4){
             evt.consume();
-            JOptionPane.showMessageDialog(rootPane, "Maximo 2 Numeros");
+            JOptionPane.showMessageDialog(rootPane, "Maximo 4 Numeros");
         }
     }//GEN-LAST:event_fEdicaoKeyTyped
 
@@ -579,7 +579,10 @@ public class CadastroLivro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
     private void fEditoraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fEditoraKeyTyped
-        // TODO add your handling code here:
+        if(fEditora.getText().length() == 50){
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Maximo 50 Caracteres");
+        }
     }//GEN-LAST:event_fEditoraKeyTyped
 
     private void fValorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fValorKeyTyped

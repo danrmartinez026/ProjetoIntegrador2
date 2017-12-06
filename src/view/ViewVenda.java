@@ -91,7 +91,6 @@ public class ViewVenda extends javax.swing.JInternalFrame {
         fValorTotal = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
 
-        setClosable(true);
         setIconifiable(true);
         setPreferredSize(new java.awt.Dimension(680, 780));
 
@@ -284,7 +283,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
             }
         });
 
-        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONAR", "Drama", "Romance", "Aventura", "Sci-fi" }));
+        comboGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONAR", "Drama", "Romance", "Aventura", "Sci-Fi", "Infantil", "Religiao", "Didatico", "Biografia", "Adulto" }));
         comboGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboGeneroActionPerformed(evt);
@@ -441,7 +440,6 @@ public class ViewVenda extends javax.swing.JInternalFrame {
         jScrollPane3.setViewportView(tableCarrinho);
 
         buttonCancelarVenda.setText("Cancelar Venda");
-        buttonCancelarVenda.setEnabled(false);
         buttonCancelarVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonCancelarVendaActionPerformed(evt);
@@ -690,7 +688,6 @@ public class ViewVenda extends javax.swing.JInternalFrame {
         
         // libera a pesquisa de livro para proseguir com a venda
         buttonPesquisarLivro.setEnabled(true);
-        
     }//GEN-LAST:event_tablePesquisaClienteMouseClicked
 
     private void pesquisaDetalhadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisaDetalhadaActionPerformed
@@ -857,9 +854,9 @@ public class ViewVenda extends javax.swing.JInternalFrame {
             evt.consume();
         }
 
-        if(fQuantidade.getText().length() == 3){
+        if(fQuantidade.getText().length() == 4){
             evt.consume();
-            JOptionPane.showMessageDialog(rootPane, "Maximo 3 Digitos");
+            JOptionPane.showMessageDialog(rootPane, "Maximo 4 Digitos");
         }
     }//GEN-LAST:event_fQuantidadeKeyTyped
 
@@ -894,7 +891,7 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                         }
                     }
                     // limpando dados da venda para efetuar novas vendas 
-                            // sem fechar a tela
+                    // sem fechar a tela
                     DetalhesLivro detalhesLivro = null;
                     Venda venda = null;
                     pesquisaCliente.clear();
@@ -973,7 +970,6 @@ public class ViewVenda extends javax.swing.JInternalFrame {
                 venda.setValor(valorTotal.toString());
                 DecimalFormat df = new DecimalFormat("##,###.##");  
                 fValorTotal.setText(df.format(valorTotal));
-//                
             }
         }
     }//GEN-LAST:event_buttoRetirarItemActionPerformed

@@ -16,7 +16,7 @@ import models.Cliente;
  */
 public class ValidadorCliente {
     
-    
+    // faz a validacao do cliente antes de usa-lo em outras areas do sistema
     public static void validarCliente(Cliente cliente) throws ClienteException, Exception {
         
         if(cliente != null){
@@ -32,6 +32,7 @@ public class ValidadorCliente {
                 if(cliente.getRg().equals("  .   .   - ")){
                     throw new ClienteException ("Preencha todos os campos marcados com: ( * )");
                 } else {
+                    // efetua a validacao do rg no banco de dados para torna-lo unico no sistema
                     if(DaoCliente.listar() != null){
                         for(Cliente cli: DaoCliente.listar()){
                             if(cli.getRg().equals(cliente.getRg()) && cli.getId() != cliente.getId()){
@@ -41,7 +42,7 @@ public class ValidadorCliente {
                     }
                 }
             } catch (SQLException e){
-                
+                throw new ClienteException ("Erro");
             }
             
             if(cliente.getCpf().equals("   .   .   -  ")){
@@ -53,11 +54,13 @@ public class ValidadorCliente {
                         cpf = cpf + cliente.getCpf().charAt(i);
                     }
                 }
+                // faz a validacao do cpf
                 if(!validarCpf(cpf)){
                     throw new ClienteException ("CPF invalido");
                 }
                 
                 try{
+                    // faz a verificacao de unicidade do cpf no banco de dados
                     if(DaoCliente.listar() != null){
                         for(Cliente cli: DaoCliente.listar()){
                             if(cli.getCpf().equals(cliente.getCpf()) && cli.getId() != cliente.getId()){
@@ -66,7 +69,7 @@ public class ValidadorCliente {
                         }
                     }
                 } catch(SQLException e){
-                    
+                    throw new ClienteException ("Erro");
                 }
             }
             
@@ -101,6 +104,7 @@ public class ValidadorCliente {
             if(!cliente.getTelefone().equals("")){
             }
             
+            // faz a valida do email caso o usuario digite ao memos um caracter no campo email
             if(!cliente.getEmail().equals("")){
                 if(cliente.getEmail().lastIndexOf(".com") != cliente.getEmail().length() - 4 || !cliente.getEmail().contains("@")
                        || !cliente.getEmail().contains(".com") 
@@ -115,7 +119,7 @@ public class ValidadorCliente {
     }
     
     
-    
+    // efetua a validacao de cpf 
     public static boolean validarCpf (String cpf ){
         int     d1 = 0, d2 = 0;
         int     digito1 = 0, digito2 = 0, restoDig1 = 0;

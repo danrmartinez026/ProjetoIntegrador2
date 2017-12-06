@@ -5,7 +5,6 @@
  */
 package models;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -14,7 +13,6 @@ import java.util.Date;
  */
 public class Venda {
     private Cliente cliente;
-    private ArrayList<ItemVenda> listaItemVenda = new ArrayList();
     private String valor;
     private int idVenda;
     private Date data;
@@ -43,13 +41,6 @@ public class Venda {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-
-    public ArrayList<ItemVenda> getListaItemVenda() {
-        return listaItemVenda;
-    }
-
-
-
 
     public String getValor() {
         return valor;

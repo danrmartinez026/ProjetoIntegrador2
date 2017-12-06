@@ -624,7 +624,7 @@ public class DetalhesCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fNomeKeyTyped
 
     private void fSobrenomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fSobrenomeKeyTyped
-        String permitidos = "abcdefghijklmnopqrstuwyvxz ".toUpperCase();
+        String permitidos = "abcdefghijklmnopqrstuwyvxz áéóíãâê".toUpperCase();
         Character ch = evt.getKeyChar();
         if(!permitidos.contains(ch.toString().toUpperCase())){
             evt.consume();
@@ -681,7 +681,7 @@ public class DetalhesCliente extends javax.swing.JInternalFrame {
 
     private void fRgKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fRgKeyTyped
         Character ch = evt.getKeyChar();
-        String permitidos = "0123456789";
+        String permitidos = "0123456789qwertyuiopasdfghjklzxcvbnmm";
         if(!permitidos.contains(ch.toString())){
             evt.consume();
         }
@@ -706,7 +706,7 @@ public class DetalhesCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fCpfKeyTyped
 
     private void fCidadeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fCidadeKeyTyped
-        String permitidos = "abcdefghijklmnopqrstuwyvxz. ".toUpperCase();
+        String permitidos = "abcdefghijklmnopqrstuwyvxz. áéóíãâê".toUpperCase();
         Character ch = evt.getKeyChar();
         if(!permitidos.contains(ch.toString().toUpperCase())){
             evt.consume();
@@ -732,7 +732,7 @@ public class DetalhesCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fCelularKeyTyped
 
     private void fRuaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fRuaKeyTyped
-       String permitidos = "abcdefghijklmnopqrstuwyvxz. ".toUpperCase();
+       String permitidos = "abcdefghijklmnopqrstuwyvxz. áéóíãâê".toUpperCase();
         Character ch = evt.getKeyChar();
         if(!permitidos.contains(ch.toString().toUpperCase())){
             evt.consume();

@@ -13,6 +13,7 @@ import exceptions.LivroException;
  * @author Danilo
  */
 public class ValidadorLivro {
+    // faz a validacao do livro antes que outras areas do sistema usem o mesmo afim de evitar erros
     public static void validarLivro(Livro livro) throws LivroException{
         if(livro != null){
             if(livro.getTitulo().equals("")){

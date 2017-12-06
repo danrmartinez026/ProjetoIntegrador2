@@ -8,13 +8,9 @@ package view;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Graphics;
-import java.text.DecimalFormat;
 import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
-import javax.swing.table.DefaultTableModel;
-import dao.DaoVenda;
 import models.Cliente;
-import models.ItemVenda;
 import models.Livro;
 
 /**
@@ -31,7 +27,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     PesquisaLivro pesquisarLivro = null;
     Relatorio relatorio = null;
     ViewVenda venda = null;
-    DetalhesRelatorio detalhesRelatorio = null;
 
     /**
      * Creates new form TelaPrincipal
@@ -236,15 +231,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     public void attachWindow(JInternalFrame jif){
          if(jif == null || !jif.isDisplayable()&& !jif.isVisible()){
-            //cadCliente = new CadastroCliente();
             this.deskPane.add(jif);
             this.openFrameInCenter(jif);
         }
         jif.getDesktopPane().getDesktopManager().deiconifyFrame(jif);
         jif.toFront();
     }
-    
-            
             
     private void menuCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastroClienteActionPerformed
         abrirTelaCadastroCliente();

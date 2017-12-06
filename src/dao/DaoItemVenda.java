@@ -13,8 +13,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import models.ItemVenda;
-import models.Livro;
-import models.Venda;
 
 /**
  *
@@ -23,26 +21,26 @@ import models.Venda;
 public class DaoItemVenda {
     
     
-    
+    // com base no id da venda fornecido, insere os itens de venda no banco  de dados
     public static void inserirItemVenda(int venda_id,ItemVenda item)throws SQLException, Exception{
-        //Prepara uma string com os dados de preenchimento do livro
+        //Prepara uma string com os dados de insercao dos itens
         String sql = "INSERT INTO item_venda (venda_id,livro_id,valor_unitario,quantidade)"
                 + " VALUES (?,?,?,?)";
         
-        //conexao para abertura e fechamento
+        // conexao para abertura e fechamento
         Connection connection = null;
         
-        //atraves da conexao ira, executar comandos sql
+        // atraves da conexao ira, executar comandos sql
         PreparedStatement preparedStatement = null;
         
         try{
-            //abre uma conxao com o banco de dados
+            // abre uma conxao com o banco de dados
             connection = ConnectionUtils.getConnection();
             
-            //Cria um statement para execução de instruções SQL
+            // Cria um statement para execução de instruções SQL
             preparedStatement = connection.prepareStatement(sql);
             
-            //Configura os parametros a serem excutados conforme a String  sql foi gerada
+            // Configura os parametros a serem excutados conforme a String  sql foi gerada
             preparedStatement.setInt(1, venda_id);
             preparedStatement.setInt(2, item.getLivro().getId());
             preparedStatement.setFloat(3, Float.parseFloat(item.getLivro().getValor()));
@@ -60,21 +58,10 @@ public class DaoItemVenda {
                 connection.close();
             }
         }
-
-
-//        if(item != null){
-//            for(ItemVenda itemVenda:venda.getListaItemVenda()){
-//                if(item.getLivro().getId() == itemVenda.getLivro().getId()){
-//                    itemVenda.setQuantidade(item.getQuantidade());
-//                    return;
-//                }
-//            }
-//            venda.getListaItemVenda().add(item);
-//        }
     }
     
     
-    //recebe um id de venda e faz uma lista de itens de venda relacionado ao id fornecido
+    // recebe um id de venda e faz uma lista de itens de venda relacionado ao id fornecido
     public static List<ItemVenda> itensVenda(int id)throws SQLException, Exception{
         
         // faz uma busca no banco de dados com base no id de venda encontrado como chave 
@@ -87,10 +74,10 @@ public class DaoItemVenda {
         // abre uma conxao com o banco de dados
         Connection connection = null;
         
-        //atraves da conexao ira, executar comandos sql
+        // atraves da conexao ira, executar comandos sql
         PreparedStatement preparedStatement = null;
         
-        //Armazenará os resultados do banco de dados
+        // Armazenará os resultados do banco de dados
         ResultSet result = null;
         
          try{
@@ -100,13 +87,13 @@ public class DaoItemVenda {
             // Cria um statement para execução de instruções SQL
             preparedStatement = connection.prepareStatement(sql);
             
-            
+            // prepara o comando com o id fornecido
             preparedStatement.setInt(1, id);
             
             // execulta a query no banco de dados
             preparedStatement.execute();
             
-            //Executa a consulta SQL no banco de dados
+            // Executa a consulta SQL no banco de dados
             result = preparedStatement.executeQuery();
             
             // itera pelos resultados encontrados
@@ -137,10 +124,15 @@ public class DaoItemVenda {
                 connection.close();
             }
         }
-         
-        for(ItemVenda item: listaItens){
-             item.setLivro(DaoLivro.obter(item.getIdLivro()));
+        // faz uma condicional em caso de lista vazia
+        if(listaItens != null){
+            // itera pelo itens encontrados adicionando os livros aos itens
+            // atraves do id dos livros
+            for(ItemVenda item: listaItens){
+                 item.setLivro(DaoLivro.obter(item.getIdLivro()));
+            }
         }
+        // retorna os itens encontrados
         return listaItens;
     }
 }

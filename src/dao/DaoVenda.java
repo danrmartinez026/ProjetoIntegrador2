@@ -22,26 +22,26 @@ import models.Venda;
  * @author Danilo
  */
 public class DaoVenda {
-    public static List<Venda> listaVenda = new ArrayList( );
-    public static int totalVenda = 0;
-    
-    
+
+    // insere uma venda no banco de dados, a partir de uma instancia de venda 
+    // fornecida como parametro
     public static int inserirVenda(Venda venda)throws SQLException, Exception{
-       //Prepara uma string com os dados de preenchimento do livro
+       //Prepara uma string com os dados da venda fornecida
         String sql = "INSERT INTO venda (cliente_id,data_compra)"
                 + " VALUES (?,?)";
         int id=0;
-        //conexao para abertura e fechamento
+        // conexao para abertura e fechamento
         Connection connection = null;
         
-        //atraves da conexao ira, executar comandos sql
+        // atraves da conexao ira, executar comandos sql
         PreparedStatement preparedStatement = null;
         
         try{
             // abre uma conxao com o banco de dados
             connection = ConnectionUtils.getConnection();
             
-            // Cria um statement para execução de instruções SQL
+            // Cria um statement para execução de instruções SQL,
+            // e retorno da chave gerada
             preparedStatement = connection.prepareStatement(sql,
                     Statement.RETURN_GENERATED_KEYS);
             
@@ -69,12 +69,14 @@ public class DaoVenda {
                 connection.close();
             }
         }
+        // retorna o id de venda gerado para ser inserido nos itens de venda
+        // pertencentes a esta venda
         return id;
     }
     
+    // procura por todas as vendas com data corresponde ao periodo fornecido
     public static List<Venda> listar(Date inicio, Date fim) throws SQLException, Exception{
-        // faz uma analise previa dos parametros recebidos afim
-        // de melhorar a performance em caso de parametros nulos 
+        // faz uma analise previa em caso de parametros nulos 
         // ou invalidos
         if(inicio == null || fim == null || inicio.after(fim)){
             return null;
@@ -88,10 +90,10 @@ public class DaoVenda {
         // abre uma conxao com o banco de dados
         Connection connection = null;
         
-        //atraves da conexao ira, executar comandos sql
+        // atraves da conexao ira, executar comandos sql
         PreparedStatement preparedStatement = null;
         
-        //Armazenará os resultados do banco de dados
+        // Armazenará os resultados do banco de dados
         ResultSet result = null;
         
         try{
@@ -101,14 +103,13 @@ public class DaoVenda {
             // Cria um statement para execução de instruções SQL
             preparedStatement = connection.prepareStatement(sql);
             
+            // faz a conversao de datas para o formato aceitavel pelo BD
             java.sql.Date dataInicio = new java.sql.Date(inicio.getTime());
             java.sql.Date dataFim = new java.sql.Date(fim.getTime());
             
+            // prepara o comando de pesquisa,com as datas fornecidas
             preparedStatement.setDate(1, dataInicio);
             preparedStatement.setDate(2, dataFim);
-            
-//            // execulta a query no banco de dados
-//            preparedStatement.execute();
             
             //Executa a consulta SQL no banco de dados
             result = preparedStatement.executeQuery();
@@ -117,15 +118,17 @@ public class DaoVenda {
             while(result.next()){
                 // verifica se a lista esta nula, se estiver a instancia
                 if(listaRelatorio == null) listaRelatorio = new ArrayList();
-                    
+                
+                // instancia uma venda para inserir a mesma na lista
                 Venda venda = new Venda();
                 
+                // popula cada instancia de venda encontrada
                 venda.setIdCliente(result.getInt("cliente_id"));
                 java.util.Date dataVenda = result.getDate("data_compra");
                 venda.setData(dataVenda);
                 venda.setIdVenda(result.getInt("venda_id"));
+                // insere a instancia na lista de vendas usada posteriormente no relatorio
                 listaRelatorio.add(venda);
-                
             }
             
         } finally {
@@ -139,11 +142,13 @@ public class DaoVenda {
             }
         }
         
+        // insere cliente na lista de venda com base no id de cliente gerado na pesquisa
         if(listaRelatorio != null){
             for(Venda venda: listaRelatorio){
                 venda.setCliente(DaoCliente.obterCliente(venda.getIdCliente()));
             }
         }
+        // retorna a lista de vendas que sera usada no relatorio
         return listaRelatorio;
     }
 }

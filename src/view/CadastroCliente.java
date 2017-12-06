@@ -570,7 +570,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
 
     private void fCpfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fCpfKeyTyped
         Character ch = evt.getKeyChar();
-        String permitidos = "0123456789qwertyuiopasdfghjklçzxcvbnm";
+        String permitidos = "0123456789";
         if(!permitidos.contains(ch.toString())){
             evt.consume();
         }
@@ -583,7 +583,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
 
     private void fRgKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fRgKeyTyped
         Character ch = evt.getKeyChar();
-        String permitidos = "0123456789";
+        String permitidos = "0123456789qwertyuiopasdfghjklzxxcvbnm";
         if(!permitidos.contains(ch.toString())){
             evt.consume();
         }
@@ -598,7 +598,6 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         if(JOptionPane.showConfirmDialog(this, "Deseja cancelar o cadastro") == 0){
             this.dispose();
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void fNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fNumeroKeyTyped
@@ -642,7 +641,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fCepKeyTyped
 
     private void fSobrenomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fSobrenomeKeyTyped
-        String permitidos = "abcdefghijklmnopqrstuwyvxz ".toUpperCase();
+        String permitidos = "abcdefghijklmnopqrstuwyvxz áéóíãâê".toUpperCase();
         Character ch = evt.getKeyChar();
         if(!permitidos.contains(ch.toString().toUpperCase())){
             evt.consume();
@@ -658,15 +657,15 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fSobrenomeKeyTyped
 
     private void fNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fNomeKeyTyped
-        String permitidos = "abcdefghijklmnopqrstuwyvxz ".toUpperCase();
+        String permitidos = "abcdefghijklmnopqrstuwyvxz áéóíãâê".toUpperCase();
         Character ch = evt.getKeyChar();
         if(!permitidos.contains(ch.toString().toUpperCase())){
             evt.consume();
         }
         
-        if(fNome.getText().length() >= 30){
+        if(fNome.getText().length() >= 50){
             evt.consume();
-            JOptionPane.showMessageDialog(rootPane, "Maximo 30 Caracteres");
+            JOptionPane.showMessageDialog(rootPane, "Maximo 50 Caracteres");
         }
     }//GEN-LAST:event_fNomeKeyTyped
 
@@ -677,9 +676,9 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
             evt.consume();
         }
 
-        if(fEmail.getText().length() == 50){
+        if(fEmail.getText().length() == 100){
             evt.consume();
-            JOptionPane.showMessageDialog(rootPane, "Maximo 50 Caracteres");
+            JOptionPane.showMessageDialog(rootPane, "Maximo 100 Caracteres");
         }
     }//GEN-LAST:event_fEmailKeyTyped
 
@@ -697,7 +696,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fTelefoneKeyTyped
 
     private void fCidadeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fCidadeKeyTyped
-        String permitidos = "abcdefghijklmnopqrstuwyvxz. ".toUpperCase();
+        String permitidos = "abcdefghijklmnopqrstuwyvxz. áéóíãâê".toUpperCase();
         Character ch = evt.getKeyChar();
         if(!permitidos.contains(ch.toString().toUpperCase())){
             evt.consume();
@@ -723,7 +722,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fCelularKeyTyped
 
     private void fRuaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fRuaKeyTyped
-        String permitidos = "abcdefghijklmnopqrstuwyvxz. ".toUpperCase();
+        String permitidos = "abcdefghijklmnopqrstuwyvxz. áéóíãâê".toUpperCase();
         Character ch = evt.getKeyChar();
         if(!permitidos.contains(ch.toString().toUpperCase())){
             evt.consume();

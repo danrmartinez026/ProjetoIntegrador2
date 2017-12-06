@@ -302,7 +302,7 @@ public class PesquisaCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fCpfKeyTyped
 
     private void fNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fNomeKeyTyped
-        String permitidos = "abcdefghijklmnopqrstuwyvxz".toUpperCase();
+        String permitidos = "abcdefghijklmnopqrstuwyvxzáéóãêâ".toUpperCase();
         Character ch = evt.getKeyChar();
         if(!permitidos.contains(ch.toString().toUpperCase())){
             evt.consume();
@@ -315,7 +315,7 @@ public class PesquisaCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_fNomeKeyTyped
 
     private void fSobrenomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fSobrenomeKeyTyped
-        String permitidos = " abcdefghijklmnopqrstuwyvxz".toUpperCase();
+        String permitidos = " abcdefghijklmnopqrstuwyvxzáéóãêâ".toUpperCase();
         Character ch = evt.getKeyChar();
         if(!permitidos.contains(ch.toString().toUpperCase())){
             evt.consume();
