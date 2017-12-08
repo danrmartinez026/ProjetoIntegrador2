@@ -50,7 +50,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         jLabel19 = new javax.swing.JLabel();
         fSobrenome = new javax.swing.JTextField();
         fCpf = new javax.swing.JFormattedTextField();
-        fRg = new javax.swing.JFormattedTextField();
+        fRg = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         fEmail = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -110,7 +110,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(214, 214, 214)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(194, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,11 +161,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        try {
-            fRg.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-#")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        fRg.setTransferHandler(null);
         fRg.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 fRgKeyTyped(evt);
@@ -200,7 +196,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(comboSexo, 0, 133, Short.MAX_VALUE)
                     .addComponent(fRg))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,7 +218,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(fSobrenome)
                             .addComponent(jLabel19))))
-                .addGap(21, 21, 21)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(fCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -231,7 +227,6 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
 
         fSobrenome.setTransferHandler(null);
         fCpf.setTransferHandler(null);
-        fRg.setTransferHandler(null);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Contatos"));
 
@@ -581,19 +576,6 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_fCpfKeyTyped
 
-    private void fRgKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fRgKeyTyped
-        Character ch = evt.getKeyChar();
-        String permitidos = "0123456789qwertyuiopasdfghjklzxxcvbnm";
-        if(!permitidos.contains(ch.toString())){
-            evt.consume();
-        }
-        
-        if(fRg.getText().length() == 9){
-            evt.consume();
-            JOptionPane.showMessageDialog(rootPane, "Maximo 9 Numeros");
-        }
-    }//GEN-LAST:event_fRgKeyTyped
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if(JOptionPane.showConfirmDialog(this, "Deseja cancelar o cadastro") == 0){
             this.dispose();
@@ -738,6 +720,24 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_fNomeActionPerformed
 
+    private void fRgKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fRgKeyTyped
+        Character ch = evt.getKeyChar();
+        String permitidos = "0123456789qwertyuiopasdfghjklzxcvbnmm";
+        if(!permitidos.contains(ch.toString())){
+            evt.consume();
+        }
+        
+        if(fRg.getText().length() == 12){
+            evt.consume();
+        }  
+        if(fRg.getText().length() == 2 || fRg.getText().length() == 6){
+            fRg.setText(fRg.getText() + ".");
+        }
+        if(fRg.getText().length() == 10){
+            fRg.setText(fRg.getText() + "-");
+        }
+    }//GEN-LAST:event_fRgKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonSalvar;
@@ -752,7 +752,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
     public javax.swing.JTextField fEmail;
     public javax.swing.JTextField fNome;
     public javax.swing.JTextField fNumero;
-    public javax.swing.JFormattedTextField fRg;
+    private javax.swing.JTextField fRg;
     public javax.swing.JTextField fRua;
     public javax.swing.JTextField fSobrenome;
     public javax.swing.JFormattedTextField fTelefone;

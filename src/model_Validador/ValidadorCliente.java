@@ -29,7 +29,7 @@ public class ValidadorCliente {
             }
             
             try{
-                if(cliente.getRg().equals("  .   .   - ")){
+                if(cliente.getRg().length() < 12){
                     throw new ClienteException ("Preencha todos os campos marcados com: ( * )");
                 } else {
                     // efetua a validacao do rg no banco de dados para torna-lo unico no sistema

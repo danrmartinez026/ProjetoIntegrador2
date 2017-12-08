@@ -248,9 +248,13 @@ public class Relatorio extends javax.swing.JInternalFrame {
                 } catch (Exception ex) {
                     Logger.getLogger(Relatorio.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
+                
                 Object[] valorCompra = new Object[8];
-                valorCompra[3] = "Valor da Compra";
-                valorCompra[5] = valorParcial;
+                valorCompra[1] = "Valor";
+                valorCompra[2] = "Da";
+                valorCompra[3] = "Compra";
+                valorCompra[7] = valorParcial;
                 model.addRow(valorCompra);
                 
                 Object[] linhaBranca = new Object[8];
